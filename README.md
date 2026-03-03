@@ -1,0 +1,1 @@
+Frontend single page webapp
