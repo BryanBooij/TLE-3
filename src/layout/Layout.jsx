@@ -1,6 +1,6 @@
 import {Outlet, useNavigate} from "react-router";
 import "./Layout.css";
-import ButtonMain from "./buttons/ButtonMain.jsx";
+import ButtonMain from "../buttons/ButtonMain.jsx";
 
 function Layout() {
     const navigate = useNavigate();
