@@ -16,10 +16,10 @@ function Home(){
                 <p>Welkom op onze homepage</p>
                 <p>hier staan al een aantal buttons klaar voor gebruik naam is subject to change</p>
                 {/* Buttons placeholder for display purposes */}
-                <ButtonMain label="Button Main" onClick={() => navigate("*")}/>
-                <ButtonGreen label="Button Green"/>
-                <ButtonHeader label="Button Header"/>
-                <ButtonFooter label="Button Footer"/>
+                <ButtonMain alt="Button Main" label="Button Main" onClick={() => navigate("*")}/>
+                <ButtonGreen alt="Button Green" label="Button Green"/>
+                <ButtonHeader alt="Button Header" label="Button Header"/>
+                <ButtonFooter alt="Button Footer" label="Button Footer"/>
             </div>
         </>
     )
