@@ -1,9 +1,16 @@
 *{
   --dark-grey: #1D3037;
-  --black: #141F23;
+  --black-tint: #141F23;
+  --black: #000;
   --light-grey: #59646A;
   --light-purple: #cb6ce6;
   --darker-purple: #7d3492;
+  --white: #FFF;
+}
+
+html{
+  background-color: var(--black-tint);
+  color: var(--white);
 }
 
 @media (prefers-color-scheme: light) {
