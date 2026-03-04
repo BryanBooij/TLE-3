@@ -42,6 +42,14 @@ img{
     border-radius: 50%;
 }
 
+h3, h2{
+    color: var(--light-grey);
+}
+
+h3:hover, h2:hover{
+    color: var(--white);
+}
+
 /*Id's*/
 #newModule{
     display: flex;
@@ -58,7 +66,7 @@ img{
 }
 
 /*Classes*/
-.comic-relief-regular {
+.comic-relief-regular { /* ⭐: isn't in use anywhere, can be removed if never used*/
     font-family: "Comic Relief", system-ui;
     font-weight: 400;
     font-style: normal;
@@ -73,7 +81,7 @@ img{
     position: absolute;
     background-color: var(--black-tint);
     min-width: 130px;
-    max-width: 400px;
+    width: 300px;
     max-height: 500px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 12px 16px;
@@ -86,5 +94,6 @@ img{
 
 .dropdown:hover .dropdown-content {
     display: flex;
+    flex-wrap: wrap;
 }
 

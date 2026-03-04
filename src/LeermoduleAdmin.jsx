@@ -11,11 +11,11 @@ return (
 
         <div id="filterHolder">
             <a href="" id="newModule">
-                <h2>Make new learn module</h2>
-                <img src="" alt="+ icon"/>
+                <h2>Make new module &#10009;</h2>
+                <img src="" alt="Plus icon"/>
             </a>
 
-            <div className="dropdown">Filters
+            <div className="dropdown"><h3>Filters</h3>
                 <div className="dropdown-content">
                     <button>Filter A</button>
                     <button>Filter B</button>
