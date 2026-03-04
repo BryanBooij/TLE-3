@@ -3,6 +3,10 @@
   min-height: 100vh;
   padding: 20px;
   color: #213547;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .home-container h1 {
@@ -18,4 +22,5 @@
 
 .home-container button {
   margin: 10px;
+  display: inline-block;
 }
