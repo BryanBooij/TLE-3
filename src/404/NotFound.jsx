@@ -1,6 +1,6 @@
 import "./NotFound.css";
-import "./buttons/ButtonMain.jsx"
-import ButtonMain from "./buttons/ButtonMain.jsx";
+import "../buttons/ButtonMain.jsx"
+import ButtonMain from "../buttons/ButtonMain.jsx";
 import { useNavigate } from "react-router";
 
 function NotFound(){
