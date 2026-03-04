@@ -1,7 +1,7 @@
 import React from "react";
 import "./Buttons.css";
 
-const ButtonHeader = ({ label, onClick }) => {
+const ButtonBlack = ({ label, onClick }) => {
     return (
         <button className="button-header" onClick={onClick}>
             {label}
@@ -9,4 +9,4 @@ const ButtonHeader = ({ label, onClick }) => {
     );
 };
 
-export default ButtonHeader;
+export default ButtonBlack;

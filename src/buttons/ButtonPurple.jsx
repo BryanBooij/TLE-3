@@ -1,7 +1,7 @@
 import React from "react";
 import "./Buttons.css";
 
-const ButtonFooter = ({ label, onClick }) => {
+const ButtonPurple = ({ label, onClick }) => {
     return (
         <button className="button-footer" onClick={onClick}>
             {label}
@@ -9,4 +9,4 @@ const ButtonFooter = ({ label, onClick }) => {
     );
 };
 
-export default ButtonFooter;
+export default ButtonPurple;

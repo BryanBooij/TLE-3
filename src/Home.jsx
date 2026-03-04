@@ -2,8 +2,8 @@ import "./Home.css";
 import "./buttons/ButtonMain.jsx";
 import ButtonMain from "./buttons/ButtonMain.jsx";
 import ButtonGreen from "./buttons/ButtonGreen.jsx";
-import ButtonFooter from "./buttons/ButtonFooter.jsx";
-import ButtonHeader from "./buttons/ButtonHeader.jsx";
+import ButtonPurple from "./buttons/ButtonPurple.jsx";
+import ButtonBlack from "./buttons/ButtonBlack.jsx";
 import {useNavigate} from "react-router";
 
 function Home(){
@@ -18,8 +18,8 @@ function Home(){
                 {/* Buttons placeholder for display purposes */}
                 <ButtonMain alt="Button Main" label="Button Main" onClick={() => navigate("*")}/>
                 <ButtonGreen alt="Button Green" label="Button Green"/>
-                <ButtonHeader alt="Button Header" label="Button Header"/>
-                <ButtonFooter alt="Button Footer" label="Button Footer"/>
+                <ButtonBlack alt="Button Black" label="Button Black"/>
+                <ButtonPurple alt="Button Purple" label="Button Purple"/>
             </div>
         </>
     )
