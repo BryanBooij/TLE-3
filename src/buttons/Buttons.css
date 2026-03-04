@@ -1,0 +1,91 @@
+/* Main button */
+.button-main {
+  padding: 10px 16px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  background-color: #00CD9D;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-main:hover:not(:disabled) {
+  background-color: #4AEACE;
+}
+
+.button-main:disabled {
+  background-color: #4AEACE;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Green Button */
+
+.button-green {
+    padding: 10px 16px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: none;
+    background-color: #5BCB07;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-green:hover:not(:disabled) {
+    background-color: #7BDE3B;
+}
+
+.button-green:disabled {
+    background-color: #7BDE3B;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Footer button */
+
+.button-footer {
+    padding: 10px 16px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: none;
+    background-color: #7d3492;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-footer:hover:not(:disabled) {
+    background-color: #cb6ce6;
+}
+
+.button-footer:disabled {
+    background-color: #cb6ce6;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Header Button */
+
+.button-header {
+    padding: 10px 16px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: none;
+    background-color: #1D3037;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-header:hover:not(:disabled) {
+    background-color: #59646A;
+}
+
+.button-header:disabled {
+    background-color: #59646A;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+

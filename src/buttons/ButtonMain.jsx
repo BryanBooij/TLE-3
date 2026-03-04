@@ -1,5 +1,5 @@
 import React from "react";
-import "./ButtonMain.css";
+import "./Buttons.css";
 
 const ButtonMain = ({ label, onClick }) => {
   return (
