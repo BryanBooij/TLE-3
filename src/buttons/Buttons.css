@@ -10,15 +10,10 @@
   transition: background-color 0.3s ease;
 }
 
-.button-main:hover:not(:disabled) {
+.button-main:hover {
   background-color: #4AEACE;
 }
 
-.button-main:disabled {
-  background-color: #4AEACE;
-  cursor: not-allowed;
-  opacity: 0.6;
-}
 
 /* Green Button */
 
@@ -33,14 +28,8 @@
     transition: background-color 0.3s ease;
 }
 
-.button-green:hover:not(:disabled) {
+.button-green:hover {
     background-color: #7BDE3B;
-}
-
-.button-green:disabled {
-    background-color: #7BDE3B;
-    cursor: not-allowed;
-    opacity: 0.6;
 }
 
 /* Footer button */
@@ -56,15 +45,10 @@
     transition: background-color 0.3s ease;
 }
 
-.button-footer:hover:not(:disabled) {
+.button-footer:hover {
     background-color: #cb6ce6;
 }
 
-.button-footer:disabled {
-    background-color: #cb6ce6;
-    cursor: not-allowed;
-    opacity: 0.6;
-}
 
 /* Header Button */
 
@@ -79,13 +63,8 @@
     transition: background-color 0.3s ease;
 }
 
-.button-header:hover:not(:disabled) {
+.button-header:hover {
     background-color: #59646A;
 }
 
-.button-header:disabled {
-    background-color: #59646A;
-    cursor: not-allowed;
-    opacity: 0.6;
-}
 
