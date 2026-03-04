@@ -4,7 +4,6 @@ import Navigation from "./Navigation.jsx";
 
 import './App.css'
 
-function App() {
     const router = createBrowserRouter([
         {
             element: <Navigation/>,
@@ -28,6 +27,5 @@ function App() {
     function App() {
         return <RouterProvider router={router}/>;
     }
-}
 
 export default App
