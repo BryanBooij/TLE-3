@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&display=swap');
+
+*{
+    --dark-grey: #1D3037;
+    --black-tint: #141F23;
+    --black: #000;
+    --light-grey: #59646A;
+    --light-purple: #cb6ce6;
+    --darker-purple: #7d3492;
+    --white: #FFF;
+    font-family: "Comic Relief", system-ui;
+}
+
+/*Elements*/
+table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid var(--black-tint);
+    padding: 12px;
+}
+
+tr button{
+    margin: 5px;
+    padding: 5px;
+}
+
+tr:hover {background-color: var(--light-grey);}
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: var(--dark-grey);
+    color: white;
+}
+
+img{
+    border-radius: 50%;
+}
+
+h3, h2{
+    color: var(--light-grey);
+}
+
+h3:hover, h2:hover{
+    color: var(--white);
+}
+
+/*Id's*/
+#newModule{
+    display: flex;
+    flex-direction: row;
+    color: var(--white);
+    text-decoration: none;
+    alignment-baseline: baseline;
+}
+
+#filterHolder{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+/*Classes*/
+.comic-relief-regular { /* ⭐: isn't in use anywhere, can be removed if never used*/
+    font-family: "Comic Relief", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--black-tint);
+    min-width: 130px;
+    width: 300px;
+    max-height: 500px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+}
+
+.dropdown-content button{
+    padding: 5px;
+    margin: 5px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
