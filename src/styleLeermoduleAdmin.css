@@ -12,6 +12,11 @@
 }
 
 /*Elements*/
+main{
+    display: flex;
+    flex-direction: column;
+}
+
 table {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
@@ -21,11 +26,6 @@ table {
 td, th {
     border: 1px solid var(--black-tint);
     padding: 12px;
-}
-
-tr button{
-    margin: 5px;
-    padding: 5px;
 }
 
 tr:hover {background-color: var(--light-grey);}
@@ -62,7 +62,11 @@ h3:hover, h2:hover{
 #filterHolder{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between; /* ⭐: This doesn't work for some reason */
+}
+
+#filterHolder div{
+    margin-left: 100%;
 }
 
 /*Classes*/
@@ -97,3 +101,6 @@ h3:hover, h2:hover{
     flex-wrap: wrap;
 }
 
+.detailButton{
+
+}
