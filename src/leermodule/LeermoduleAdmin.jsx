@@ -1,13 +1,13 @@
-import './App.css'
-import './index.css'
+import '../App.css'
+import '../index.css'
 import './styleLeermoduleAdmin.css'
-import {Link} from "react-router";
-import ButtonGreen from "./buttons/ButtonGreen.jsx";
+import ButtonGreen from "../buttons/ButtonGreen.jsx";
 
 function LeermoduleAdmin() {
 
 return (
     <>
+        <div id="leermoduleContainer">
         <div id="topTable">
         <h1>Leermodules</h1>
 
@@ -19,12 +19,12 @@ return (
             <div className="dropdown">
                 <h2>Filters</h2>
                 <div className="dropdown-content">
-                    <button>Filter A</button>
-                    <button>Filter B</button>
-                    <button>Filter C</button>
-                    <button>Filter D</button>
-                    <button>Filter E</button>
-                    <button>Apply</button>
+                    <ButtonGreen className="detailButton" alt="Filter A" label="FilterA" onClick={() => navigate("/")} />
+                    <ButtonGreen className="detailButton" alt="Filter B" label="FilterB" onClick={() => navigate("/")} />
+                    <ButtonGreen className="detailButton" alt="Filter C" label="FilterC" onClick={() => navigate("/")} />
+                    <ButtonGreen className="detailButton" alt="Filter D" label="FilterD" onClick={() => navigate("/")} />
+                    <ButtonGreen className="detailButton" alt="Filter E" label="FilterB" onClick={() => navigate("/")} />
+                    <ButtonGreen className="detailButton" alt="Apply" label="Apply" onClick={() => navigate("/")} />
                 </div>
             </div>
         </div>
@@ -85,6 +85,7 @@ return (
             </tr>
             </tbody>
         </table>
+        </div>
     </>
 )
 }

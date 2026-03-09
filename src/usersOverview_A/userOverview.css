@@ -17,21 +17,21 @@ main{
     flex-direction: column;
 }
 
-table {
+#userOverviewContainer table {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 90%;
     align-self: center;
 }
 
-td, th {
+#userOverviewContainer td, th {
     border: 1px solid var(--black-tint);
     padding: 12px;
 }
 
-tr:hover {background-color: var(--light-grey);}
+#userOverviewContainer tr:hover {background-color: var(--light-grey);}
 
-th {
+#userOverviewContainer th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
@@ -39,15 +39,11 @@ th {
     color: white;
 }
 
-img{
-    border-radius: 50%;
-}
-
-h3, h2{
+#userOverviewContainer h3, h2{
     color: var(--light-grey);
 }
 
-h3:hover, h2:hover{
+#userOverviewContainer h3:hover, h2:hover{
     color: var(--white);
 }
 
@@ -72,12 +68,6 @@ h3:hover, h2:hover{
 }
 
 /*Classes*/
-.comic-relief-regular { /* ⭐: isn't in use anywhere, can be removed if never used*/
-    font-family: "Comic Relief", system-ui;
-    font-weight: 400;
-    font-style: normal;
-}
-
 .dropdown {
     position: relative;
 }
@@ -101,8 +91,4 @@ h3:hover, h2:hover{
 .dropdown:hover .dropdown-content {
     display: flex;
     flex-wrap: wrap;
-}
-
-.detailButton{
-
 }
