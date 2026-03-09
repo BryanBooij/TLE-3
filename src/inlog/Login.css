@@ -9,19 +9,27 @@
     justify-content: center;
 }
 
-label{
+.login-container label{
     margin-bottom: 10px;
     margin-top: 10px;
     font-size: 20px;
 }
 
-input{
+.login-container input{
     font-size: 10px;
     padding: 8px;
 }
 
-button{
+.login-container button{
     margin-top: 20px;
     font-size: 15px;
     padding: 10px 20px;
+}
+
+.login-container h1{
+    font-size: 40px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
 }
