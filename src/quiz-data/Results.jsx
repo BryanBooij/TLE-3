@@ -55,7 +55,7 @@ export default function Results() {
                                         <div
                                             title={`${m}: ${value} (${pctOfTotal}%)`}
                                             className="results-bar"
-                                            style={{ ['--bar-height']: `${heightPct}%`, ['--bar-bg']: colors[m] }}
+                                            style={{ height: `${heightPct}%`, background: colors[m] }}
                                         />
                                     </div>
                                     <div className="results-member-name">
