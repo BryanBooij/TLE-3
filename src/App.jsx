@@ -4,6 +4,8 @@ import NotFound from "./404/NotFound.jsx";
 import Layout from "./layout/Layout.jsx";
 import LeermoduleAdmin from "./LeermoduleAdmin.jsx";
 import QuizPage from "./quiz-data/QuizPage.jsx";
+import Login from "./inlog/Login.jsx";
+import ProtectedRoute from "./inlog/ProtectedRoute.jsx";
 import './App.css'
 
 const router = createBrowserRouter([
@@ -12,20 +14,30 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Home/>,
+                element: <Login/>,
             },
             {
-                path: "/leermodule",
-                element: <LeermoduleAdmin/>
-            },
-            {
-                path: "/QuizPage",
-                element: <QuizPage/>,
-            },
-            {
-                path: "*",
-                element: <NotFound/>,
+                element: <ProtectedRoute/>,
+                children: [
+                    {
+                        path: "/Home",
+                        element: <Home/>,
+                    },
+                    {
+                        path: "/Leermodule",
+                        element: <LeermoduleAdmin/>
+                    },
+                    {
+                        path: "/QuizPage",
+                        element: <QuizPage/>,
+                    },
+                    {
+                        path: "*",
+                        element: <NotFound/>,
+                    },
+                ],
             }
+
         ],
     },
 ]);
