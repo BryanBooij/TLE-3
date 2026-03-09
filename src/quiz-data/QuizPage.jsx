@@ -1,11 +1,15 @@
 import { useEffect, useState} from "react";
 import { questions as placeholderQuestions} from "./questions";
+import { useNavigate } from "react-router";
 
 export default function QuizPage() {
     const [status, setStatus] = useState("loading");
     const [questions, setQuestions] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [selectedChoice, setSelectedChoice] = useState(null);
+    const [counts, setCounts] = useState({ Moeder: 0, Vader: 0, Zoon: 0, Dochter: 0 });
+    const [answersList, setAnswersList] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const load = async () => {
@@ -13,6 +17,8 @@ export default function QuizPage() {
                 const data = placeholderQuestions;
                 setQuestions(data);
                 setStatus(data && data.length ? "ready" : "empty");
+                // clear any prior results so each quiz run starts fresh
+                try { sessionStorage.removeItem('quizResults'); } catch (e) { /* ignore */ }
             } catch (error) {
                 console.error("Error loading questions:", error);
                 setStatus("error");
@@ -26,23 +32,59 @@ export default function QuizPage() {
 
     const q = questions[currentIndex];
 
+    if (!q) {
+        // Voor het geval dat er iets misgaat.
+        return <div>Geen vraag gevonden.</div>;
+    }
+
     const handleSelect = (choiceIndex) => {
         if (selectedChoice !== null) return;
         setSelectedChoice(choiceIndex);
     };
 
     const handleNext = () => {
+        if (selectedChoice === null) return; // Voor de veiligheid.
+
+        // Sla het antwoord op.
+        const selectedLabel = q.choices[selectedChoice];
+        // Gebruik het correcte antwoord als het bestaat.
+        const correctLabel = (typeof q.answer === 'number' && q.choices[q.answer] !== undefined) ? q.choices[q.answer] : null;
+        const incrementKey = correctLabel || selectedLabel;
+        const newCounts = { ...counts, [incrementKey]: (counts[incrementKey] || 0) + 1 };
+        const newAnswers = [
+            ...answersList,
+            {
+                questionId: q.id,
+                prompt: q.prompt,
+                selected: selectedLabel,
+                correct: typeof q.answer === 'number' ? q.choices[q.answer] : null,
+                source: q.source,
+                sourceUrl: q.sourceUrl || ''
+            }
+        ];
+
+        setCounts(newCounts);
+        setAnswersList(newAnswers);
+
         const nextIndex = currentIndex + 1;
         if (nextIndex < questions.length) {
             setCurrentIndex(nextIndex);
             setSelectedChoice(null);
         } else {
-            setStatus("finished");
+            // Ga naar resultaten, sla ze op.
+            try {
+                const payload = { counts: newCounts, answers: newAnswers };
+                sessionStorage.setItem('quizResults', JSON.stringify(payload));
+            } catch (e) {
+                console.warn('Could not write results to sessionStorage', e);
+            }
+            navigate('/quiz/results', { state: { counts: newCounts, answers: newAnswers } });
         }
     };
 
     const isCorrect = selectedChoice !== null && typeof q.answer === 'number' && selectedChoice === q.answer;
 
+    // HTML.
     return (
         <div className="quiz-page">
             <h2>{q.prompt}</h2>
