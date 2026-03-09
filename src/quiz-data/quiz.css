@@ -32,8 +32,11 @@
 
 .results-bar {
   width: 48px;
-  height: var(50%);
-  background: var(#666);
+  /* default appearance; actual height/background set inline from React
+     but keep sensible defaults and a min-height so zero values remain visible */
+  height: auto;
+  min-height: 8px;
+  background: #666;
   border-radius: 6px;
   transition: height 0.3s ease;
 }
@@ -79,7 +82,6 @@
   text-align: center;
 }
 
-/* Small responsive tweak */
 @media (max-width: 500px) {
   .results-chart { gap: 12px; }
   .results-member { width: 60px; }
@@ -163,4 +165,34 @@
 
 .progress {
   margin-top: 12px;
+}
+
+/* Scoped element defaults for quiz pages to prevent global cascade */
+.quiz-page h1, .quiz-page h2, .quiz-page h3,
+.results-container h1, .results-container h2, .results-container h3 {
+  margin: 0 0 12px;
+  color: inherit;
+  font-weight: 700;
+}
+
+.quiz-page p, .quiz-page ol, .quiz-page ul, .quiz-page li, .quiz-page small,
+.results-container p, .results-container ol, .results-container ul, .results-container li, .results-container small {
+  color: inherit;
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
+.quiz-page a:not(.btn), .results-container a:not(.btn) {
+  color: #1976d2;
+  text-decoration: none;
+}
+.quiz-page a:not(.btn):hover, .results-container a:not(.btn):hover { text-decoration: underline; }
+
+.quiz-page button:not(.choice-btn):not(.next-btn), .results-container button:not(.next-btn):not(.choice-btn) {
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }

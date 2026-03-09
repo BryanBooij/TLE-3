@@ -88,7 +88,7 @@ export default function Results() {
 
             <div className="results-buttons">
                 <Link to="/quiz" className="btn">Maak de quiz opnieuw</Link>
-                <Link to="/" className="btn">Terug naar home</Link>
+                <Link to="/Home" className="btn">Terug naar home</Link>
             </div>
         </div>
     );
