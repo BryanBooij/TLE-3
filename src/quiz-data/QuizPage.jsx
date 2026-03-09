@@ -1,6 +1,7 @@
 import { useEffect, useState} from "react";
 import { questions as placeholderQuestions} from "./questions";
 import { useNavigate } from "react-router";
+import "./quiz.css";
 
 export default function QuizPage() {
     const [status, setStatus] = useState("loading");
@@ -90,36 +91,37 @@ export default function QuizPage() {
             <h2>{q.prompt}</h2>
 
             <div className="choices" role="list">
-                {q.choices.map((c, i) => (
-                    <button
-                        key={i}
-                        onClick={() => handleSelect(i)}
-                        disabled={selectedChoice !== null}
-                        aria-pressed={selectedChoice === i}
-                        style={{
-                            margin: "8px 0",
-                            display: "block",
-                            width: "100%",
-                            textAlign: "left",
-                            backgroundColor: selectedChoice === i ? (isCorrect ? '#008000' : '#f8d7da') : undefined
-                        }}
-                    >
-                        {c}
-                    </button>
-                ))}
+                {q.choices.map((c, i) => {
+                    const selected = selectedChoice === i;
+                    const choiceClass = selected
+                        ? (typeof q.answer === 'number' && q.answer === i ? 'choice-btn selected-correct' : 'choice-btn selected-wrong')
+                        : 'choice-btn';
+
+                    return (
+                        <button
+                            key={i}
+                            onClick={() => handleSelect(i)}
+                            disabled={selectedChoice !== null}
+                            aria-pressed={selected}
+                            className={choiceClass}
+                        >
+                            {c}
+                        </button>
+                    );
+                })}
             </div>
 
             {selectedChoice !== null && (
-                <div className="result" style={{ marginTop: 16 }}>
+                <div className="result">
                     <p>
                         Je koos: <strong>{q.choices[selectedChoice]}</strong>
                     </p>
 
                     {typeof q.answer === 'number' ? (
                         isCorrect ? (
-                            <p style={{ color: 'green' }}>Correct!</p>
+                            <p className="feedback correct">Correct!</p>
                         ) : (
-                            <p style={{ color: 'red' }}>Helaas verkeerd — het juiste antwoord is: <strong>{q.choices[q.answer]}</strong></p>
+                            <p className="feedback incorrect">Helaas verkeerd — het juiste antwoord is: <strong>{q.choices[q.answer]}</strong></p>
                         )
                     ) : (
                         <p>Bron: {q.source}</p>
@@ -129,13 +131,13 @@ export default function QuizPage() {
                         Bron: {q.source} {q.sourceUrl ? <a href={q.sourceUrl} target="_blank" rel="noreferrer">(view)</a> : null}
                     </p>
 
-                    <button onClick={handleNext} style={{ marginTop: 8 }}>
+                    <button onClick={handleNext} className="next-btn">
                         Volgende
                     </button>
                 </div>
             )}
 
-            <div style={{ marginTop: 12 }}>
+            <div className="progress">
                 <small>
                     Vraag {currentIndex + 1} van {questions.length}
                 </small>

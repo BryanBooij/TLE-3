@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router";
+import "./quiz.css";
 
 export default function Results() {
     const location = useLocation();
@@ -24,8 +25,6 @@ export default function Results() {
         }
     }, [location]);
 
-    // Hou de data bij. 0 staat als fallback.
-
     const counts = data.counts || { Moeder: 0, Vader: 0, Zoon: 0, Dochter: 0 };
     const total = Object.values(counts).reduce((s, v) => s + (v || 0), 0);
 
@@ -37,7 +36,7 @@ export default function Results() {
     const colors = { Moeder: '#4caf50', Vader: '#2196f3', Zoon: '#ff9800', Dochter: '#9c27b0' };
 
     return (
-        <div style={{ padding: 16 }}>
+        <div className="results-container">
             <h2>Resultaten</h2>
 
             {total === 0 ? (
@@ -45,40 +44,34 @@ export default function Results() {
             ) : (
                 <div>
                     {/* Kolom Grafiek */}
-                    <div style={{ display: 'flex', alignItems: 'flex-end', gap: 20, height: 220, padding: '12px 8px' }}>
+                    <div className="results-chart">
                         {members.map((m) => {
                             const value = counts[m] || 0;
                             const heightPct = Math.round((value / maxValue) * 100);
                             const pctOfTotal = total ? Math.round((value / total) * 100) : 0;
                             return (
-                                <div key={m} style={{ textAlign: 'center', width: 80 }}>
-                                    <div style={{
-                                        height: 160,
-                                        display: 'flex',
-                                        alignItems: 'flex-end',
-                                        justifyContent: 'center'
-                                    }}>
-                                        <div title={`${m}: ${value} (${pctOfTotal}%)`} style={{
-                                            width: 48,
-                                            height: `${heightPct}%`,
-                                            background: colors[m] || '#666',
-                                            borderRadius: 6
-                                        }} />
+                                <div key={m} className="results-member">
+                                    <div className="results-member-inner">
+                                        <div
+                                            title={`${m}: ${value} (${pctOfTotal}%)`}
+                                            className="results-bar"
+                                            style={{ ['--bar-height']: `${heightPct}%`, ['--bar-bg']: colors[m] }}
+                                        />
                                     </div>
-                                    <div style={{ marginTop: 8 }}>
+                                    <div className="results-member-name">
                                         <strong>{m}</strong>
                                     </div>
-                                    <div style={{ fontSize: 12, color: '#555' }}>{value} ({pctOfTotal}%)</div>
+                                    <div className="results-member-value">{value} ({pctOfTotal}%)</div>
                                 </div>
                             );
                         })}
                     </div>
 
-                    <h3 style={{ marginTop: 20 }}>Beantwoorde vragen</h3>
+                    <h3 className="results-answers">Beantwoorde vragen</h3>
                     <ol>
                         {data.answers && data.answers.length ? (
                             data.answers.map((a, i) => (
-                                <li key={i} style={{ marginBottom: 8 }}>
+                                <li key={i} className="answer-item">
                                     <div><strong>Vraag:</strong> {a.prompt}</div>
                                     <div><strong>Gekozen:</strong> {a.selected} {a.correct ? (<span> — Correct: {a.correct}</span>) : null}</div>
                                     {a.source ? (
@@ -93,29 +86,9 @@ export default function Results() {
                 </div>
             )}
 
-            <div style={{ marginTop: 20, display: 'flex', gap: 12, justifyContent: 'center', alignItems: 'center' }}>
-                <Link to="/quiz" style={{
-                    display: 'inline-block',
-                    padding: '8px 12px',
-                    background: '#1976d2',
-                    color: '#fff',
-                    borderRadius: 6,
-                    textDecoration: 'none',
-                    fontWeight: 600,
-                    minWidth: 160,
-                    textAlign: 'center'
-                }}>Maak de quiz opnieuw</Link>
-
-                <Link to="/" style={{
-                    display: 'inline-block',
-                    padding: '8px 12px',
-                    background: '#1976d2',
-                    color: '#fff',
-                    borderRadius: 6,
-                    textDecoration: 'none',
-                    minWidth: 160,
-                    textAlign: 'center'
-                }}>Terug naar home</Link>
+            <div className="results-buttons">
+                <Link to="/quiz" className="btn">Maak de quiz opnieuw</Link>
+                <Link to="/" className="btn">Terug naar home</Link>
             </div>
         </div>
     );
