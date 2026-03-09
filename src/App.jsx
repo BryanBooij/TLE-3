@@ -10,14 +10,14 @@ import './App.css'
 
 const router = createBrowserRouter([
     {
-        element: <Layout/>,
+        path: "/",
+        element: <Login/>,
+    },
+    {
+        element: <ProtectedRoute/>,
         children: [
             {
-                path: "/",
-                element: <Login/>,
-            },
-            {
-                element: <ProtectedRoute/>,
+                element: <Layout/>,
                 children: [
                     {
                         path: "/Home",
