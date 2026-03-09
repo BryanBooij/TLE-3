@@ -21,11 +21,10 @@ function Layout() {
                 <nav className="layout-nav">
                     <ButtonMain alt="Home" label="Home" onClick={() => navigate("/Home")} isActive={isActive("/Home")} />
                     <ButtonMain alt="Leermodules" label="Leermodules" onClick={() => navigate("/Leermodule")} isActive={isActive("/Leermodule")} />
-                    <ButtonMain alt="Quiz" label="Quiz" onClick={() => navigate("/QuizPage")} isActive={isActive("/QuizPage")} />
+                    <ButtonMain alt="Quiz" label="Quiz" onClick={() => navigate("/quiz")} isActive={isActive("/quiz")} />
                     <ButtonMain alt="Profile" label="Profile" onClick={() => navigate("/Home")} />
                     <ButtonMain alt="Familie" label="Familie" onClick={() => navigate("/Home")} />
                     <ButtonGreen alt="Logout" label="Logout" onClick={handleLogout} />
-
                 </nav>
             </header>
             <main className="layout-main">

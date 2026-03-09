@@ -1,5 +1,4 @@
 // PLACEHOLDER QUESTIONS UNTIL BACKEND IS READY! NOT TO BE USED IN FINAL VERSION!
-
 export const questions = [
     {
         id: 1,

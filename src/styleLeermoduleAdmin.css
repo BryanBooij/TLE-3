@@ -12,20 +12,21 @@
 }
 
 /*Elements*/
+main{
+    display: flex;
+    flex-direction: column;
+}
+
 table {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    width: 90%;
+    align-self: center;
 }
 
 td, th {
     border: 1px solid var(--black-tint);
     padding: 12px;
-}
-
-tr button{
-    margin: 5px;
-    padding: 5px;
 }
 
 tr:hover {background-color: var(--light-grey);}
@@ -62,7 +63,12 @@ h3:hover, h2:hover{
 #filterHolder{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    width: 90vw;
+    gap: 10%;
+}
+
+#topTable{ /* ⭐: This is for everything in text that is above the table*/
+    margin-left: 5%;
 }
 
 /*Classes*/
@@ -97,3 +103,6 @@ h3:hover, h2:hover{
     flex-wrap: wrap;
 }
 
+.detailButton{
+
+}

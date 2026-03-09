@@ -7,6 +7,7 @@ import QuizPage from "./quiz-data/QuizPage.jsx";
 import Login from "./inlog/Login.jsx";
 import ProtectedRoute from "./inlog/ProtectedRoute.jsx";
 import './App.css'
+import Results from "./quiz-data/Results.jsx";
 
 const router = createBrowserRouter([
     {
@@ -32,12 +33,19 @@ const router = createBrowserRouter([
                         element: <QuizPage/>,
                     },
                     {
+                        path: "/quiz/results",
+                        element: <Results/>
+                    },
+                    {
+                        path: "/quiz",
+                        element: <QuizPage/>
+                    },
+                    {
                         path: "*",
                         element: <NotFound/>,
                     },
                 ],
-            }
-
+            },
         ],
     },
 ]);
