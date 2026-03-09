@@ -1,6 +1,4 @@
 // PLACEHOLDER QUESTIONS UNTIL BACKEND IS READY! NOT TO BE USED IN FINAL VERSION!
-//Random comment for testing.
-
 export const questions = [
     {
         id: 1,

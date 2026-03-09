@@ -5,6 +5,7 @@ import Layout from "./layout/Layout.jsx";
 import LeermoduleAdmin from "./LeermoduleAdmin.jsx";
 import QuizPage from "./quiz-data/QuizPage.jsx";
 import './App.css'
+import Results from "./quiz-data/Results.jsx";
 
 const router = createBrowserRouter([
     {
@@ -21,6 +22,14 @@ const router = createBrowserRouter([
             {
                 path: "/QuizPage",
                 element: <QuizPage/>,
+            },
+            {
+                path: "/quiz/results",
+                element: <Results/>
+            },
+            {
+                path: "/quiz",
+                element: <QuizPage/>
             },
             {
                 path: "*",
