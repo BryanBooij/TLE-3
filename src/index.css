@@ -6,11 +6,17 @@
   --light-purple: #cb6ce6;
   --darker-purple: #7d3492;
   --white: #FFF;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html{
+html, body {
+  height: 100%;
+  width: 100%;
   background-color: var(--black-tint);
   color: var(--white);
+  overflow: hidden;
 }
 
 @media (prefers-color-scheme: light) {
@@ -18,3 +24,4 @@ html{
 }
 
 /*add media for multiple screen sizes (about 4 should cover everything) */
+
