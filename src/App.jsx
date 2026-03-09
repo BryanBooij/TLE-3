@@ -3,7 +3,7 @@ import Home from "./Home.jsx";
 import NotFound from "./404/NotFound.jsx";
 import Layout from "./layout/Layout.jsx";
 import LeermoduleAdmin from "./LeermoduleAdmin.jsx";
-import Navigation from "./Navigation.jsx";
+import QuizPage from "./quiz-data/QuizPage.jsx";
 import './App.css'
 
 const router = createBrowserRouter([
@@ -17,6 +17,10 @@ const router = createBrowserRouter([
             {
                 path: "/leermodule",
                 element: <LeermoduleAdmin/>
+            },
+            {
+                path: "/QuizPage",
+                element: <QuizPage/>,
             },
             {
                 path: "*",
