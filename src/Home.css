@@ -10,12 +10,14 @@
   justify-content: flex-start;
   box-sizing: border-box;
 }
-.h1{
+
+.home-container h1{
     color: white;
 }
 
-.p{
+.home-container p{
     color: white;
+    margin-top: 10px;
 }
 
 .home-container h1 {
