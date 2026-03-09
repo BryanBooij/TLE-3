@@ -17,11 +17,24 @@ main{
     flex-direction: column;
 }
 
+#leermoduleContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#topTable{
+    width: 85%;
+    align-self: center;
+}
+
 #leermoduleContainer table {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 90%;
     align-self: center;
+    justify-content: center;
+    margin-left: 10%;
 }
 
 #leermoduleContainer td, th {
