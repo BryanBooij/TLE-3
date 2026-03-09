@@ -1,0 +1,25 @@
+.layout-nav {
+    display: flex;
+    gap: 20px;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 3px solid black;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.layout-main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.layout-footer {
+    text-align: center;
+    border-top: 3px solid black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
