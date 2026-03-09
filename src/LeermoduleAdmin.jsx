@@ -8,15 +8,16 @@ function LeermoduleAdmin() {
 
 return (
     <>
+        <div id="topTable">
         <h1>Leermodules</h1>
 
         <div id="filterHolder">
-            <a href="" id="newModule">
-                <h2>Make new module &#10009;</h2>
-                <img src="plus-img.png" alt="Plus icon"/>
-            </a>
+                <a href="" id="newModule">
+                    <h2>Make new module &#10009;</h2>
+                </a>
 
-            <div className="dropdown"><h3>Filters</h3>
+            <div className="dropdown">
+                <h2>Filters</h2>
                 <div className="dropdown-content">
                     <button>Filter A</button>
                     <button>Filter B</button>
@@ -26,6 +27,7 @@ return (
                     <button>Apply</button>
                 </div>
             </div>
+        </div>
         </div>
 
         <table>
