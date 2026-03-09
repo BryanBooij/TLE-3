@@ -17,8 +17,8 @@ function Layout() {
                     <ButtonMain alt="Home" label="Home" onClick={() => navigate("/Home")} />
                     <ButtonMain alt="Leermodules" label="Leermodules" onClick={() => navigate("/Leermodule")} />
                     <ButtonMain alt="Quiz" label="Quiz" onClick={() => navigate("/QuizPage")} />
-                    <ButtonMain alt="Profile" label="Profile" onClick={() => navigate("/")} />
-                    <ButtonMain alt="Familie" label="Familie" onClick={() => navigate("/")} />
+                    <ButtonMain alt="Profile" label="Profile" onClick={() => navigate("/Home")} />
+                    <ButtonMain alt="Familie" label="Familie" onClick={() => navigate("/Home")} />
                     <ButtonGreen alt="Logout" label="Logout" onClick={handleLogout} />
 
                 </nav>
