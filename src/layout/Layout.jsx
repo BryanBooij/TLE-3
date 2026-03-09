@@ -30,9 +30,9 @@ function Layout() {
             <main className="layout-main">
                 <Outlet />
             </main>
-            <footer className="layout-footer">
-                <ButtonMain alt="Footer" label="Footer" onClick={() => navigate("/")} />
-            </footer>
+            {/*<footer className="layout-footer">*/}
+            {/*    <ButtonMain alt="Footer" label="Footer" onClick={() => navigate("/Home")} />*/}
+            {/*</footer>*/}
         </div>
     );
 }
