@@ -3,7 +3,7 @@
   max-width: 720px;
   margin: 0 auto;
   box-sizing: border-box;
-  color: var(--white); /* ensure readable text color inside results on dark background */
+  color: var(--white);
 }
 
 .results-container h2 {
@@ -46,7 +46,7 @@
 
 .results-member-value {
   font-size: 12px;
-  color: #cfcfcf; /* lighter on dark background */
+  color: #cfcfcf;
 }
 
 .results-answers {
@@ -55,11 +55,11 @@
 
 .answer-item {
   margin-bottom: 8px;
-  color: var(--white); /* answer items should be readable on dark background */
+  color: var(--white);
 }
 
 .answer-item small {
-  color: #cfcfcf; /* lighter small text for readability */
+  color: #cfcfcf;
 }
 
 .results-buttons {
@@ -89,7 +89,7 @@
   .quiz-page .btn, .results-container .btn, .quiz-talk-container .btn { min-width: 120px; padding: 8px 10px; }
 }
 
-/* Quiz page styles */
+
 .quiz-page {
   padding: 16px;
   max-width: 720px;
@@ -98,7 +98,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: var(--white); /* use app white for general text on dark background */
+  color: var(--white);
 }
 
 .quiz-page h2 {
@@ -121,7 +121,7 @@
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease;
-  color: #111; /* keep dark text on white choice buttons */
+  color: #111;
 }
 
 .choice-btn:hover:not([disabled]) {
@@ -174,7 +174,7 @@
   margin-top: 12px;
 }
 
-/* Scoped element defaults for quiz pages to prevent global cascade */
+
 .quiz-page h1, .quiz-page h2, .quiz-page h3,
 .results-container h1, .results-container h2, .results-container h3,
 .quiz-talk-container h1, .quiz-talk-container h2, .quiz-talk-container h3 {
@@ -197,7 +197,7 @@
 }
 .quiz-page a:not(.btn):hover, .results-container a:not(.btn):hover, .quiz-talk-container a:not(.btn):hover { text-decoration: underline; }
 
-/* Keep unstyled button reset but exclude .btn so the btn appearance remains */
+
 .quiz-page button:not(.choice-btn):not(.next-btn):not(.btn),
 .results-container button:not(.next-btn):not(.choice-btn):not(.btn),
 .quiz-talk-container button:not(.next-btn):not(.choice-btn):not(.btn) {
@@ -209,16 +209,15 @@
   cursor: pointer;
 }
 
-/* Talk component styles */
 .quiz-talk-container {
   padding: 16px;
   max-width: 720px;
   margin: 0 auto;
   box-sizing: border-box;
-  color: var(--white); /* ensure readable text in talk page on dark background */
+  color: var(--white);
   display: flex;
   flex-direction: column;
-  align-items: center; /* center content horizontally */
+  align-items: center;
 }
 
 .talk-summary {
@@ -280,11 +279,10 @@
   max-width: 720px;
   box-sizing: border-box;
   margin: 18px auto 0;
-  text-align: center; /* fallback for older browsers */
+  text-align: center;
 }
 
 .quiz-footer .btn {
-  /* footer buttons flex: allow shrink/grow but keep a reasonable max width */
   flex: 1 1 160px;
   max-width: 220px;
   min-width: 120px;

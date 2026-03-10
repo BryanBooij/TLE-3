@@ -63,8 +63,8 @@ export default function Categories() {
         return () => { mounted = false };
     }, []);
 
-    const startQuiz = (category) => {
-        navigate('/quiz/start', { state: { category } });
+    const startQuiz = (category, quizObj) => {
+        navigate('/quiz/start', { state: { category, quiz: quizObj } });
     };
 
     if (status === 'loading') return <div className="quiz-page"><h2>Loading quizzes…</h2></div>;
@@ -106,7 +106,7 @@ export default function Categories() {
             <h2>Kies een quiz</h2>
             <div style={{ width: '100%', marginTop: 12 }}>
                 {categories.map((c) => (
-                    <button key={c.id || c.name} className="choice-btn" onClick={() => startQuiz(c.id || c.name)}>
+                    <button key={c.id || c.name} className="choice-btn" onClick={() => startQuiz(c.id || c.name, c)}>
                         <div style={{ fontWeight: 700 }}>{c.name || c.title}</div>
                         {c.description ? <div style={{ fontSize: 12, marginTop: 6 }}>{c.description}</div> : null}
                     </button>

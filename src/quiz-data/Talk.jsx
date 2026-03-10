@@ -9,7 +9,6 @@ export default function Talk() {
     const [saved, setSaved] = useState(false);
 
     useEffect(() => {
-        // Prefer state passed in navigation, otherwise fall back to sessionStorage
         const fromState = location.state;
         if (fromState && (fromState.counts || fromState.answers)) {
             setData({ counts: fromState.counts || data.counts, answers: fromState.answers || [] });
@@ -27,7 +26,6 @@ export default function Talk() {
             const rawNotes = sessionStorage.getItem('quizTalkNotes');
             if (rawNotes) setNotes(rawNotes);
         } catch (e) { /* ignore */ }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location]);
 
     const saveNotes = () => {

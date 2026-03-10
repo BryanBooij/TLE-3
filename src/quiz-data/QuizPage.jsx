@@ -3,7 +3,14 @@ import { questions as placeholderQuestions} from "./questions";
 import { useNavigate, useLocation } from "react-router";
 import "./quiz.css";
 
-const API_BASE = '/api/quiz';
+const BACKEND_BASE = 'http://145.24.237.168:8000';
+
+async function safeJson(res) {
+    try { return await res.json(); }
+    catch (e) {
+        try { return { text: await res.text() }; } catch (e2) { return null; }
+    }
+}
 
 export default function QuizPage() {
     const [status, setStatus] = useState("loading");
@@ -12,6 +19,9 @@ export default function QuizPage() {
     const [selectedChoice, setSelectedChoice] = useState(null);
     const [counts, setCounts] = useState({ Moeder: 0, Vader: 0, Zoon: 0, Dochter: 0 });
     const [answersList, setAnswersList] = useState([]);
+    const [attemptLogs, setAttemptLogs] = useState([]);
+    const [quizTitle, setQuizTitle] = useState(null);
+    const [quizDescription, setQuizDescription] = useState(null);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -19,38 +29,119 @@ export default function QuizPage() {
         let mounted = true;
         const load = async () => {
             try {
-                // Determine category passed from Categories page (if any)
-                const category = location?.state?.category || null;
-                // Try fetching from backend
-                try {
-                    const url = category ? `${API_BASE}/questions?category=${encodeURIComponent(category)}` : `${API_BASE}/questions`;
-                    const res = await fetch(url);
-                    if (!res.ok) {
-                        // don't throw here; log and fall back to placeholder below
-                        console.warn(`Backend fetch returned HTTP ${res.status} ${res.statusText}`);
-                    } else {
-                        const json = await res.json();
-                        const data = Array.isArray(json) ? json : (json.questions || json.data || []);
-                        if (mounted) {
-                            setQuestions(data);
-                            setStatus(data && data.length ? "ready" : "empty");
-                            // clear prior results to start fresh
-                            try { sessionStorage.removeItem('quizResults'); } catch (e) { /* ignore */ }
-                            return;
-                        }
-                    }
-                } catch (backendError) {
-                    // backend not available or returned error; fall back to placeholder
-                    console.warn('Could not fetch questions from backend, falling back to placeholder:', backendError);
+                const quizObj = location?.state?.quiz || null;
+                const quizId = location?.state?.category || (quizObj && (quizObj.id || quizObj.name)) || null;
+                const title = quizObj ? (quizObj.name || quizObj.title) : (quizId ? `Quiz ${quizId}` : null);
+                const description = quizObj ? (quizObj.description || quizObj.theme || '') : null;
+                if (mounted) {
+                    setQuizTitle(title);
+                    setQuizDescription(description);
                 }
 
-                // fallback to local placeholder questions
-                if (mounted) {
-                    const data = placeholderQuestions || [];
-                    setQuestions(data);
-                    setStatus(data && data.length ? "ready" : "empty");
-                    try { sessionStorage.removeItem('quizResults'); } catch (e) { /* ignore */ }
+                const tryFetch = async (url, accept) => {
+                    const opts = { headers: { Accept: accept }, mode: url.startsWith('http') ? 'cors' : undefined };
+                    try {
+                        const res = await fetch(url, opts);
+                        setAttemptLogs(s => [...s, { url, status: res.status, statusText: res.statusText, accept }]);
+                        return res;
+                    } catch (e) {
+                        setAttemptLogs(s => [...s, { url, error: e.message || String(e), accept }]);
+                        throw e;
+                    }
+                };
+
+                const endpoints = [];
+                if (quizId) {
+                    endpoints.push(`${BACKEND_BASE}/quizzes/${quizId}/questions`);
+                    endpoints.push(`${BACKEND_BASE}/questions?quiz_id=${encodeURIComponent(quizId)}`);
+                    endpoints.push(`${BACKEND_BASE}/questions?quiz=${encodeURIComponent(quizId)}`);
+                } else {
+                    endpoints.push(`${BACKEND_BASE}/questions`);
                 }
+
+                let found = false;
+                for (const ep of endpoints) {
+                    try {
+                        let res = await tryFetch(ep, 'application/json');
+                        if (res && res.status === 406) {
+                            res = await tryFetch(ep, '*/*');
+                        }
+                        if (res && res.ok) {
+                            const json = await safeJson(res);
+                            const raw = Array.isArray(json) ? json : (json && (json.questions || json.data || json.list || json.result)) || [];
+
+                            const normalize = (item, idx) => {
+                                const prompt = item.prompt || item.text || item.description || item.question || item.question_text || '';
+                                let choices = [];
+                                if (Array.isArray(item.choices)) choices = item.choices.slice();
+                                else if (Array.isArray(item.options)) choices = item.options.slice();
+                                else if (item.options && typeof item.options === 'string') {
+                                    choices = item.options.split(/[|,;]/).map(s => s.trim()).filter(Boolean);
+                                } else {
+                                    const keys = Object.keys(item);
+                                    const optionCandidates = [];
+                                    for (const k of keys) {
+                                        const lk = k.toLowerCase();
+                                        if (/^(option|opt|choice)[_\-]?\d+$/.test(lk) || /^([abcdef])$/.test(lk)) {
+                                            optionCandidates.push({ k, order: lk.match(/\d+$/) ? parseInt(lk.match(/\d+$/)[0], 10) : undefined });
+                                        }
+                                    }
+
+                                    optionCandidates.sort((a, b) => (a.order || 0) - (b.order || 0));
+                                    for (const oc of optionCandidates) {
+                                        const val = item[oc.k];
+                                        if (val !== undefined && val !== null && String(val).trim() !== '') choices.push(String(val).trim());
+                                    }
+                                }
+
+                                let answer = null;
+                                if (typeof item.answer === 'number') answer = item.answer;
+                                else if (typeof item.answer === 'string' && choices.length) {
+                                    const idx = choices.findIndex(ch => ch === item.answer || ch === item.answer.trim());
+                                    if (idx >= 0) answer = idx;
+                                } else if (item.correct !== undefined) {
+                                    if (typeof item.correct === 'number') answer = item.correct;
+                                    else if (typeof item.correct === 'string' && choices.length) {
+                                        const idx = choices.findIndex(ch => ch === item.correct || ch === item.correct.trim());
+                                        if (idx >= 0) answer = idx;
+                                    }
+                                }
+
+                                return {
+                                    id: item.id || item.question_id || idx,
+                                    prompt,
+                                    choices: choices.length ? choices : (item.choices || []),
+                                    answer: (typeof answer === 'number') ? answer : null,
+                                    source: item.source || item.source_name || null,
+                                    sourceUrl: item.sourceUrl || item.source_url || null,
+                                };
+                            };
+                            const data = raw.map((r, i) => normalize(r, i));
+                             if (mounted) {
+                                setQuestions(data);
+                                 setStatus(data && data.length ? "ready" : "empty");
+                                 try { sessionStorage.removeItem('quizResults'); } catch (e) { /* ignore */ }
+                             }
+                             found = true;
+                             break;
+                         }
+                    } catch (e) {
+                        console.warn('Fetch attempt failed for', ep, e);
+                    }
+                }
+
+                if (!found) {
+                    if (mounted) {
+                        const data = placeholderQuestions || [];
+                        if (!quizTitle && data && data.length && data[0].quizTitle) {
+                            setQuizTitle(data[0].quizTitle);
+                        }
+                        setQuestions(data);
+                        setStatus(data && data.length ? "ready" : "empty");
+                        try { sessionStorage.removeItem('quizResults'); } catch (e) { /* ignore */ }
+                    }
+                }
+
             } catch (error) {
                 console.error("Error loading questions:", error);
                 if (mounted) setStatus("error");
@@ -58,7 +149,6 @@ export default function QuizPage() {
         };
         load();
         return () => { mounted = false };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     if (status === "loading") return <div className="quiz-page"><h2>Loading questions…</h2></div>;
@@ -68,7 +158,6 @@ export default function QuizPage() {
     const q = questions[currentIndex];
 
     if (!q) {
-        // For safety if something odd happens.
         return <div className="quiz-page"><h2>Geen vraag gevonden.</h2></div>;
     }
 
@@ -116,12 +205,32 @@ export default function QuizPage() {
             navigate('/quiz/results', { state: { counts: newCounts, answers: newAnswers } });
         }
     };
+    const handleSkip = () => {
+        const nextIndex = currentIndex + 1;
+        if (nextIndex < questions.length) {
+            setCurrentIndex(nextIndex);
+            setSelectedChoice(null);
+            return;
+        }
+
+        try {
+            const payload = { counts, answers: answersList };
+            sessionStorage.setItem('quizResults', JSON.stringify(payload));
+        } catch (e) {
+            console.warn('Could not write results to sessionStorage', e);
+        }
+        navigate('/quiz/results', { state: { counts, answers: answersList } });
+    };
 
     const isCorrect = selectedChoice !== null && typeof q.answer === 'number' && selectedChoice === q.answer;
 
     // HTML.
     return (
         <div className="quiz-page">
+            {quizTitle ? <div style={{ textAlign: 'center', marginBottom: 8 }}>
+                <h2 style={{ marginBottom: 4 }}>{quizTitle}</h2>
+                {quizDescription ? <div style={{ fontSize: 14, color: '#ccc' }}>{quizDescription}</div> : null}
+            </div> : null}
             <h2>{q.prompt}</h2>
 
             <div className="choices" role="list">
@@ -143,6 +252,10 @@ export default function QuizPage() {
                         </button>
                     );
                 })}
+            </div>
+
+            <div style={{ marginTop: 12, textAlign: 'center' }}>
+                <button onClick={handleSkip} className="next-btn">Skip</button>
             </div>
 
             {selectedChoice !== null && (
