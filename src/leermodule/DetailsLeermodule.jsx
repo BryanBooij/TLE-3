@@ -19,6 +19,7 @@ function DetailsLeermodule() {
                 <h1>You're now checking out details of leermodule: {result}</h1>
                 {/*div times amount of existing questions*/}
                 <div id="questionsContainer">
+                    {/*⭐: there's an issue where to many of them will make the top clip into the header!!!*/}
                 <div>
                     <h2 className="questionTitle">Question 1</h2>
                     {/*p times the amount of existing answers*/}
@@ -63,7 +64,7 @@ function DetailsLeermodule() {
                     </div>
                 </div>
                     <div className={"buttons_container_details"}>
-                        <ButtonPurple alt={"Edit button"} label={"Edit data"}></ButtonPurple>
+                        <ButtonPurple alt={"Edit button"} label={"Edit data"}  onClick={() => navigate("/Leermodule/update/" + 1)}></ButtonPurple> {/* ⭐:Be sure to change the 1 to the proper ID here!!*/}
                         <ButtonBlack alt={"Delete button"} label={"Delete leermodule"}></ButtonBlack>
                     </div>
                 </div>
