@@ -88,6 +88,7 @@ export default function Results() {
 
             <div className="results-buttons">
                 <Link to="/quiz" className="btn">Maak de quiz opnieuw</Link>
+                <Link to="/quiz/talk" className="btn" state={{ counts, answers: data.answers || [] }}>Bespreken</Link>
                 <Link to="/Home" className="btn">Terug naar home</Link>
             </div>
         </div>

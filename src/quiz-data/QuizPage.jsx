@@ -1,7 +1,9 @@
 import { useEffect, useState} from "react";
 import { questions as placeholderQuestions} from "./questions";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import "./quiz.css";
+
+const API_BASE = '/api/quiz';
 
 export default function QuizPage() {
     const [status, setStatus] = useState("loading");
@@ -11,31 +13,63 @@ export default function QuizPage() {
     const [counts, setCounts] = useState({ Moeder: 0, Vader: 0, Zoon: 0, Dochter: 0 });
     const [answersList, setAnswersList] = useState([]);
     const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
+        let mounted = true;
         const load = async () => {
             try {
-                const data = placeholderQuestions;
-                setQuestions(data);
-                setStatus(data && data.length ? "ready" : "empty");
-                // clear any prior results so each quiz run starts fresh
-                try { sessionStorage.removeItem('quizResults'); } catch (e) { /* ignore */ }
+                // Determine category passed from Categories page (if any)
+                const category = location?.state?.category || null;
+                // Try fetching from backend
+                try {
+                    const url = category ? `${API_BASE}/questions?category=${encodeURIComponent(category)}` : `${API_BASE}/questions`;
+                    const res = await fetch(url);
+                    if (!res.ok) {
+                        // don't throw here; log and fall back to placeholder below
+                        console.warn(`Backend fetch returned HTTP ${res.status} ${res.statusText}`);
+                    } else {
+                        const json = await res.json();
+                        const data = Array.isArray(json) ? json : (json.questions || json.data || []);
+                        if (mounted) {
+                            setQuestions(data);
+                            setStatus(data && data.length ? "ready" : "empty");
+                            // clear prior results to start fresh
+                            try { sessionStorage.removeItem('quizResults'); } catch (e) { /* ignore */ }
+                            return;
+                        }
+                    }
+                } catch (backendError) {
+                    // backend not available or returned error; fall back to placeholder
+                    console.warn('Could not fetch questions from backend, falling back to placeholder:', backendError);
+                }
+
+                // fallback to local placeholder questions
+                if (mounted) {
+                    const data = placeholderQuestions || [];
+                    setQuestions(data);
+                    setStatus(data && data.length ? "ready" : "empty");
+                    try { sessionStorage.removeItem('quizResults'); } catch (e) { /* ignore */ }
+                }
             } catch (error) {
                 console.error("Error loading questions:", error);
-                setStatus("error");
+                if (mounted) setStatus("error");
             }
         };
         load();
+        return () => { mounted = false };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    if (status === "loading") return <div>Loading questions…</div>;
-    if (status === "error") return <div>Er is een fout opgetreden bij het laden van de vragen. Check de console.</div>;
-    if (status === "empty") return <div>Geen vragen beschikbaar.</div>;
+
+    if (status === "loading") return <div className="quiz-page"><h2>Loading questions…</h2></div>;
+    if (status === "error") return <div className="quiz-page"><h2>Er is een fout opgetreden bij het laden van de vragen. Check de console.</h2></div>;
+    if (status === "empty") return <div className="quiz-page"><h2>Geen vragen beschikbaar.</h2></div>;
 
     const q = questions[currentIndex];
 
     if (!q) {
-        // Voor het geval dat er iets misgaat.
-        return <div>Geen vraag gevonden.</div>;
+        // For safety if something odd happens.
+        return <div className="quiz-page"><h2>Geen vraag gevonden.</h2></div>;
     }
 
     const handleSelect = (choiceIndex) => {
