@@ -1,7 +1,7 @@
 import '../App.css';
 import '../index.css';
 import { useParams } from "react-router-dom";
-import './styleDetails.css';
+import './styleLeermoduleAdmin.css';
 
 function DetailsLeermodule() {
 
@@ -16,7 +16,7 @@ function DetailsLeermodule() {
                 <h1>You're now checking out details of leermodule: {result}</h1>
                 {/*div times amount of existing questions*/}
                 <div>
-                    <h1 className="questionTitle">Question 1</h1>
+                    <h2 className="questionTitle">Question 1</h2>
                     {/*p times the amount of existing answers*/}
                     <div className="answers-container">
                         <p>
@@ -31,7 +31,7 @@ function DetailsLeermodule() {
                     </div>
                 </div>
                 <div>
-                    <h1 className="questionTitle">Question 2</h1>
+                    <h2 className="questionTitle">Question 2</h2>
                     <div className="answers-container">
                         <p>
                             answer
@@ -45,7 +45,7 @@ function DetailsLeermodule() {
                     </div>
                 </div>
                 <div>
-                    <h1 className="questionTitle">Question 3</h1>
+                    <h2 className="questionTitle">Question 3</h2>
                     <div className="answers-container">
                         <p>
                             answer

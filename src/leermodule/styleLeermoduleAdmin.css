@@ -21,46 +21,53 @@ main{
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+    table {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 90%;
+        align-self: center;
+        justify-content: center;
+        margin-left: 10%;
+    }
+
+    td, th {
+        border: 1px solid var(--black-tint);
+        padding: 12px;
+    }
+
+    tr:hover {background-color: var(--light-grey);}
+
+    th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: var(--dark-grey);
+        color: white;
+    }
+
+    h3, h2{
+        color: var(--light-grey);
+    }
+
+    h3:hover, h2:hover{
+        color: var(--white);
+    }
+
 }
 
+/*Details page*/
+#detailsLeermoduleContainter{
+    h2{}
+
+}
+
+/*Id's*/
 #topTable{
     width: 85%;
     align-self: center;
 }
 
-#leermoduleContainer table {
-    font-family: Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 90%;
-    align-self: center;
-    justify-content: center;
-    margin-left: 10%;
-}
-
-#leermoduleContainer td, th {
-    border: 1px solid var(--black-tint);
-    padding: 12px;
-}
-
-#leermoduleContainer tr:hover {background-color: var(--light-grey);}
-
-#leermoduleContainer th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: var(--dark-grey);
-    color: white;
-}
-
-#leermoduleContainer h3, h2{
-    color: var(--light-grey);
-}
-
-#leermoduleContainer h3:hover, h2:hover{
-    color: var(--white);
-}
-
-/*Id's*/
 #newModule{
     display: flex;
     flex-direction: row;
@@ -100,4 +107,10 @@ main{
 .dropdown:hover .dropdown-content {
     display: flex;
     flex-wrap: wrap;
+}
+
+.answers-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
