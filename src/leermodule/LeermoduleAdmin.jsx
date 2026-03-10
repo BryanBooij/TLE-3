@@ -12,7 +12,7 @@ return (
                 <h1>Leermodules</h1>
 
                 <div id="filterHolder">
-                        <a href="" id="newModule">
+                        <a href="Leermodule/create" id="newModule">
                             <h2>Make new module &#10009;</h2>
                         </a>
 
@@ -44,43 +44,43 @@ return (
                     <td>Data_1</td>
                     <td>Data_2</td>
                     <td>10x</td>
-                    <ButtonGreen className="detailButton" alt="Details" label="Details" onClick={() => navigate("/")} />
+                    <ButtonGreen className="detailButton" alt="Details" label="Details" onClick={() => navigate("/Leermodule/details")} />
                 </tr>
                 <tr>
                     <td>Data_1</td>
                     <td>Data_2</td>
                     <td>10x</td>
-                    <ButtonGreen className="detailButton" alt="Details" label="Details" onClick={() => navigate("/")} />
+                    <ButtonGreen className="detailButton" alt="Details" label="Details" onClick={() => navigate("/Leermodule/details")} />
                 </tr>
                 <tr>
                     <td>Data_1</td>
                     <td>Data_2</td>
                     <td>10x</td>
-                    <ButtonGreen className="detailButton" alt="Details" label="Details" onClick={() => navigate("/")} />
+                    <ButtonGreen className="detailButton" alt="Details" label="Details" onClick={() => navigate("/Leermodule/details")} />
                 </tr>
                 <tr>
                     <td>Data_1</td>
                     <td>Data_2</td>
                     <td>10x</td>
-                    <ButtonGreen className="detailButton" alt="Details" label="Details" onClick={() => navigate("/")} />
+                    <ButtonGreen className="detailButton" alt="Details" label="Details" onClick={() => navigate("/Leermodule/details")} />
                 </tr>
                 <tr>
                     <td>Data_1</td>
                     <td>Data_2</td>
                     <td>10x</td>
-                    <ButtonGreen className="detailButton" alt="Details" label="Details" onClick={() => navigate("/")} />
+                    <ButtonGreen className="detailButton" alt="Details" label="Details" onClick={() => navigate("/Leermodule/details")} />
                 </tr>
                 <tr>
                     <td>Data_1</td>
                     <td>Data_2</td>
                     <td>10x</td>
-                    <ButtonGreen className="detailButton" alt="Details" label="Details" onClick={() => navigate("/")} />
+                    <ButtonGreen className="detailButton" alt="Details" label="Details" onClick={() => navigate("/Leermodule/details")} />
                 </tr>
                 <tr>
                     <td>Data_1</td>
                     <td>Data_2</td>
                     <td>10x</td>
-                    <ButtonGreen className="detailButton" alt="Details" label="Details" onClick={() => navigate("/")} />
+                    <ButtonGreen className="detailButton" alt="Details" label="Details" onClick={() => navigate("/Leermodule/details")} />
                 </tr>
                 </tbody>
             </table>

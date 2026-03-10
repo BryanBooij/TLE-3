@@ -9,6 +9,9 @@ import ProtectedRoute from "./inlog/ProtectedRoute.jsx";
 import './App.css'
 import Results from "./quiz-data/Results.jsx";
 import UserOverview from "./usersOverview_A/usersOverview.jsx";
+import CreateLeermodule from "./leermodule/CreateLeermodule.jsx";
+import DetailsLeermodule from "./leermodule/DetailsLeermodule.jsx";
+import UpdateLeermodule from "./leermodule/UpdateLeermodule.jsx";
 
 
 const router = createBrowserRouter([
@@ -29,6 +32,18 @@ const router = createBrowserRouter([
                     {
                         path: "/Leermodule",
                         element: <LeermoduleAdmin/>
+                    },
+                    {
+                        path: "/Leermodule/create",
+                        element: <CreateLeermodule/>
+                    },
+                    {
+                        path: "/Leermodule/details/:id",
+                        element: <DetailsLeermodule/>
+                    },
+                    {
+                        path: "/Leermodule/update/:id",
+                        element: <UpdateLeermodule/>
                     },
                     {
                         path: "/QuizPage",
