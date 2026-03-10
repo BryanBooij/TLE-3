@@ -271,14 +271,13 @@
 .talk-saved { color: green; margin-top: 8px; }
 
 .quiz-footer {
-  margin-top: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 12px;
-  flex-wrap: wrap; /* allow buttons to wrap on narrow screens and remain centered */
+  flex-wrap: wrap;
   width: 100%;
-  max-width: 720px; /* match quiz container */
+  max-width: 720px;
   box-sizing: border-box;
   margin: 18px auto 0;
   text-align: center; /* fallback for older browsers */

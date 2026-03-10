@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import "./quiz.css";
 
-const API_BASE = '/api/quiz';
 const BACKEND_BASE = 'http://145.24.237.168:8000';
 
 async function safeJson(res) {
