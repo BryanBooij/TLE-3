@@ -69,28 +69,28 @@
 
 
 /* Header Button */
-.button-header {
+.button-black {
     padding: 10px 16px;
     font-size: 16px;
     border-radius: 6px;
     border: none;
-    background-color: #141F23;
+    background-color: black;
     color: #FFFFFF;
     cursor: pointer;
     transition: background-color 0.3s ease;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.button-header:hover {
+.button-black:hover {
     background-color: #59646A;
     box-shadow: inset 1px 1px 50px rgba(0, 0, 0, 0.2);
 }
 
 /* Info button */
 .info-button {
-    width: 1rem;
-    height: 1rem;
-    border-radius: 60%;
+    width: 1rem; /* width of the button */
+    height: 1rem; /* height of the button */
+    border-radius: 60%; /* rounded button */
     background-color: white;
     color: black;
     font-weight: bold;
