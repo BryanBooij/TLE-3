@@ -76,13 +76,13 @@ export default function QuizPage() {
                                 if (Array.isArray(item.choices)) choices = item.choices.slice();
                                 else if (Array.isArray(item.options)) choices = item.options.slice();
                                 else if (item.options && typeof item.options === 'string') {
-                                    choices = item.options.split(/\||,|;/).map(s => s.trim()).filter(Boolean);
+                                    choices = item.options.split(/[|,;]/).map(s => s.trim()).filter(Boolean);
                                 } else {
                                     const keys = Object.keys(item);
                                     const optionCandidates = [];
                                     for (const k of keys) {
                                         const lk = k.toLowerCase();
-                                        if (/^(option|opt|choice)[_\-]?\d+$/.test(lk) || /^(a|b|c|d|e|f)$/.test(lk)) {
+                                        if (/^(option|opt|choice)[_\-]?\d+$/.test(lk) || /^([abcdef])$/.test(lk)) {
                                             optionCandidates.push({ k, order: lk.match(/\d+$/) ? parseInt(lk.match(/\d+$/)[0], 10) : undefined });
                                         }
                                     }
