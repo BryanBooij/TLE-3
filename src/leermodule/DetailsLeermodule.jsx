@@ -1,7 +1,7 @@
-import '../App.css'
-import '../index.css'
+import '../App.css';
+import '../index.css';
 import { useParams } from "react-router-dom";
-import ButtonGreen from "../buttons/ButtonGreen.jsx";
+import './styleDetails.css';
 
 function DetailsLeermodule() {
 
@@ -14,52 +14,50 @@ function DetailsLeermodule() {
         <>
             <div id="detailsLeermoduleContainter">
                 <h1>You're now checking out details of leermodule: {result}</h1>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Questions</th>
-                        <th>Answers</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-                    <tr>
-                        <td>Data_1</td>
-                        <td>Data_2</td>
-                        <td>10x</td>
-                    </tr>
-                    <tr>
-                        <td>Data_1</td>
-                        <td>Data_2</td>
-                        <td>10x</td>
-                    </tr>
-                    <tr>
-                        <td>Data_1</td>
-                        <td>Data_2</td>
-                        <td>10x</td>
-                    </tr>
-                    <tr>
-                        <td>Data_1</td>
-                        <td>Data_2</td>
-                        <td>10x</td>
-                    </tr>
-                    <tr>
-                        <td>Data_1</td>
-                        <td>Data_2</td>
-                        <td>10x</td>
-                    </tr>
-                    <tr>
-                        <td>Data_1</td>
-                        <td>Data_2</td>
-                        <td>10x</td>
-                    </tr>
-                    <tr>
-                        <td>Data_1</td>
-                        <td>Data_2</td>
-                        <td>10x</td>
-                    </tr>
-                    </tbody>
-                </table>
+                {/*div times amount of existing questions*/}
+                <div>
+                    <h1 className="questionTitle">Question 1</h1>
+                    {/*p times the amount of existing answers*/}
+                    <div className="answers-container">
+                        <p>
+                            answer
+                        </p>
+                        <p>
+                            answer
+                        </p>
+                        <p>
+                            answer
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <h1 className="questionTitle">Question 2</h1>
+                    <div className="answers-container">
+                        <p>
+                            answer
+                        </p>
+                        <p>
+                            answer
+                        </p>
+                        <p>
+                            answer
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <h1 className="questionTitle">Question 3</h1>
+                    <div className="answers-container">
+                        <p>
+                            answer
+                        </p>
+                        <p>
+                            answer
+                        </p>
+                        <p>
+                            answer
+                        </p>
+                    </div>
+                </div>
             </div>
         </>
     )
