@@ -1,8 +1,9 @@
 .results-container {
   padding: 16px;
-  /* keep results content from stretching too wide and center it */
   max-width: 720px;
   margin: 0 auto;
+  box-sizing: border-box;
+  color: var(--white); /* ensure readable text color inside results on dark background */
 }
 
 .results-container h2 {
@@ -15,7 +16,7 @@
   gap: 20px;
   height: 220px;
   padding: 12px 8px;
-  justify-content: center; /* center the bars horizontally */
+  justify-content: center;
 }
 
 .results-member {
@@ -32,8 +33,6 @@
 
 .results-bar {
   width: 48px;
-  /* default appearance; actual height/background set inline from React
-     but keep sensible defaults and a min-height so zero values remain visible */
   height: auto;
   min-height: 8px;
   background: #666;
@@ -47,7 +46,7 @@
 
 .results-member-value {
   font-size: 12px;
-  color: #555;
+  color: #cfcfcf; /* lighter on dark background */
 }
 
 .results-answers {
@@ -56,10 +55,11 @@
 
 .answer-item {
   margin-bottom: 8px;
+  color: var(--white); /* answer items should be readable on dark background */
 }
 
 .answer-item small {
-  color: #666;
+  color: #cfcfcf; /* lighter small text for readability */
 }
 
 .results-buttons {
@@ -70,7 +70,7 @@
   align-items: center;
 }
 
-.btn {
+.quiz-page .btn, .results-container .btn, .quiz-talk-container .btn {
   display: inline-block;
   padding: 8px 12px;
   background: #1976d2;
@@ -80,20 +80,25 @@
   font-weight: 600;
   min-width: 160px;
   text-align: center;
+  border: 1px solid transparent;
 }
 
 @media (max-width: 500px) {
   .results-chart { gap: 12px; }
   .results-member { width: 60px; }
-  .btn { min-width: 120px; padding: 8px 10px; }
+  .quiz-page .btn, .results-container .btn, .quiz-talk-container .btn { min-width: 120px; padding: 8px 10px; }
 }
 
 /* Quiz page styles */
 .quiz-page {
   padding: 16px;
-  /* keep quiz content from stretching too wide and center it */
   max-width: 720px;
   margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--white); /* use app white for general text on dark background */
 }
 
 .quiz-page h2 {
@@ -102,6 +107,7 @@
 
 .choices {
   margin-top: 8px;
+  width: 100%;
 }
 
 .choice-btn {
@@ -115,6 +121,7 @@
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease;
+  color: #111; /* keep dark text on white choice buttons */
 }
 
 .choice-btn:hover:not([disabled]) {
@@ -140,7 +147,7 @@
 
 .result {
   margin-top: 16px;
-  text-align: center; /* center feedback and next button */
+  text-align: center;
 }
 
 .feedback.correct {
@@ -169,30 +176,117 @@
 
 /* Scoped element defaults for quiz pages to prevent global cascade */
 .quiz-page h1, .quiz-page h2, .quiz-page h3,
-.results-container h1, .results-container h2, .results-container h3 {
+.results-container h1, .results-container h2, .results-container h3,
+.quiz-talk-container h1, .quiz-talk-container h2, .quiz-talk-container h3 {
   margin: 0 0 12px;
   color: inherit;
   font-weight: 700;
 }
 
 .quiz-page p, .quiz-page ol, .quiz-page ul, .quiz-page li, .quiz-page small,
-.results-container p, .results-container ol, .results-container ul, .results-container li, .results-container small {
+.results-container p, .results-container ol, .results-container ul, .results-container li, .results-container small,
+.quiz-talk-container p, .quiz-talk-container ol, .quiz-talk-container ul, .quiz-talk-container li, .quiz-talk-container small {
   color: inherit;
   margin: 8px 0;
   line-height: 1.4;
 }
 
-.quiz-page a:not(.btn), .results-container a:not(.btn) {
+.quiz-page a:not(.btn), .results-container a:not(.btn), .quiz-talk-container a:not(.btn) {
   color: #1976d2;
   text-decoration: none;
 }
-.quiz-page a:not(.btn):hover, .results-container a:not(.btn):hover { text-decoration: underline; }
+.quiz-page a:not(.btn):hover, .results-container a:not(.btn):hover, .quiz-talk-container a:not(.btn):hover { text-decoration: underline; }
 
-.quiz-page button:not(.choice-btn):not(.next-btn), .results-container button:not(.next-btn):not(.choice-btn) {
+/* Keep unstyled button reset but exclude .btn so the btn appearance remains */
+.quiz-page button:not(.choice-btn):not(.next-btn):not(.btn),
+.results-container button:not(.next-btn):not(.choice-btn):not(.btn),
+.quiz-talk-container button:not(.next-btn):not(.choice-btn):not(.btn) {
   font: inherit;
   color: inherit;
   background: transparent;
   border: none;
   padding: 0;
   cursor: pointer;
+}
+
+/* Talk component styles */
+.quiz-talk-container {
+  padding: 16px;
+  max-width: 720px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  color: var(--white); /* ensure readable text in talk page on dark background */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center content horizontally */
+}
+
+.talk-summary {
+  margin-top: 12px;
+  width: 100%;
+}
+
+.talk-counts {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.talk-count-item {
+  flex: 1 1 120px;
+  background: #f4f6f8;
+  padding: 8px;
+  border-radius: 6px;
+  text-align: center;
+  color: #1D3037;
+}
+
+.talk-count-value { font-size: 20px; margin-top: 6px; }
+
+.talk-answers-list { margin-top: 8px; }
+
+.talk-notes {
+  width: 100%;
+}
+
+.talk-notes textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.talk-note-actions {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.talk-saved { color: green; margin-top: 8px; }
+
+.quiz-footer {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap; /* allow buttons to wrap on narrow screens and remain centered */
+  width: 100%;
+  max-width: 720px; /* match quiz container */
+  box-sizing: border-box;
+  margin: 18px auto 0;
+  text-align: center; /* fallback for older browsers */
+}
+
+.quiz-footer .btn {
+  /* footer buttons flex: allow shrink/grow but keep a reasonable max width */
+  flex: 1 1 160px;
+  max-width: 220px;
+  min-width: 120px;
 }
