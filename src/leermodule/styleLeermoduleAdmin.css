@@ -17,6 +17,7 @@ main{
     flex-direction: column;
 }
 
+/*Overview pagina*/
 #leermoduleContainer{
     display: flex;
     flex-direction: column;
@@ -58,11 +59,16 @@ main{
 
 /*Details page*/
 #detailsLeermoduleContainter{
-    h2{}
+    align-self: center;
+
+    h2{
+        background-color: var(--dark-grey);
+    }
 
 }
 
 /*Id's*/
+/*Overview pagina*/
 #topTable{
     width: 85%;
     align-self: center;
@@ -83,7 +89,17 @@ main{
     gap: 10%;
 }
 
+/*Details pagina*/
+#questionsContainer{
+    text-align: center;
+
+    >div{ /*⭐: Idk why it works but I think it's funny so I'm leaving it*/
+        margin-top: 5vh;
+    }
+}
+
 /*Classes*/
+/*Overview pagina*/
 .dropdown {
     position: relative;
 }
@@ -109,8 +125,20 @@ main{
     flex-wrap: wrap;
 }
 
-.answers-container{
+.answers_container{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+.buttons_container_details{
+    display: flex;
+    gap: 3vw;
+    /*flex-direction: column;*/ /*⭐: not sure what's better so I'm leaving it like this for now*/
+}
+
+
+/*Details pagina*/
+.questionTitle{
+
 }
