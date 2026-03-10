@@ -142,3 +142,8 @@ main{
 .questionTitle{
 
 }
+
+.content_collapse{
+    display: none;
+    overflow: hidden;
+}
