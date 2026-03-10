@@ -1,0 +1,198 @@
+.results-container {
+  padding: 16px;
+  /* keep results content from stretching too wide and center it */
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.results-container h2 {
+  text-align: center;
+}
+
+.results-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  height: 220px;
+  padding: 12px 8px;
+  justify-content: center; /* center the bars horizontally */
+}
+
+.results-member {
+  text-align: center;
+  width: 80px;
+}
+
+.results-member-inner {
+  height: 160px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.results-bar {
+  width: 48px;
+  /* default appearance; actual height/background set inline from React
+     but keep sensible defaults and a min-height so zero values remain visible */
+  height: auto;
+  min-height: 8px;
+  background: #666;
+  border-radius: 6px;
+  transition: height 0.3s ease;
+}
+
+.results-member-name {
+  margin-top: 8px;
+}
+
+.results-member-value {
+  font-size: 12px;
+  color: #555;
+}
+
+.results-answers {
+  margin-top: 20px;
+}
+
+.answer-item {
+  margin-bottom: 8px;
+}
+
+.answer-item small {
+  color: #666;
+}
+
+.results-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px 12px;
+  background: #1976d2;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  min-width: 160px;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .results-chart { gap: 12px; }
+  .results-member { width: 60px; }
+  .btn { min-width: 120px; padding: 8px 10px; }
+}
+
+/* Quiz page styles */
+.quiz-page {
+  padding: 16px;
+  /* keep quiz content from stretching too wide and center it */
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.quiz-page h2 {
+  text-align: center;
+}
+
+.choices {
+  margin-top: 8px;
+}
+
+.choice-btn {
+  margin: 8px 0;
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.choice-btn:hover:not([disabled]) {
+  border-color: #bbb;
+}
+
+.choice-btn[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.choice-btn.selected-correct {
+  background: #008000;
+  color: #fff;
+  border-color: #006400;
+}
+
+.choice-btn.selected-wrong {
+  background: #f8d7da;
+  color: #000;
+  border-color: #f5c6cb;
+}
+
+.result {
+  margin-top: 16px;
+  text-align: center; /* center feedback and next button */
+}
+
+.feedback.correct {
+  color: green;
+  font-weight: 600;
+}
+
+.feedback.incorrect {
+  color: red;
+  font-weight: 600;
+}
+
+.next-btn {
+  margin-top: 8px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #1976d2;
+  background: #1976d2;
+  color: #fff;
+  cursor: pointer;
+}
+
+.progress {
+  margin-top: 12px;
+}
+
+/* Scoped element defaults for quiz pages to prevent global cascade */
+.quiz-page h1, .quiz-page h2, .quiz-page h3,
+.results-container h1, .results-container h2, .results-container h3 {
+  margin: 0 0 12px;
+  color: inherit;
+  font-weight: 700;
+}
+
+.quiz-page p, .quiz-page ol, .quiz-page ul, .quiz-page li, .quiz-page small,
+.results-container p, .results-container ol, .results-container ul, .results-container li, .results-container small {
+  color: inherit;
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
+.quiz-page a:not(.btn), .results-container a:not(.btn) {
+  color: #1976d2;
+  text-decoration: none;
+}
+.quiz-page a:not(.btn):hover, .results-container a:not(.btn):hover { text-decoration: underline; }
+
+.quiz-page button:not(.choice-btn):not(.next-btn), .results-container button:not(.next-btn):not(.choice-btn) {
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}

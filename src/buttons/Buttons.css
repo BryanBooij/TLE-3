@@ -16,6 +16,17 @@
     box-shadow: inset 1px 1px 50px rgba(0, 0, 0, 0.2);
 }
 
+/* Active button state */
+.button-main.active-button {
+    background-color: #00A876;
+    box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.3), 0px 0px 12px rgba(0, 205, 157, 0.5);
+    font-weight: bold;
+}
+
+.button-main.active-button:hover {
+    background-color: #009968;
+}
+
 
 /* Green Button */
 .button-green {

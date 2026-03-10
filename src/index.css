@@ -1,9 +1,22 @@
 *{
   --dark-grey: #1D3037;
-  --black: #141F23;
+  --black-tint: #141F23;
+  --black: #000;
   --light-grey: #59646A;
   --light-purple: #cb6ce6;
   --darker-purple: #7d3492;
+  --white: #FFF;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background-color: var(--black-tint);
+  color: var(--white);
+  overflow: hidden;
 }
 
 @media (prefers-color-scheme: light) {
@@ -11,3 +24,4 @@
 }
 
 /*add media for multiple screen sizes (about 4 should cover everything) */
+
