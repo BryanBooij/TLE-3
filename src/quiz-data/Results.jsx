@@ -32,7 +32,7 @@ export default function Results() {
 
     // Voor de grafiek. Zet de kleuren en percentages.
     const values = members.map(m => counts[m] || 0);
-    const maxValue = Math.max(...values, 1); // avoid division by zero
+    const maxValue = Math.max(...values, 1);
     const colors = { Moeder: '#4caf50', Vader: '#2196f3', Zoon: '#ff9800', Dochter: '#9c27b0' };
 
     return (
