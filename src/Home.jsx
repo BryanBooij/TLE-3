@@ -5,6 +5,7 @@ import ButtonGreen from "./buttons/ButtonGreen.jsx";
 import ButtonPurple from "./buttons/ButtonPurple.jsx";
 import ButtonBlack from "./buttons/ButtonBlack.jsx";
 import {useNavigate} from "react-router";
+import BigButton from "./buttons/BigButton.jsx";
 
 function Home(){
     const navigate = useNavigate();
@@ -20,6 +21,7 @@ function Home(){
                 <ButtonGreen alt="Button Green" label="Button Green"/>
                 <ButtonBlack alt="Button Black" label="Button Black"/>
                 <ButtonPurple alt="Button Purple" label="Button Purple"/>
+                <BigButton alt="BigButton" label="BigButton"/>
             </div>
         </>
     )

@@ -2,6 +2,7 @@ import {Outlet, useNavigate, useLocation} from "react-router";
 import "./Layout.css";
 import ButtonMain from "../buttons/ButtonMain.jsx";
 import ButtonGreen from "../buttons/ButtonGreen.jsx";
+import BigButton from "../buttons/BigButton.jsx";
 
 function Layout() {
     const navigate = useNavigate();
@@ -19,12 +20,12 @@ function Layout() {
         <div className="layout-container">
             <header className="layout-header">
                 <nav className="layout-nav">
-                    <ButtonMain alt="Home" label="Home" onClick={() => navigate("/Home")} isActive={isActive("/Home")} />
-                    <ButtonMain alt="Leermodules" label="Leermodules" onClick={() => navigate("/Leermodule")} isActive={isActive("/Leermodule")} />
-                    <ButtonMain alt="Quiz" label="Quiz" onClick={() => navigate("/quiz")} isActive={isActive("/quiz")} />
-                    <ButtonMain alt="Profile" label="Profile" onClick={() => navigate("/Home")} />
-                    <ButtonMain alt="Familie" label="Familie" onClick={() => navigate("/Home")} />
-                    <ButtonGreen alt="Logout" label="Logout" onClick={handleLogout} />
+                    <BigButton alt="Home" label="Home" onClick={() => navigate("/Home")} isActive={isActive("/Home")} />
+                    <BigButton alt="Leermodules" label="Leermodules" onClick={() => navigate("/Leermodule")} isActive={isActive("/Leermodule")} />
+                    <BigButton alt="Quiz" label="Quiz" onClick={() => navigate("/quiz")} isActive={isActive("/quiz")} />
+                    <BigButton alt="Profile" label="Profile" onClick={() => navigate("/Home")} />
+                    <BigButton alt="Familie" label="Familie" onClick={() => navigate("/Home")} />
+                    <BigButton alt="Logout" label="Logout" onClick={handleLogout} />
                 </nav>
             </header>
             <main className="layout-main">
