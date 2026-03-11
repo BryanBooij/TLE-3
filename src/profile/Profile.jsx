@@ -1,4 +1,5 @@
-import {useNavigate} from "react-router";
+import { useState } from "react";
+import { useNavigate } from "react-router";
 import ButtonMain from "../buttons/ButtonMain.jsx";
 import InfoButton from "../buttons/InfoButton.jsx";
 
@@ -6,16 +7,22 @@ import "./profile.css";
 
 function Profile(){
     const navigate = useNavigate();
+    const [Message, setMessage] = useState("");
 
-    return(
+    const handleSave = () => {
+        setMessage("Opgeslagen!");
+        setTimeout(() => setMessage(""), 2000);
+    };
+
+    return (
         <div className="profile-container">
             <h1>Profile Settings</h1>
             <h3>Onze app maakt gebruik van HuggingFace AI. Geeft u toestemming om uw persoonsgegevens hiervoor te gebruiken?</h3>
             <div className="checkbox-container-info">
                 <div>
                     <input type="checkbox" id="hugginface"/>
-                    <InfoButton alt="InfoButton" label="InfoButton" onClick={() => window.location.href = "https://huggingface.co/terms-of-service"}/>
-                    <label htmlFor="hugginface"> Geef toestemming om HuggingFace AI data te gebruiken</label>
+                    <InfoButton alt="InfoButton" label="InfoButton" onClick={() => (window.location.href = "https://huggingface.co/terms-of-service")}/>
+                    <label htmlFor="hugginface">Geef toestemming om HuggingFace AI data te gebruiken</label>
                 </div>
             </div>
             <br/>
@@ -34,9 +41,14 @@ function Profile(){
                     <label htmlFor="netflix"> Geef toestemming om Netflix data te gebruiken</label>
                 </div>
             </div>
-            <ButtonMain text="Save" label="save" onClick={() => alert("Opgeslagen!")}/>
+            <ButtonMain text="Save" label="save" onClick={handleSave} />
+            {Message && (
+                <div className="save-message">
+                    {Message}
+                </div>
+            )}
         </div>
-    )
+    );
 }
 
-export default Profile
+export default Profile;
