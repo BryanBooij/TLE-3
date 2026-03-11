@@ -4,6 +4,7 @@ import ButtonGreen from "../buttons/ButtonGreen.jsx";
 import LeermoduleAdmin from "./LeermoduleAdmin.jsx";
 import {useParams} from "react-router-dom";
 import {useNavigate} from "react-router";
+import ButtonMain from "../buttons/ButtonMain.jsx";
 
 function UpdateLeermodule() {
     let info = useParams(); // Access the route parameter;
@@ -64,18 +65,15 @@ function UpdateLeermodule() {
                         <input type="checkbox" id="check3" name="check3" value=""/>
                     </div>
                     </div>
-
-                    <div>
-                    <input type="checkbox" id="getDataCheckbox" name="getDataCheckbox" value="true"/>
-                    <label htmlFor="getBy">Get by familiy data</label><br/>
-                    <select id="getBy" name="getBy">
-                        <option value="1">Highest scoring member</option>
-                        <option value="2">Lowest scoring member</option>
-                    </select>
+                    <div className={"getBy_container"}>
+                        <input type="checkbox" id="getDataCheckbox" name="getDataCheckbox" value="true"/>
+                        <label htmlFor="getBy">Get by familiy data</label><br/>
+                        <select id="getBy" name="getBy">
+                            <option value="1">Highest scoring member</option>
+                            <option value="2">Lowest scoring member</option>
+                        </select>
                     </div>
-
-
-                    <input type="submit" value="Submit"/>
+                    <ButtonMain alt={"submit"} label={"submit"} />
                 </form>
             </div>
         </>

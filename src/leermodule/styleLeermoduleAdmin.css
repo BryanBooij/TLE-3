@@ -170,7 +170,11 @@ main{
 
 /*Update pagina*/
 
-
+.getBy_container{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
 
 /*⭐: Is for collapse feature, please leave be, might still use it */
 /*.content_collapse{*/
