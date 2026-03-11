@@ -17,13 +17,17 @@ function Home(){
                 <h1>Family AI</h1>
                 <p>Maak de toets en achterhaal jullie digitale voetafdrukken!</p>
                 <div className="home-images">
-                    <img src="../public/cloud.png" alt="cloud" className="cloud" width="200" height="200"/>
-                    <span className="cloud-text-left">Karen de Koning vindt mischien........ leuk, omdat je..... leuk vindt.</span>
-                    <img src="../public/family-ai.png" alt="Family AI" className="home-image" width="434" height="500"/>
-                    <img src="../public/cloud2.png" alt="cloud" className="cloud" width="200" height="200"/>
-                    <span className="cloud-text-right">Jan de Koning vindt mischien........ leuk, omdat je..... leuk vindt.</span>
+                    <div className="cloud-container">
+                        <img src="/cloud.png" alt="cloud" className="cloud"/>
+                        <span className="cloud-text-left">Karen de Koning vindt mischien...leuk, omdat je...leuk vindt.</span>
+                    </div>
+                    <img src="/family-ai.png" alt="Family AI" className="home-image" width="434" height="500"/>
+                    <div className="cloud-container">
+                        <img src="/cloud2.png" alt="cloud" className="cloud"/>
+                        <span className="cloud-text-right">Jan de Koning vindt mischien...leuk, omdat je...leuk vindt.</span>
+                    </div>
                 </div>
-                <BigButton alt="BigButton" label="Maak de toets!" onClick={() => navigate("/quiz")}/>
+                <BigButton alt="BigButton" label="Maak je eerste quiz!" onClick={() => navigate("/quiz")}/>
             </div>
         </>
     )
