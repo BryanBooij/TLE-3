@@ -22,7 +22,7 @@ function Layout() {
                 <nav className="layout-nav">
                     <BigButton alt="Home" label="Home" onClick={() => navigate("/Home")} isActive={isActive("/Home")} />
                     <BigButton alt="Leermodules" label="Leermodules" onClick={() => navigate("/Leermodule")} isActive={isActive("/Leermodule")} />
-                    <BigButton alt="Quiz" label="Quiz" onClick={() => navigate("/quiz")} isActive={isActive("/quiz")} />
+                    {/*<BigButton alt="Quiz" label="Quiz" onClick={() => navigate("/quiz")} isActive={isActive("/quiz")} />*/}
                     <BigButton alt="Profile" label="Profile" onClick={() => navigate("/Home")} />
                     <BigButton alt="Familie" label="Familie" onClick={() => navigate("/Home")} />
                     <BigButton alt="Logout" label="Logout" onClick={handleLogout} />
