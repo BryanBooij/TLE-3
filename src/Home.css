@@ -31,7 +31,7 @@
 
 .cloud-text-left {
     position: absolute;
-    top: 15%;
+    top: 22%;
     left: 45%;
     transform: translate(-50%, -50%);
     font-size: 12px;
@@ -42,7 +42,7 @@
 
 .cloud-text-right{
     position: absolute;
-    top: 15%;
+    top: 22%;
     left: 55%;
     transform: translate(-50%, -50%);
     font-size: 12px;
