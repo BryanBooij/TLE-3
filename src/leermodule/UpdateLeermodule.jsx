@@ -5,15 +5,25 @@ import LeermoduleAdmin from "./LeermoduleAdmin.jsx";
 import {useParams} from "react-router-dom";
 import {useNavigate} from "react-router";
 import ButtonMain from "../buttons/ButtonMain.jsx";
+import {useState} from "react";
+import ButtonPurple from "../buttons/ButtonPurple.jsx";
 
 function UpdateLeermodule() {
     let info = useParams(); // Access the route parameter;
     const result = Object.values(info); //make it into something usable for the html DOM
     const navigate = useNavigate();
 
+    // Message state for confirmation of saving changes, will disappear after 2 seconds
+    const [Message, setMessage] = useState("");
+    const handleSave = () => {
+        setMessage("Opgeslagen!");
+        setTimeout(() => setMessage(""), 2000);
+    };
+
     return(
         <>
             <div id="updateLeermoduleContainter">
+                <ButtonPurple alt={"Exit details page of [insert quiz name here]"} label={"Return"} onClick={() => navigate("/Leermodule/details/1")}></ButtonPurple>
                 <h1>You're now editing leermodule: {result}</h1>
                 <form action="">
                     <label htmlFor="qname">Name quiz</label>
@@ -65,16 +75,26 @@ function UpdateLeermodule() {
                         <input type="checkbox" id="check3" name="check3" value=""/>
                     </div>
                     </div>
-                    <div className={"getBy_container"}>
-                        <input type="checkbox" id="getDataCheckbox" name="getDataCheckbox" value="true"/>
-                        <label htmlFor="getBy">Get by familiy data</label><br/>
+                    <div className="getBy_container">
+                        <div className="getBy_left">
+                            <input type="checkbox" id="getDataCheckbox" name="getDataCheckbox" value="true"/>
+                            <label htmlFor="getDataCheckbox">Get by family data</label>
+                        </div>
+
                         <select id="getBy" name="getBy">
                             <option value="1">Highest scoring member</option>
                             <option value="2">Lowest scoring member</option>
                         </select>
                     </div>
-                    <ButtonMain alt={"submit"} label={"submit"} />
                 </form>
+                <div className={"Leermodule-save-button"}>
+                    <ButtonMain text="Save" label="save" onClick={handleSave} />
+                    {Message && (
+                        <div className="save-message">
+                            {Message}
+                        </div>
+                    )}
+                </div>
             </div>
         </>
     )
