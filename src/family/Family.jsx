@@ -1,6 +1,5 @@
 import "./family.css"
 import BigButton from "../buttons/BigButton.jsx";
-import InfoButton from "../buttons/InfoButton.jsx";
 import {useNavigate} from "react-router";
 function Family(){
     const navigate = useNavigate();

@@ -1,7 +1,5 @@
 import {Outlet, useNavigate, useLocation} from "react-router";
 import "./Layout.css";
-import ButtonMain from "../buttons/ButtonMain.jsx";
-import ButtonGreen from "../buttons/ButtonGreen.jsx";
 import BigButton from "../buttons/BigButton.jsx";
 
 function Layout() {

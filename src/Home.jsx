@@ -1,12 +1,7 @@
 import "./Home.css";
 import "./buttons/ButtonMain.jsx";
-import ButtonMain from "./buttons/ButtonMain.jsx";
-import ButtonGreen from "./buttons/ButtonGreen.jsx";
-import ButtonPurple from "./buttons/ButtonPurple.jsx";
-import ButtonBlack from "./buttons/ButtonBlack.jsx";
 import {useNavigate} from "react-router";
 import BigButton from "./buttons/BigButton.jsx";
-import InfoButton from "./buttons/InfoButton.jsx";
 
 function Home(){
     const navigate = useNavigate();
