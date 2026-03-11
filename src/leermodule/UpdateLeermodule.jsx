@@ -9,6 +9,7 @@ import {useState} from "react";
 import ButtonPurple from "../buttons/ButtonPurple.jsx";
 
 function UpdateLeermodule() {
+    const { id } = useParams();
     let info = useParams(); // Access the route parameter;
     const result = Object.values(info); //make it into something usable for the html DOM
     const navigate = useNavigate();
@@ -23,7 +24,7 @@ function UpdateLeermodule() {
     return(
         <>
             <div id="updateLeermoduleContainter">
-                <ButtonPurple alt={"Exit details page of [insert quiz name here]"} label={"Return"} onClick={() => navigate("/Leermodule/details/1")}></ButtonPurple>
+                <ButtonPurple alt={"Exit details page of [insert quiz name here]"} label={"Return"} onClick={() => navigate("/Leermodule/details/" + id)}></ButtonPurple>
                 <h1>You're now editing leermodule: {result}</h1>
                 <form action="">
                     <label htmlFor="qname">Name quiz</label>
