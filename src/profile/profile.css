@@ -9,3 +9,17 @@
     justify-content: flex-start;
     box-sizing: border-box;
 }
+
+.checkbox-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 1rem;
+}
+
+.checkbox-container-info > div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}

@@ -21,7 +21,7 @@ function Home(){
                         <img src="/cloud.png" alt="cloud" className="cloud"/>
                         <span className="cloud-text-left">Karen de Koning vindt mischien...leuk, omdat je...leuk vindt.</span>
                     </div>
-                    <img src="/family-ai.png" alt="Family AI" className="home-image" width="434" height="500"/>
+                    <img src="/family-ai-drawing.png" alt="Family AI" className="home-image"/>
                     <div className="cloud-container">
                         <img src="/cloud2.png" alt="cloud" className="cloud"/>
                         <span className="cloud-text-right">Jan de Koning vindt mischien...leuk, omdat je...leuk vindt.</span>
