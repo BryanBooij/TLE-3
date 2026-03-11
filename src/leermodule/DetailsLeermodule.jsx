@@ -14,7 +14,6 @@ import {useNavigate} from "react-router";
 import ButtonGreen from "../buttons/ButtonGreen.jsx";
 
 function DetailsLeermodule() {
-    const { id } = useParams();
     let info = useParams(); // Access the route parameter;
     const result = Object.values(info);
     const navigate = useNavigate()
@@ -169,7 +168,7 @@ function DetailsLeermodule() {
                         </div>
                     </div>
                     <div className={"buttons_container_details"}>
-                        <ButtonPurple alt={"Edit button"} label={"Edit data"}  onClick={() => navigate("/Leermodule/update/" + id)}></ButtonPurple> {/* ⭐:Be sure to change the 1 to the proper ID here!!*/}
+                        <ButtonPurple alt={"Edit button"} label={"Edit data"}  onClick={() => navigate("/Leermodule/update/" + result)}></ButtonPurple> {/* ⭐:Be sure to change the 1 to the proper ID here!!*/}
                         <ButtonBlack alt={"Delete button"} label={"Delete leermodule"}></ButtonBlack>
                     </div>
                 </div>
