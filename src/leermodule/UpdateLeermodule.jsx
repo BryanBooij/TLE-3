@@ -87,6 +87,8 @@ function UpdateLeermodule() {
                         </select>
                     </div>
                 </form>
+                {/* Uiterst belangrijk ik heb deze voor nu *BUITEN* de form gezet zodat de message duidelijk is voor de presentatie
+                 dit moet later binnen de form geplaatst worden zodat de submit knop daadwerkelijk data verstuurd!!!!!*/}
                 <div className={"Leermodule-save-button"}>
                     <ButtonMain text="Save" label="save" onClick={handleSave} />
                     {Message && (
