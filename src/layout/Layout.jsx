@@ -23,8 +23,8 @@ function Layout() {
                     <BigButton alt="Home" label="Home" onClick={() => navigate("/Home")} isActive={isActive("/Home")} />
                     <BigButton alt="Leermodules" label="Leermodules" onClick={() => navigate("/Leermodule")} isActive={isActive("/Leermodule")} />
                     {/*<BigButton alt="Quiz" label="Quiz" onClick={() => navigate("/quiz")} isActive={isActive("/quiz")} />*/}
-                    <BigButton alt="Profile" label="Profile" onClick={() => navigate("/Profile")} />
                     <BigButton alt="Familie" label="Familie" onClick={() => navigate("/Family")} />
+                    <BigButton alt="Profile" label="Profile" onClick={() => navigate("/Profile")} />
                     <BigButton alt="Logout" label="Logout" onClick={handleLogout} />
                 </nav>
             </header>
