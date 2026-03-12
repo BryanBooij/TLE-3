@@ -81,7 +81,6 @@ export default function Results() {
     const members = Object.keys(counts);
     const values = members.map(m => counts[m] || 0);
     const maxValue = Math.max(...values, 1);
-    console.log(members[0])
 
     // dynamische kleuren (optioneel: fallback)
     const defaultColors = ["#4caf50", "#2196f3", "#ff9800", "#9c27b0"];
