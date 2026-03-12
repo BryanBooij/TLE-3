@@ -10,6 +10,7 @@ export default function Talk() {
 
     useEffect(() => {
         const fromState = location.state;
+        console.log(fromState)
         if (fromState && (fromState.counts || fromState.answers)) {
             setData({ counts: fromState.counts || data.counts, answers: fromState.answers || [] });
         } else {

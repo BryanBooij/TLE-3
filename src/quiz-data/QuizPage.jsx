@@ -33,30 +33,36 @@ export default function QuizPage() {
     async function loadQuestions() {
         try {
 
-            const res = await fetch(`${BACKEND_BASE}/questions?quiz_id=${quizId}`);
+            const res = await fetch(`${BACKEND_BASE}/questions?quiz_id=${quizId}`, {
+                headers: {
+                    "Accept": "application/json"
+                }
+            });
             const json = await res.json();
+
+            console.log("QUESTIONS RESPONSE:", json);
 
             let raw = Array.isArray(json)
                 ? json
                 : json.questions || json.data || [];
 
-            raw = raw.filter(q =>
-                q.quiz_id == quizId ||
-                q.quizId == quizId ||
-                q.quiz == quizId
-            );
-
             const normalized = raw.map(q => ({
                 id: q.id || q.question_id,
-                prompt: q.question_text || q.prompt || "",
+                prompt: q.question_text || q.question || q.prompt || q.text || "",
                 source: q.source || null,
                 sourceUrl: q.source_url || null
             }));
 
+            console.log("Normalized:", normalized);
+
             const questionsWithAnswers = await Promise.all(
                 normalized.map(async (q) => {
 
-                    const res = await fetch(`${BACKEND_BASE}/answers?question_id=${q.id}`);
+                    const res = await fetch(`${BACKEND_BASE}/answers?question_id=${q.id}`, {
+                        headers: {
+                            "Accept": "application/json"
+                        }
+                    });
                     const json = await res.json();
 
                     const answers = Array.isArray(json)
