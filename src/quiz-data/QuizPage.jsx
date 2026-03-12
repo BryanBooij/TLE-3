@@ -39,9 +39,6 @@ export default function QuizPage() {
                 }
             });
             const json = await res.json();
-
-            console.log("QUESTIONS RESPONSE:", json);
-
             let raw = Array.isArray(json)
                 ? json
                 : json.questions || json.data || [];
