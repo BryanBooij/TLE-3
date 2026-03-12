@@ -81,14 +81,16 @@ export default function Results() {
     const members = Object.keys(counts);
     const values = members.map(m => counts[m] || 0);
     const maxValue = Math.max(...values, 1);
+    console.log(members[0])
 
     // dynamische kleuren (optioneel: fallback)
-    const colors = {
-        Moeder: "#4caf50",
-        Vader: "#2196f3",
-        Zoon: "#ff9800",
-        Dochter: "#9c27b0"
-    };
+    const defaultColors = ["#4caf50", "#2196f3", "#ff9800", "#9c27b0"];
+
+    // Koppel elke member dynamisch aan een kleur
+    const colors = members.reduce((acc, member, i) => {
+        acc[member] = defaultColors[i] || "#ccc"; // fallback kleur als er meer members zijn
+        return acc;
+    }, {});
 
     return (
         <div className="results-container">
