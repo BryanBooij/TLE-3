@@ -48,12 +48,10 @@ export default function QuizPage() {
 
             const normalized = raw.map(q => ({
                 id: q.id || q.question_id,
-                prompt: q.question_text || q.question || q.prompt || q.text || "",
+                prompt: q.description,
                 source: q.source || null,
                 sourceUrl: q.source_url || null
             }));
-
-            console.log("Normalized:", normalized);
 
             const questionsWithAnswers = await Promise.all(
                 normalized.map(async (q) => {
