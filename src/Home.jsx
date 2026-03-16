@@ -22,7 +22,7 @@ function Home(){
                         <span className="cloud-text-right">Jan de Koning vindt mischien...leuk, omdat je...leuk vindt.</span>
                     </div>
                 </div>
-                <BigButton alt="BigButton" label="Maak je eerste quiz!" onClick={() => navigate("/quiz")}/>
+                <BigButton alt="BigButton" label="Maak de quiz!" onClick={() => navigate("/quiz")}/>
             </div>
         </>
     )

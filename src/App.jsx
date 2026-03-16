@@ -16,12 +16,18 @@ import UpdateLeermodule from "./leermodule/UpdateLeermodule.jsx";
 import Talk from "./quiz-data/Talk.jsx";
 import Profile from "./profile/Profile.jsx";
 import Family from "./family/Family.jsx";
+import FamilyProfiles from "./family/FamilyProfiles.jsx";
+import Register from "./inlog/Register.jsx";
 
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Login/>,
+    },
+    {
+        path: "/Register",
+        element: <Register/>,
     },
     {
         element: <ProtectedRoute/>,
@@ -84,7 +90,11 @@ const router = createBrowserRouter([
                     {
                         path:"/Family",
                         element: <Family/>
-                    }
+                    },
+                    {
+                        path: "/Family/Profiles/:id",
+                        element: <FamilyProfiles/>
+                    },
                 ],
             },
         ],
