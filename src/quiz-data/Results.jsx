@@ -163,8 +163,8 @@ export default function Results() {
                 <Link to="/quiz/talk" className="btn" state={{ counts, answers: data.answers || [] }}>
                     Bespreken
                 </Link>
-                <Link to="/Home" className="btn">
-                    Terug naar home
+                <Link to="/quiz" className="btn">
+                    Terug naar Quizzes
                 </Link>
             </div>
         </div>
