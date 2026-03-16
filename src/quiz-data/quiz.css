@@ -161,14 +161,40 @@
 }
 
 .next-btn {
-  margin-top: 8px;
-  padding: 8px 12px;
-  border-radius: 6px;
-  border: 1px solid #1976d2;
-  background: #1976d2;
-  color: #fff;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  /* remove the bottom border and extra padding so the BigButton's own 3D effect isn't clipped */
 }
+
+/* Ensure any BigButton placed inside the quiz next area is centered and its text is vertically centered */
+.next-btn .big-button,
+.next-btn button.big-button {
+  display: inline-flex !important; /* centers content inside the button */
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  color: var(--colorShadeA) !important; /* ensure the green text color matches other BigButtons */
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  padding: 0.5em 2em !important;
+  line-height: 1 !important;
+  font-size: 1rem !important;
+  z-index: 2;
+}
+
+
+.next-btn .big-button::before,
+.next-btn button.big-button::before {
+  transform: translate3d(0, 0.55em, -1em) !important;
+  z-index: 1 !important;
+}
+
+
+.next-btn { overflow: visible; }
 
 .progress {
   margin-top: 12px;
@@ -286,4 +312,63 @@
   flex: 1 1 160px;
   max-width: 220px;
   min-width: 120px;
+}
+
+/* CONSISTENT BIGBUTTON SIZING FOR QUIZ PAGES
+   Apply identical visual sizing and pseudo-element offset to BigButtons used in
+   the quiz "next" area and the results buttons so they render the same size. */
+.quiz-page .next-btn > button.big-button,
+.quiz-page .next-btn > button.big-button *,
+.results-buttons > button.big-button,
+.results-buttons > button.big-button * {
+  color: rgb(106,163,137) !important; /* force green text */
+}
+
+.quiz-page .next-btn > button.big-button,
+.results-buttons > button.big-button {
+  /* unified size/visuals */
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  color: rgb(106,163,137) !important;
+  border: 2px solid rgb(106,163,137) !important;
+  background: rgb(205,255,232) !important;
+  box-sizing: border-box !important;
+  /* fixed dimensions to ensure identical size across pages */
+  width: 220px !important;
+  height: 56px !important;
+  padding: 0 22px !important; /* horizontal padding only; vertical space controlled by height */
+  line-height: normal !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  border-radius: 1em !important;
+  z-index: 2 !important;
+  transform: none !important;
+  box-shadow: none !important; /* let the pseudo-element create the 3D effect */
+}
+
+.quiz-page .next-btn > button.big-button::before,
+.results-buttons > button.big-button::before {
+  /* position the mint base slightly lower relative to the fixed height */
+  transform: translate3d(0, 0.72em, -1em) !important;
+  background: rgb(150,232,195) !important;
+  z-index: 1 !important;
+  height: 100% !important; /* ensure the pseudo-element covers the button area behind */
+  width: 100% !important;
+  left: 0 !important;
+}
+
+/* Ensure wrappers won't clip the pseudo-element 3D effect and center the containers */
+.quiz-page .next-btn, .results-buttons { overflow: visible; display: flex; justify-content: center; align-items: center; gap: 18px; }
+
+@media (max-width: 500px) {
+  .quiz-page .next-btn > button.big-button,
+  .results-buttons > button.big-button {
+    width: 140px !important;
+    height: 44px !important;
+    padding: 0 12px !important;
+    font-size: 14px !important;
+  }
 }

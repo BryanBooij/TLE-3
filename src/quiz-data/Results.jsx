@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import { useLocation, Link } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import "./quiz.css";
+import BigButton from "../buttons/BigButton.jsx";
 
 export default function Results() {
     const location = useLocation();
+    const navigate = useNavigate();
     const [data, setData] = useState({ counts: {}, answers: [], quizId: null });
 
     useEffect(() => {
@@ -157,15 +159,9 @@ export default function Results() {
             )}
 
             <div className="results-buttons">
-                <Link to="/quiz" className="btn">
-                    Maak de quiz opnieuw
-                </Link>
-                <Link to="/quiz/talk" className="btn" state={{ counts, answers: data.answers || [] }}>
-                    Bespreken
-                </Link>
-                <Link to="/Home" className="btn">
-                    Terug naar home
-                </Link>
+                <BigButton label="Maak de quiz opnieuw" onClick={() => navigate('/quiz')} />
+                <BigButton label="Bespreken" onClick={() => navigate('/quiz/talk', { state: { counts, answers: data.answers || [] } })} />
+                <BigButton label="Terug naar home" onClick={() => navigate('/Home')} />
             </div>
         </div>
     );

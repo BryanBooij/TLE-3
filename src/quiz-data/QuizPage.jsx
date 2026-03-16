@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router";
 import "./quiz.css";
+import BigButton from "../buttons/BigButton.jsx";
 
 const BACKEND_BASE = "http://145.24.237.168:8000";
 
@@ -240,10 +241,9 @@ export default function QuizPage() {
                         )}
                         </p>
                     )}
-
-                    <button onClick={handleNext} className="next-btn">
-                        Volgende
-                    </button>
+                    <div className="next-btn">
+                        <BigButton alt="Volgende" label="Volgende" onClick={handleNext} className="next-btn" isActive={true} />
+                    </div>
 
                 </div>
             )}
