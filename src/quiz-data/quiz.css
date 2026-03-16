@@ -199,17 +199,6 @@
 .quiz-page a:not(.btn):hover, .results-container a:not(.btn):hover, .quiz-talk-container a:not(.btn):hover { text-decoration: underline; }
 
 
-.quiz-page button:not(.choice-btn):not(.next-btn):not(.btn):not(.big-button),
-.results-container button:not(.next-btn):not(.choice-btn):not(.btn):not(.big-button),
-.quiz-talk-container button:not(.next-btn):not(.choice-btn):not(.btn):not(.big-button) {
-  font: inherit;
-  color: inherit;
-  background: transparent;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-}
-
 .quiz-talk-container {
   padding: 16px;
   max-width: 720px;
