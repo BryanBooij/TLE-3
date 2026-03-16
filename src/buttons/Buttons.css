@@ -190,9 +190,36 @@ button.big-button:active::before {
     box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.25em 0 0 var(--colorShadeB);
 }
 
+/* wcag button focus for tab*/
 .big-button:focus {
     outline: 3px solid #005fcc;
     outline-offset: 2px;
 }
+
+.button-main:focus {
+    outline: 3px solid #005fcc;
+    outline-offset: 2px;
+}
+
+.button-black:focus {
+    outline: 3px solid #005fcc;
+    outline-offset: 2px;
+}
+
+.button-green:focus {
+    outline: 3px solid #005fcc;
+    outline-offset: 2px;
+}
+
+.button-purple:focus {
+    outline: 3px solid #005fcc;
+    outline-offset: 2px;
+}
+
+.info-button:focus {
+    outline: 3px solid #005fcc;
+    outline-offset: 2px;
+}
+
 
 
