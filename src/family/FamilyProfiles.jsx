@@ -38,10 +38,22 @@ function FamilyProfiles() {
                         <h3>Meest gebruikte social media: {profile.social_media}</h3>
                         <h3>Veel gebruikte technologie: {profile.smart_objects}</h3>
                         <h3>samenvatting: {profile.overview}</h3>
+
+                        {/* Row with two boxes */}
+                        <div className="profile-stats">
+                            <div className="quiz-box">
+                                <h4>Played Quizzes</h4>
+                                <p>No quizzes yet.</p>
+                            </div>
+                            <div className="pie-chart">
+                                <h4>Collected Data</h4>
+                                <p>No data yet.</p>
+                            </div>
+                        </div>
                     </div>
                 ))}
-                <BigButton alt="Back" label="Back" onClick={() => navigate("/Family")} />
             </div>
+            <BigButton alt="Back" label="Back" onClick={() => navigate("/Family")} className="backButton" />
         </>
     );
 }
