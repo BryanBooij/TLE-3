@@ -85,7 +85,6 @@ export default function Talk() {
                 <div className="talk-note-actions">
                     <BigButton label="Opslaan" onClick={saveNotes} />
                     <BigButton label="Leegmaken" onClick={() => { setNotes(''); try { sessionStorage.removeItem('quizTalkNotes'); } catch (e) {} }} />
-                    <BigButton label="Terug naar resultaten" onClick={() => navigate('/quiz/results')} />
                 </div>
                 {saved && <div className="talk-saved">Opgeslagen</div>}
             </div>
