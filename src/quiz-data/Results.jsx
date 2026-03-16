@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import { useLocation, Link } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import "./quiz.css";
+import BigButton from "../buttons/BigButton.jsx";
 
 export default function Results() {
     const location = useLocation();
+    const navigate = useNavigate();
     const [data, setData] = useState({ counts: {}, answers: [], quizId: null });
 
     useEffect(() => {
@@ -34,11 +36,11 @@ export default function Results() {
         );
 
         // Counts per keuze berekenen
-        const counts = members.reduce((acc, m) => {
-            return {
-                ...acc,
-                [m]: filtered.reduce((s, a) => s + (a.selected === m ? 1 : 0), 0)
-            };
+        const counts = members.reduce((acc, member) => {
+            acc[member] = filtered.reduce((sum, a) => {
+                return sum + (a && a.correct === member ? 1 : 0);
+            }, 0);
+            return acc;
         }, {});
 
         setData({ counts, answers: filtered, quizId: useQuizId });
@@ -63,7 +65,7 @@ export default function Results() {
                     const countsStored = membersStored.reduce((acc, m) => {
                         return {
                             ...acc,
-                            [m]: filteredStored.reduce((s, a) => s + (a.selected === m ? 1 : 0), 0)
+                            [m]: filteredStored.reduce((s, a) => s + (a && a.selected === a.correct && a.correct === m ? 1 : 0), 0)
                         };
                     }, {});
 
@@ -157,15 +159,9 @@ export default function Results() {
             )}
 
             <div className="results-buttons">
-                <Link to="/quiz" className="btn">
-                    Maak de quiz opnieuw
-                </Link>
-                <Link to="/quiz/talk" className="btn" state={{ counts, answers: data.answers || [] }}>
-                    Bespreken
-                </Link>
-                <Link to="/quiz" className="btn">
-                    Terug naar Quizzes
-                </Link>
+                <BigButton label="Maak de quiz opnieuw" onClick={() => navigate('/quiz')} />
+                <BigButton label="Bespreken" onClick={() => navigate('/quiz/talk', { state: { counts, answers: data.answers || [] } })} />
+                <BigButton label="Terug naar home" onClick={() => navigate('/Home')} />
             </div>
         </div>
     );

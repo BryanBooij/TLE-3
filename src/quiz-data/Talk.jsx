@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import { useLocation, Link } from "react-router";
+import { useLocation, useNavigate, Link } from "react-router";
 import "./quiz.css";
+import BigButton from "../buttons/BigButton.jsx";
 
 export default function Talk() {
     const location = useLocation();
+    const navigate = useNavigate();
     const [data, setData] = useState({ counts: { Moeder: 0, Vader: 0, Zoon: 0, Dochter: 0 }, answers: [] });
     const [notes, setNotes] = useState('');
     const [saved, setSaved] = useState(false);
@@ -81,9 +83,9 @@ export default function Talk() {
                     placeholder="Schrijf hier jullie notities of actiepunten..."
                 />
                 <div className="talk-note-actions">
-                    <button className="btn" onClick={saveNotes}>Opslaan</button>
-                    <button className="btn" onClick={() => { setNotes(''); try { sessionStorage.removeItem('quizTalkNotes'); } catch (e) {} }}>Leegmaken</button>
-                    <Link to="/quiz/results" className="btn">Terug naar resultaten</Link>
+                    <BigButton label="Opslaan" onClick={saveNotes} />
+                    <BigButton label="Leegmaken" onClick={() => { setNotes(''); try { sessionStorage.removeItem('quizTalkNotes'); } catch (e) {} }} />
+                    <BigButton label="Terug naar resultaten" onClick={() => navigate('/quiz/results')} />
                 </div>
                 {saved && <div className="talk-saved">Opgeslagen</div>}
             </div>
