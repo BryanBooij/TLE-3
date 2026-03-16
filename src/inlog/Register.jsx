@@ -38,7 +38,7 @@ function Register() {
                 navigate("/Home");
                 setError("");
             } else {
-                setError(data.message || "Registration failed");
+                setError(data.message || "Username or email already exists");
             }
         } catch (err) {
             setError("Network error");
@@ -65,7 +65,6 @@ function Register() {
                 {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
                 {success && <p style={{ color: "green", marginTop: "10px" }}>{success}</p>}
 
-                {/*<button type="submit">Login</button>*/}
                 <ButtonMain label="Submit" type="submit"/>
             </form>
             <ButtonMain label="Login" onClick={() => navigate(`/`)}/>
