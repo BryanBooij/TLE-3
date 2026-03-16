@@ -36,11 +36,11 @@ export default function Results() {
         );
 
         // Counts per keuze berekenen
-        const counts = members.reduce((acc, m) => {
-            return {
-                ...acc,
-                [m]: filtered.reduce((s, a) => s + (a.selected === m ? 1 : 0), 0)
-            };
+        const counts = members.reduce((acc, member) => {
+            acc[member] = filtered.reduce((sum, a) => {
+                return sum + (a && a.correct === member ? 1 : 0);
+            }, 0);
+            return acc;
         }, {});
 
         setData({ counts, answers: filtered, quizId: useQuizId });
@@ -65,7 +65,7 @@ export default function Results() {
                     const countsStored = membersStored.reduce((acc, m) => {
                         return {
                             ...acc,
-                            [m]: filteredStored.reduce((s, a) => s + (a.selected === m ? 1 : 0), 0)
+                            [m]: filteredStored.reduce((s, a) => s + (a && a.selected === a.correct && a.correct === m ? 1 : 0), 0)
                         };
                     }, {});
 
