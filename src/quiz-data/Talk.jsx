@@ -89,11 +89,6 @@ export default function Talk() {
                 </div>
                 {saved && <div className="talk-saved">Opgeslagen</div>}
             </div>
-
-            <div className="quiz-footer">
-                <Link to="/quiz" className="btn">Maak de quiz opnieuw</Link>
-                <Link to="/Home" className="btn">Terug naar home</Link>
-            </div>
         </div>
     );
 }
