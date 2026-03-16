@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate, Link } from "react-router";
+import { useLocation, useNavigate, } from "react-router";
 import "./quiz.css";
 import BigButton from "../buttons/BigButton.jsx";
 
