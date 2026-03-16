@@ -9,13 +9,18 @@ function Family() {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        fetch("http://145.24.237.168:8000/users"), {
+        fetch("http://145.24.237.168:8000/users", {
             method: "GET",
             headers: {
-                "Content-Type": "application/json",
                 "Accept": "application/json"
-        }
-            .then((response) => response.json())
+            }
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then((data) => {
                 const filteredUsers = data.map(user => ({
                     id: user.id,
