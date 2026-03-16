@@ -65,22 +65,24 @@
 .results-buttons {
   margin-top: 20px;
   display: flex;
-  gap: 12px;
+  gap: 18px;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
-.quiz-page .btn, .results-container .btn, .quiz-talk-container .btn {
-  display: inline-block;
-  padding: 8px 12px;
-  background: #1976d2;
-  color: #fff;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
-  min-width: 160px;
+.quiz-page .big-button,
+.results-container .big-button,
+.quiz-talk-container .big-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 220px;
+  height: 56px;
+
   text-align: center;
-  border: 1px solid transparent;
+  box-sizing: border-box;
 }
 
 @media (max-width: 500px) {
@@ -162,35 +164,8 @@
 
 .next-btn {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 12px;
   margin-top: 20px;
-  margin-bottom: 10px;
-  /* remove the bottom border and extra padding so the BigButton's own 3D effect isn't clipped */
-}
-
-/* Ensure any BigButton placed inside the quiz next area is centered and its text is vertically centered */
-.next-btn .big-button,
-.next-btn button.big-button {
-  display: inline-flex !important; /* centers content inside the button */
-  align-items: center !important;
-  justify-content: center !important;
-  text-align: center !important;
-  color: var(--colorShadeA) !important; /* ensure the green text color matches other BigButtons */
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  padding: 0.5em 2em !important;
-  line-height: 1 !important;
-  font-size: 1rem !important;
-  z-index: 2;
-}
-
-
-.next-btn .big-button::before,
-.next-btn button.big-button::before {
-  transform: translate3d(0, 0.55em, -1em) !important;
-  z-index: 1 !important;
 }
 
 
@@ -224,9 +199,9 @@
 .quiz-page a:not(.btn):hover, .results-container a:not(.btn):hover, .quiz-talk-container a:not(.btn):hover { text-decoration: underline; }
 
 
-.quiz-page button:not(.choice-btn):not(.next-btn):not(.btn),
-.results-container button:not(.next-btn):not(.choice-btn):not(.btn),
-.quiz-talk-container button:not(.next-btn):not(.choice-btn):not(.btn) {
+.quiz-page button:not(.choice-btn):not(.next-btn):not(.btn):not(.big-button),
+.results-container button:not(.next-btn):not(.choice-btn):not(.btn):not(.big-button),
+.quiz-talk-container button:not(.next-btn):not(.choice-btn):not(.btn):not(.big-button) {
   font: inherit;
   color: inherit;
   background: transparent;

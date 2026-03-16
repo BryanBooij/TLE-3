@@ -48,7 +48,7 @@ export default function Results() {
         // fallback naar sessionStorage als location.state leeg is
         if (!filtered.length) {
             try {
-                const raw = sessionStorage.getItem("quizResults");
+                const raw = sessionStorage.getItem(`quizResults:${useQuizId || "default"}`);
                 if (raw) {
                     const parsed = JSON.parse(raw);
                     const storedAnswers = parsed.answers || [];
@@ -65,7 +65,7 @@ export default function Results() {
                     const countsStored = membersStored.reduce((acc, m) => {
                         return {
                             ...acc,
-                            [m]: filteredStored.reduce((s, a) => s + (a && a.selected === a.correct && a.correct === m ? 1 : 0), 0)
+                            [m]: filteredStored.reduce((s, a) => s + (a && a.correct === m ? 1 : 0), 0)
                         };
                     }, {});
 
