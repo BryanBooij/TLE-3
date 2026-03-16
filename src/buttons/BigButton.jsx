@@ -3,7 +3,7 @@ import "./Buttons.css";
 
 const BigButton = ({ label, onClick, isActive }) => {
     return (
-        <button className={`big-button ${isActive ? "active-button" : ""}`} onClick={onClick}>
+        <button type="button" className={`big-button ${isActive ? "active-button" : ""}`} onClick={onClick}>
             {label}
         </button>
     );

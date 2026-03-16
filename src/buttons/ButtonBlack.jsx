@@ -3,7 +3,7 @@ import "./Buttons.css";
 
 const ButtonBlack = ({ label, onClick }) => {
     return (
-        <button className="button-black" onClick={onClick}>
+        <button type="button" className="button-black" onClick={onClick}>
             {label}
         </button>
     );
