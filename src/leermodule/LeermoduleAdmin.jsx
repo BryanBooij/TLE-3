@@ -3,7 +3,7 @@ import '../index.css'
 import './styleLeermoduleAdmin.css'
 import ButtonGreen from "../buttons/ButtonGreen.jsx";
 import {useNavigate} from "react-router";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 
 function LeermoduleAdmin() {
     const navigate = useNavigate()
@@ -13,7 +13,7 @@ function LeermoduleAdmin() {
     useEffect(()=> {
     async function fetchLeermodules() {
             try {
-                const response = await fetch("http://145.24.237.168:8000/quizzes", { /*⭐: Be sure to update the link here*/
+                const response = await fetch("http://145.24.237.168:8000/quizzes", {
                     method: "GET",
                     headers: {
                         Accept: "application/json",
