@@ -3,7 +3,9 @@ import { useState } from "react";
 import {useEffect} from "react";
 import {useParams} from "react-router-dom";
 import BigButton from "../buttons/BigButton.jsx";
+import {useNavigate} from "react-router";
 function FamilyProfiles() {
+    const navigate = useNavigate();
     const [user, setUser] = useState([]);
     const {id} = useParams();
 
@@ -38,6 +40,7 @@ function FamilyProfiles() {
                         <h3>samenvatting: {profile.overview}</h3>
                     </div>
                 ))}
+                <BigButton alt="Back" label="Back" onClick={() => navigate("/Family")} />
             </div>
         </>
     );

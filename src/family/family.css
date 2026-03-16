@@ -1,6 +1,12 @@
-.family-container{
-    width: 100%;
+html,body{
     height: 100%;
+    margin: 0;
+}
+
+.family-container{
+    min-height: 100vh;
+    margin-top: auto;
+    width: 100%;
     padding: 20px;
     color: #FFF;
     display: flex;
@@ -12,7 +18,6 @@
 
 .family-profiles-container{
     width: 100%;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -24,12 +29,19 @@
 
 .family-data{
     width: 100%;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 20px;
-    overflow-x: auto;
     box-sizing: border-box;
     flex-direction: column;
+    min-height: 100vh;
+}
+
+.backButton{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.5rem;
+    cursor: pointer;
 }

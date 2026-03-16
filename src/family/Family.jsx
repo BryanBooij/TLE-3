@@ -46,6 +46,11 @@ function Family() {
             .catch((error) => console.error("Error fetching profiles:", error));
     }, []);
 
+    const getUsername = (user_id) => {
+        const user = users.find(u => u.id === user_id);
+        return user ? user.username : "Onbekend";
+    };
+
     return (
         <>
             <div className="family-container">
@@ -57,8 +62,8 @@ function Family() {
                     {profiles.map((profile) => (
                         <BigButton
                             key={profile.id}
-                            alt={users[profile.user_id]}
-                            label={users[profile.user_id]}
+                            alt={getUsername(profile.user_id)}
+                            label={getUsername(profile.user_id)}
                             onClick={() => navigate(`/Family/Profiles/${profile.id}`)}
                         />
                     ))}
