@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import "./Login.css"
+import ButtonMain from "../buttons/ButtonMain.jsx";
+import BigButton from "../buttons/BigButton.jsx";
 
 function Login(){
     const [email, setEmail] = useState("");
@@ -62,8 +64,9 @@ function Login(){
 
                 {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
 
-                <button type="submit">Login</button>
+                <ButtonMain label="submit"/>
             </form>
+            <ButtonMain label="Registreer" onClick={() => navigate(`/Register`)}/>
         </div>
     )
 }

@@ -60,12 +60,7 @@ function Family() {
                 <h3>Hier kan je de informatie bekijken per familielid</h3>
                 <div className="family-buttons">
                     {profiles.map((profile) => (
-                        <BigButton
-                            key={profile.id}
-                            alt={getUsername(profile.user_id)}
-                            label={getUsername(profile.user_id)}
-                            onClick={() => navigate(`/Family/Profiles/${profile.id}`)}
-                        />
+                        <BigButton key={profile.id} alt={getUsername(profile.user_id)} label={getUsername(profile.user_id)} onClick={() => navigate(`/Family/Profiles/${profile.id}`)}/>
                     ))}
                 </div>
             </div>
