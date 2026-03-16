@@ -27,7 +27,6 @@ function Family() {
                     username: user.username
                 }));
                 setUsers(filteredUsers);
-                console.log(filteredUsers);
             })
             .catch((error) => console.error("Error fetching users:", error));
     }, []);

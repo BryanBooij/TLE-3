@@ -18,7 +18,6 @@ function FamilyProfiles() {
             .then((response) => response.json())
             .then((data) => {
                 setUser(data);
-                console.log(data)
             })
             .catch((error) => console.error("Error fetching profiles:", error));
     }, []);
