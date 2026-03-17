@@ -128,7 +128,7 @@ input:checked + .slider:before {
 }
 
 /*Bigger pie chart*/
-.chart-container {
+.profile-chart-container {
     position: relative;
     width: 250px;
     height: 250px;

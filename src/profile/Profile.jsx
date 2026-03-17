@@ -100,7 +100,7 @@ function Profile(){
                     </div>
                     <div id="dataChart">
                         <h2>Data collection chart:</h2>
-                        <div className="chart-container">
+                        <div className="profile-chart-container">
                             <div className="center-label">100%</div>
                         </div>
 
