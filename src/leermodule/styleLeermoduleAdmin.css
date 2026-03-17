@@ -8,6 +8,7 @@
     --light-purple: #cb6ce6;
     --darker-purple: #7d3492;
     --white: #FFF;
+    --green: #5BCB07;
     font-family: "Comic Relief", system-ui;
 }
 
@@ -69,9 +70,10 @@ main{
 }
 
 /*update/edit page*/
-#updateLeermoduleContainter {
+#updateLeermoduleContainter{
     align-self: center;
     max-height: 90vh;
+    width: 50vw;
 
     >form{
         display: flex;
@@ -94,6 +96,39 @@ main{
     option{
         background-color: var(--black-tint);
         color: white;
+    }
+}
+
+#createLeermoduleContainer{
+    align-self: center;
+    max-height: 90vh;
+    width: 60vw;
+
+    >form{
+        display: flex;
+        flex-direction: column;
+    }
+
+    input[type="text"]{
+        background-color: var(--black-tint);
+        color: white;
+        border: 2px solid var(--light-grey);
+        padding: 0.8rem;
+    }
+
+    select{
+        background-color: var(--black-tint);
+        color: white;
+    }
+
+    option{
+        background-color: var(--black-tint);
+        color: white;
+    }
+
+    hr{
+        color: var(--light-grey);
+        margin: 5%;
     }
 }
 
@@ -123,10 +158,41 @@ main{
 #questionsContainer{
     text-align: center;
     padding-bottom: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /*height: 100vh;*/
 
     >div{ /*⭐: Idk why it works but I think it's funny so I'm leaving it*/
         margin-top: 5vh;
     }
+}
+
+#answersContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#questionsContainerCreate > div{
+    display: flex;
+    gap: 2vw;
+    margin-top: 2vh;
+}
+
+/*Create Leermodule*/
+#titleDataCreate{
+    display: flex;
+    gap: 5vw;
+}
+
+#basicInfo{
+    display: flex;
+    flex-direction: column;
+}
+
+#createForm{
+    display: flex;
+    gap: 1vh;
 }
 
 /*Classes*/
@@ -168,6 +234,11 @@ main{
     /*flex-direction: column;*/ /*⭐: not sure what's better so I'm leaving it like this for now*/
 }
 
+.answers_checks{
+    margin: 8px;
+    margin-left: 0px;
+}
+
 
 /*Update pagina*/
 
@@ -196,8 +267,22 @@ main{
     text-align: center;
 }
 
-/*⭐: Is for collapse feature, please leave be, might still use it */
-/*.content_collapse{*/
-/*    display: none;*/
-/*    overflow: hidden;*/
-/*}*/
+/*Create pagina*/
+.add_remove_btns{
+    border-radius: 50%;
+    width: 2vw;
+    /*height: 45%; */
+    color: var(--green);
+    background-color: var(--black-tint);
+    border: var(--light-grey) solid 2px;
+}
+
+.increaseDecreaseBtnsCreate{
+    display: flex;
+    gap: 3vw;
+}
+
+.increaseDecreaseBtnsCreate > div{
+    display: flex;
+    gap: 1vw;
+}

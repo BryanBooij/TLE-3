@@ -27,8 +27,8 @@ function DetailsLeermodule() {
                 <div id="questionsContainer">
                     {/*⭐: there's an issue where to many of them will make the top clip into the header!!!*/}
                 <div>
-                    <h2 className="questionTitle collapsible">Question 1</h2>
                     {/*p times the amount of existing answers*/}
+                    <h2 className="questionTitle collapsible">Question 1</h2>
                     <div className="answers_container content_collapse">
                         <p>
                             answer
