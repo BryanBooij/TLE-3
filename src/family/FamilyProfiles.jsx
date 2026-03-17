@@ -119,7 +119,6 @@ function FamilyProfiles() {
                 <div className="chart-container">
                     <canvas ref={chartRef}></canvas>
                 </div>
-
                 <BigButton alt="Back" label="Back" onClick={() => navigate("/Family")} />
             </div>
         </>
