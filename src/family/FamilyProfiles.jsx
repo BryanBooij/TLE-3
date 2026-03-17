@@ -1,6 +1,6 @@
 import "./family.css";
 import { useState, useEffect, useRef } from "react";
-import { useParams, useNavigate } from "react-router";
+import { useParams, useNavigate, useLocation } from "react-router";
 import BigButton from "../buttons/BigButton.jsx";
 
 function FamilyProfiles() {
@@ -10,6 +10,8 @@ function FamilyProfiles() {
     const { id } = useParams();
     const chartRef = useRef(null);
     const [chartInstance, setChartInstance] = useState(null);
+    const location = useLocation();
+    const username = location.state?.username;
 
     // Fetch AI profiles
     useEffect(() => {
@@ -115,7 +117,7 @@ function FamilyProfiles() {
                 ))}
 
                 <h3>Data collection chart</h3>
-                <p>in deze data chart kan je zien waar de van houd!</p>
+                <p>in deze data chart kan je zien waar {username} de van houd!</p>
                 <div className="chart-container">
                     <canvas ref={chartRef}></canvas>
                 </div>
