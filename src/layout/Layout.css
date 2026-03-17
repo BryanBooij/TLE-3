@@ -14,8 +14,7 @@
 .layout-container {
     display: flex;
     flex-direction: column;
-    width: 100vw;
-    overflow: hidden;
+    width: 100%;
 }
 
 .layout-header {

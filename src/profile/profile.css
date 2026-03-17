@@ -1,3 +1,16 @@
+*{
+    --dark-grey: #1D3037;
+    --black-tint: #141F23;
+    --black: #000;
+    --light-grey: #59646A;
+    --light-purple: #cb6ce6;
+    --darker-purple: #7d3492;
+    --white: #FFF;
+    --green: #5BCB07;
+    font-family: "Comic Relief", system-ui;
+}
+
+
 .profile-container{
     width: 100%;
     height: 100%;
@@ -33,4 +46,96 @@
 .save-message{
     color: Green;
     font-size: 1.5rem;
+}
+
+.piechart {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-image: conic-gradient(
+            pink 70deg,
+            lightblue 0 235deg,
+            orange 0
+    );
+}
+
+.title_with_info{
+    display: flex;
+}
+
+/*Bigger pie chart*/
+.chart-container {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: conic-gradient(
+            #9C27B0 0% 60%,     /* Chrome */
+            #2196F3 60% 80%,    /* Firefox */
+            #4CAF50 80% 90%,    /* Edge */
+            #FFC107 90% 100%    /* Safari */
+    );
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+.center-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--black-tint);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+
+.legend {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+}
+.instagram { background: #9C27B0; }
+.facebook { background: #2196F3; }
+.twitter { background: #4CAF50; }
+.snapchat { background: #FFC107; }
+
+/*Id's*/
+#settings{
+    border: solid 2px var(--light-grey);
+    width: 40%;
+    padding: 2%;
+
+    h2{
+        text-align: center;
+    }
+
+}
+
+#colorOptionCharts{
+    display: flex;
+    gap: 3vw;
+    justify-content: space-evenly;
+}
+
+#textChanges{
+    display: flex;
+    justify-content: space-between;
 }
