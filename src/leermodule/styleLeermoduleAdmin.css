@@ -69,9 +69,10 @@ main{
 }
 
 /*update/edit page*/
-#updateLeermoduleContainter {
+#updateLeermoduleContainter{
     align-self: center;
     max-height: 90vh;
+    width: 50vw;
 
     >form{
         display: flex;
@@ -83,6 +84,34 @@ main{
         color: white;
         border: 2px solid var(--light-grey);
         border-radius: 10%;
+        padding: 0.8rem;
+    }
+
+    select{
+        background-color: var(--black-tint);
+        color: white;
+    }
+
+    option{
+        background-color: var(--black-tint);
+        color: white;
+    }
+}
+
+#createLeermoduleContainer{
+    align-self: center;
+    max-height: 90vh;
+    width: 50vw;
+
+    >form{
+        display: flex;
+        flex-direction: column;
+    }
+
+    input[type="text"]{
+        background-color: var(--black-tint);
+        color: white;
+        border: 2px solid var(--light-grey);
         padding: 0.8rem;
     }
 
@@ -122,10 +151,30 @@ main{
 /*Details pagina*/
 #questionsContainer{
     text-align: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /*height: 100vh;*/
 
     >div{ /*⭐: Idk why it works but I think it's funny so I'm leaving it*/
         margin-top: 5vh;
     }
+}
+
+#answersContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#questionsContainerCreate > div{
+    display: flex;
+    gap: 2vw;
+    margin-top: 2vh;
+}
+
+#titleDataCreate{
+    display: flex;
+    gap: 5vw;
 }
 
 /*Classes*/
@@ -165,6 +214,11 @@ main{
     display: flex;
     gap: 3vw;
     /*flex-direction: column;*/ /*⭐: not sure what's better so I'm leaving it like this for now*/
+}
+
+.answers_checks{
+    margin: 8px;
+    margin-left: 0px;
 }
 
 

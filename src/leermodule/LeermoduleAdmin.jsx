@@ -44,17 +44,17 @@ return (
                             <h2>Make new module &#10009;</h2>
                         </a>
 
-                    <div className="dropdown">
-                        <h2>Filters</h2>
-                        <div className="dropdown-content">
-                            <ButtonGreen className="detailButton" alt="Filter A" label="FilterA" onClick={() => navigate("")} />
-                            <ButtonGreen className="detailButton" alt="Filter B" label="FilterB" onClick={() => navigate("/")} />
-                            <ButtonGreen className="detailButton" alt="Filter C" label="FilterC" onClick={() => navigate("/")} />
-                            <ButtonGreen className="detailButton" alt="Filter D" label="FilterD" onClick={() => navigate("/")} />
-                            <ButtonGreen className="detailButton" alt="Filter E" label="FilterB" onClick={() => navigate("/")} />
-                            <ButtonGreen className="detailButton" alt="Apply" label="Apply" onClick={() => navigate("/")} />
-                        </div>
-                    </div>
+                    {/*<div className="dropdown">*/}
+                    {/*    <h2>Filters</h2>*/}
+                    {/*    <div className="dropdown-content">*/}
+                    {/*        <ButtonGreen className="detailButton" alt="Filter A" label="FilterA" onClick={() => navigate("")} />*/}
+                    {/*        <ButtonGreen className="detailButton" alt="Filter B" label="FilterB" onClick={() => navigate("/")} />*/}
+                    {/*        <ButtonGreen className="detailButton" alt="Filter C" label="FilterC" onClick={() => navigate("/")} />*/}
+                    {/*        <ButtonGreen className="detailButton" alt="Filter D" label="FilterD" onClick={() => navigate("/")} />*/}
+                    {/*        <ButtonGreen className="detailButton" alt="Filter E" label="FilterB" onClick={() => navigate("/")} />*/}
+                    {/*        <ButtonGreen className="detailButton" alt="Apply" label="Apply" onClick={() => navigate("/")} />*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
                 </div>
             </div>
             <table>
