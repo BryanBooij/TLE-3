@@ -5,7 +5,7 @@ import {useNavigate} from "react-router";
 import {useParams} from "react-router-dom";
 import {useState} from "react";
 import './styleLeermoduleAdmin.css';
-import './addRemoveElement.js';
+// import './addRemoveElement.js';
 import ButtonPurple from "../buttons/ButtonPurple.jsx";
 import ButtonMain from "../buttons/ButtonMain.jsx";
 
@@ -36,7 +36,7 @@ function CreateLeermodule() {
         <>
             <div id="createLeermoduleContainer">
                 <ButtonPurple alt={"Exit details page of [insert quiz name here]"} label={"Return"} onClick={() => navigate("/Leermodule")}></ButtonPurple>
-                <form action="">
+                <form action="" id={"createForm"}>
                     <div id={"titleDataCreate"}>
                         <h1>Create new leermodule</h1>
                         <select id="Theme" name="Theme">
@@ -53,16 +53,22 @@ function CreateLeermodule() {
                         </select>
                     </div>
 
+                    <div id={"basicInfo"}>
                     <label htmlFor="qname">Name quiz</label>
                     <input type="text" id="qname" name="quizname" placeholder="Name of your quiz"/>
 
                     <label htmlFor="desc">Description</label>
                     <input type="text" id="desc" name="description" placeholder="Put your description here"/>
+                    </div>
+
+                    <hr/>
 
                     <div className="increaseDecreaseBtnsCreate">
                         <label htmlFor="questions">Questions</label>
-                        <button id={"addQuestion"}>+</button>
-                        <button id={"removeQuestion"}>-</button>
+                        <div>
+                            <button id={"addQuestion"} className={"add_remove_btns"}>+</button>
+                            <button id={"removeQuestion"} className={"add_remove_btns"}>-</button>
+                        </div>
                     </div>
                     <div id="questionsContainerCreate">
                         <div>
@@ -79,22 +85,26 @@ function CreateLeermodule() {
                         </div>
                     </div>
 
+                    <hr/>
+
                     <div className="increaseDecreaseBtnsCreate">
                         <label htmlFor="answers">Answers</label>
-                        <button id={"addAnswer"}>+</button>
-                        <button id={"removeAnswer"}>-</button>
+                        <div>
+                            <button id={"addAnswer"} className={"add_remove_btns"}>+</button>
+                            <button id={"removeAnswer"} className={"add_remove_btns"}>-</button>
+                        </div>
                     </div>
                     <div id={"answersContainer"}>
                         <div className={"answers_checks"}>
-                            <input type="text" id="qname" name="quizname" placeholder="Answer"/>
+                            <input type="text" name="quizname" placeholder="Answer"/>
                             <input type="checkbox" id="check1" name="check1" value=""/>
                         </div>
                         <div className={"answers_checks"}>
-                            <input type="text" id="qname" name="quizname" placeholder="Answer"/>
+                            <input type="text" name="quizname" placeholder="Answer"/>
                             <input type="checkbox" id="check2" name="check2" value=""/>
                         </div>
                         <div className={"answers_checks"}>
-                            <input type="text" id="qname" name="quizname" placeholder="Answer"/>
+                            <input type="text" name="quizname" placeholder="Answer"/>
                             <input type="checkbox" id="check3" name="check3" value=""/>
                         </div>
                     </div>
