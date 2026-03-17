@@ -24,18 +24,10 @@ export default function QuizPage() {
     const [answersList, setAnswersList] = useState([]);
 
     const q = questions[currentIndex];
-
-    const [users, setUsers] = useState([]);
-
+    
     /* ---------------- LOAD QUESTIONS ---------------- */
 
     useEffect(() => {
-        async function loadUsers() {
-            const res = await fetch(`${BACKEND_BASE}/users`);
-            const data = await res.json();
-            setUsers(data);
-        }
-        loadUsers();
         loadQuestions();
     }, []);
 
