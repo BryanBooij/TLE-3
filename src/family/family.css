@@ -46,6 +46,7 @@ html,body{
     gap: 10px;
     justify-content: center;
     align-items: center;
+    margin: 0 auto;
 }
 
 .profile-stats {
@@ -65,4 +66,12 @@ html,body{
     border-radius: 12px;
     box-sizing: border-box;
     text-align: center;
+}
+
+.button-center{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 20px;
+
 }

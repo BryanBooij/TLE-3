@@ -53,7 +53,9 @@ function FamilyProfiles() {
                     </div>
                 ))}
             </div>
-            <BigButton alt="Back" label="Back" onClick={() => navigate("/Family")}/>
+            <div className="button-center">
+                <BigButton alt="Back" label="Back" onClick={() => navigate("/Family")}/>
+            </div>
         </>
     );
 }
