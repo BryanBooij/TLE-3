@@ -2,6 +2,7 @@
     --dark-grey: #1D3037;
     --black-tint: #141F23;
     --black: #000;
+    --black-transparent: rgba(0, 0, 0, 0.19);
     --light-grey: #59646A;
     --light-purple: #cb6ce6;
     --darker-purple: #7d3492;
@@ -23,14 +24,6 @@
     box-sizing: border-box;
 }
 
-.checkbox-container{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 1rem;
-}
-
 .checkbox-container-info > div {
     display: flex;
     align-items: center;
@@ -48,19 +41,90 @@
     font-size: 1.5rem;
 }
 
+.checkbox-container{
+    display: flex;
+    gap: 5vw;
+}
+
 .piechart {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background-image: conic-gradient(
+    background-image: conic-gradient( /*⭐: Not quite sure how it works yet, will change it*/
             pink 70deg,
-            lightblue 0 235deg,
-            orange 0
+            lightblue 0 200deg,
+            orange 0 35deg,
+            red 0 20deg,
+            blue 0 10deg,
+            green 0 50deg,
+            grey 0 5deg,
+            purple 0 5deg
     );
 }
 
 .title_with_info{
     display: flex;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+
+
+/*toggle switches*/
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+input:checked + .slider {
+    background-color: #2196F3;
+}
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+.slider.round:before {
+    border-radius: 50%;
 }
 
 /*Bigger pie chart*/
@@ -93,20 +157,17 @@
     font-size: 18px;
     box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
 }
-
 .legend {
     margin-top: 30px;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-
 .legend-item {
     display: flex;
     align-items: center;
     gap: 10px;
 }
-
 .legend-color {
     width: 20px;
     height: 20px;
@@ -120,13 +181,37 @@
 /*Id's*/
 #settings{
     border: solid 2px var(--light-grey);
-    width: 40%;
+    width: 85%;
+    height: 50%;
     padding: 2%;
 
     h2{
         text-align: center;
+        text-decoration: underline;
     }
 
+    input[type="checkbox"]{
+        background-color: var(--black-tint);
+    }
+
+}
+
+#TermsAndData{
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    width: 30vw;
+    padding: 2%;
+    h2{
+        text-align: center;
+        text-decoration: underline;
+    }
+}
+
+#dataChart{
+    background-color: var(--black-transparent);
+    padding: 10%;
+    width: 25vw;
 }
 
 #colorOptionCharts{
@@ -138,4 +223,5 @@
 #textChanges{
     display: flex;
     justify-content: space-between;
+    margin-top: 3vh;
 }

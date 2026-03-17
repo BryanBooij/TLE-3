@@ -19,33 +19,10 @@ function Profile(){
         <div className="profile-container"> {/*⭐: Please use Id's in these situations!!!!*/}
             <h1>Profile Settings</h1>
             <div>
-            <h3>Onze app maakt gebruik van HuggingFace AI. Geeft u toestemming om uw persoonsgegevens hiervoor te gebruiken?</h3>
-            <div className="checkbox-container-info">
-                <div>
-                    <input type="checkbox" id="hugginface"/>
-                    <InfoButton alt="InfoButton" label="InfoButton" onClick={() => (window.location.href = "https://huggingface.co/terms-of-service")}/>
-                    <label htmlFor="hugginface">Geef toestemming om HuggingFace AI data te gebruiken</label>
-                </div>
-            </div>
-            <br/>
-            <h3>Onze app gebruikt data van de volgende onderdelen. Geeft u hiervoor toestemming?</h3>
             <div className="checkbox-container">
-                <div>
-                    <input type="checkbox" id="twitter"/>
-                    <label htmlFor="twitter"> Geef toestemming om Twitter data te gebruiken</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="youtube"/>
-                    <label htmlFor="youtube"> Geef toestemming om Spotify data te gebruiken</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="netflix"/>
-                    <label htmlFor="netflix"> Geef toestemming om Netflix data te gebruiken</label>
-                </div>
-
                 <div id="settings">
                     <div>
-                        <h2>Accessability</h2>
+                        <h2>Accessibility</h2>
                         <div id="color_blind">
                             <div className="title_with_info">
                                 <h3>Color blindness</h3>
@@ -63,14 +40,20 @@ function Profile(){
                                     <h4>Dyslectic</h4>
                                     <InfoButton alt="InfoButton" label="InfoButton"></InfoButton>
                                 </div>
-                                <button id={"dyslecticBtn"}>OFF</button>
+                                <label className="switch">
+                                    <input type="checkbox"/>
+                                    <span className="slider round"></span>
+                                </label>
                             </div>
                             <div id="simplerText">
                                 <div className="title_with_info">
                                     <h4>Simpler text</h4>
                                     <InfoButton alt="InfoButton" label="InfoButton"></InfoButton>
                                 </div>
-                                <button id={"simplerTextBtn"}>OFF</button>
+                                <label className="switch">
+                                    <input type="checkbox"/>
+                                    <span className="slider round"></span>
+                                </label>
                             </div>
                         </div>
                         <h2>Privacy</h2>
@@ -80,13 +63,28 @@ function Profile(){
                                     <p>Data</p>
                                     <InfoButton alt="InfoButton" label="InfoButton"></InfoButton>
                                 </div>
-
                             </div>
                             <div id="shareDataAdmins">
-                                
-                            </div>
-                            <div id={"huggingFaceAI"}>
-                                
+                                <div className="agreement_shareDataAdmins">
+                                    <input type="checkbox" id="instagram"/>
+                                    <label htmlFor="twitter"> Geef toestemming om Instagram data te gebruiken</label>
+                                </div>
+                                <div className="agreement_shareDataAdmins">
+                                    <input type="checkbox" id="facebook"/>
+                                    <label htmlFor="twitter"> Geef toestemming om Facebook data te gebruiken</label>
+                                </div>
+                                <div className="agreement_shareDataAdmins">
+                                    <input type="checkbox" id="twitter"/>
+                                    <label htmlFor="twitter"> Geef toestemming om Twitter data te gebruiken</label>
+                                </div>
+                                <div className="agreement_shareDataAdmins">
+                                    <input type="checkbox" id="snapchat"/>
+                                    <label htmlFor="twitter"> Geef toestemming om Snapchat data te gebruiken</label>
+                                </div>
+                                <div className="agreement_shareDataAdmins">
+                                    <input type="checkbox" id="huggingFace"/>
+                                    <label htmlFor="twitter"> Geef toestemming om met Hugging Face data te delen</label>
+                                </div>
                             </div>
                         </div>
                     </div>
