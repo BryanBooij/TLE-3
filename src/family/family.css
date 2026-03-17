@@ -64,5 +64,6 @@ canvas {
     position: relative;
     width: 400px;
     height: 400px;
-    margin: 20px;
+    margin-bottom: 50px;
+    margin-top: -30px;
 }
