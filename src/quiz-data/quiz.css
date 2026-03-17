@@ -224,7 +224,10 @@
 .talk-answers-list { margin-top: 8px; }
 
 .talk-notes {
-  width: 100%;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
 }
 
 .talk-notes textarea {
@@ -246,3 +249,19 @@
 }
 
 .talk-note-actions { overflow: visible; display: flex; justify-content: center; align-items: center; gap: 18px; }
+
+.talk-content {
+    display: flex;
+    text-align: center;
+    gap: 40px;
+}
+
+.talk-left {
+    flex: 1;
+}
+
+.discussion-image {
+    width: 300px;
+    height: auto;
+    object-fit: contain;
+}
