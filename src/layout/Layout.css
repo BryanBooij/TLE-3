@@ -14,8 +14,7 @@
 .layout-container {
     display: flex;
     flex-direction: column;
-    width: 100vw;
-    overflow: hidden;
+    width: 100%;
 }
 
 .layout-header {
@@ -35,6 +34,7 @@
     padding-bottom: 25px;
     margin-bottom: 10px;
     margin-top: 20px;
+    width: 99vw;
     color: var(--white);
 }
 

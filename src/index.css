@@ -16,7 +16,6 @@ html, body {
   width: 100%;
   background-color: var(--black-tint);
   color: var(--white);
-  overflow: hidden;
 }
 
 @media (prefers-color-scheme: light) {
