@@ -25,9 +25,17 @@ export default function QuizPage() {
 
     const q = questions[currentIndex];
 
+    const [users, setUsers] = useState([]);
+
     /* ---------------- LOAD QUESTIONS ---------------- */
 
     useEffect(() => {
+        async function loadUsers() {
+            const res = await fetch(`${BACKEND_BASE}/users`);
+            const data = await res.json();
+            setUsers(data);
+        }
+        loadUsers();
         loadQuestions();
     }, []);
 
@@ -65,16 +73,21 @@ export default function QuizPage() {
                         ? json
                         : json.answers || json.data || [];
 
-                    const cleaned = answers
-                        .map(a => ({
-                            text: a.answer_text || a.text || "",
-                            correct:
-                                a.is_correct === true ||
-                                a.is_correct === 1 ||
-                                a.is_correct === "1" ||
-                                a.is_correct === "true"
-                        }))
-                        .filter(a => a.text);
+                    const userRes = await fetch(`${BACKEND_BASE}/users`);
+                    const users = await userRes.json();
+
+                    const userMap = Object.fromEntries(
+                        users.map(u => [u.id, u.username])
+                    );
+
+                    const cleaned = answers.map(a => ({
+                        text: userMap[a.user_id] || `User ${a.user_id}`,
+                        correct:
+                            a.is_correct === true ||
+                            a.is_correct === 1 ||
+                            a.is_correct === "1" ||
+                            a.is_correct === "true"
+                    }));
 
                     const correctIndex = cleaned.findIndex(a => a.correct);
 
