@@ -4,14 +4,9 @@ import { useParams } from "react-router-dom";
 import './styleLeermoduleAdmin.css';
 import '../buttons/ButtonPurple.jsx';
 
-//⭐: For some reason I need to leave in these console.log lines otherwise it won't trigger, I'll look at why some other time
-//⭐: Also please DONT TOUCH THIS ITS SO UNSTABLE
-// import './collapse.js'
-
 import ButtonPurple from "../buttons/ButtonPurple.jsx";
 import ButtonBlack from "../buttons/ButtonBlack.jsx";
 import {useNavigate} from "react-router";
-import ButtonGreen from "../buttons/ButtonGreen.jsx";
 
 function DetailsLeermodule() {
     let info = useParams(); // Access the route parameter;
