@@ -31,11 +31,12 @@ html,body{
     width: 100%;
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: flex-start;
     gap: 20px;
     box-sizing: border-box;
-    flex-direction: column;
     min-height: 100vh;
+    padding-bottom: 20px;
 }
 
 .backButton{
@@ -44,4 +45,24 @@ html,body{
     text-align: center;
     font-size: 1.5rem;
     cursor: pointer;
+}
+
+.family-data canvas {
+    width: 400px !important;
+    height: 400px !important;
+    display: block;
+    margin: 20px 0;
+}
+
+canvas {
+    width: 100% !important;
+    max-width: 500px;
+    height: 100% !important;
+}
+
+.chart-container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 20px;
 }
