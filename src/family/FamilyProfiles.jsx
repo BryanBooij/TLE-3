@@ -33,11 +33,9 @@ function FamilyProfiles() {
             <div className="family-data">
                 {user.map((profile) => (
                     <div key={profile.id}>
-                        <h3>Veel bezochte zoekopdrachten: {profile.search_terms}</h3>
-                        <h3>Veel bezochte websites: {profile.website_visits}</h3>
-                        <h3>Meest gebruikte social media: {profile.social_media}</h3>
-                        <h3>Veel gebruikte technologie: {profile.smart_objects}</h3>
-                        <h3>samenvatting: {profile.overview}</h3>
+                        <h3>Veel bezochte video titels: {profile.liked_video_titles}</h3>
+                        <h3>Veel bezochte video beschrijvingen: {profile.liked_video_descriptions}</h3>
+                        <h3>Meest gebruikte tags: {profile.liked_video_tags}</h3>
                     </div>
                 ))}
                 <BigButton alt="Back" label="Back" onClick={() => navigate("/Family")} />
