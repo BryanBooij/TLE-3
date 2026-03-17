@@ -46,21 +46,55 @@
     gap: 5vw;
 }
 
-.piechart {
+.piechartA {
     width: 100px;
     height: 100px;
     border-radius: 50%;
     background-image: conic-gradient( /*⭐: Not quite sure how it works yet, will change it*/
-            pink 70deg,
-            lightblue 0 200deg,
-            orange 0 35deg,
-            red 0 20deg,
-            blue 0 10deg,
-            green 0 50deg,
-            grey 0 5deg,
-            purple 0 5deg
+            #de9c50 45deg,
+            #f8ee6f 0 90deg,
+            #a7a5a3 0 135deg,
+            #d745ef 0 180deg,
+            #7b3685 0 225deg,
+            #74b162 0 270deg,
+            #0000eb 0 315deg,
+            #d74530 0 360deg
     );
 }
+
+.piechartB {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-image: conic-gradient( /*⭐: Not quite sure how it works yet, will change it*/
+            #b2a74a 45deg,
+            #faf06c 0 90deg,
+            #a8a8a8 0 135deg,
+            #4473ed 0 180deg,
+            #334787 0 225deg,
+            #b2a85b 0 270deg,
+            #162aea 0 315deg,
+            #766e30 0 360deg
+    );
+}
+
+.piechartC {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-image: conic-gradient( /*⭐: Not quite sure how it works yet, will change it*/
+            #c8bc54 45deg,
+            #f9f16c 0 90deg,
+            #a7a8a8 0 135deg,
+            #94a6f3 0 180deg,
+            #5b6288 0 225deg,
+            #9d955b 0 270deg,
+            #233fec 0 315deg,
+            #766e30 0 360deg
+    );
+}
+
+/*360*/
 
 .title_with_info{
     display: flex;
