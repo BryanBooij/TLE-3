@@ -3,9 +3,8 @@ import '../index.css'
 import ButtonGreen from "../buttons/ButtonGreen.jsx";
 import {useNavigate} from "react-router";
 import {useParams} from "react-router-dom";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import './styleLeermoduleAdmin.css';
-// import './addRemoveElement.js';
 import ButtonPurple from "../buttons/ButtonPurple.jsx";
 import ButtonMain from "../buttons/ButtonMain.jsx";
 
@@ -27,87 +26,223 @@ function CreateLeermodule() {
 
     // Message state for confirmation of saving changes, will disappear after 2 seconds
     const [Message, setMessage] = useState("");
-    const handleSave = () => {
-        setMessage("Opgeslagen!");
-        setTimeout(() => setMessage(""), 2000);
+    // state
+    const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
+    const [themes, setThemes] = useState([]);
+    const [themeId, setThemeId] = useState([null]);
+    const [questions, setQuestions] = useState([]);
+
+
+    // handle save
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const quiz = {
+            name: name,
+            description: description,
+            theme_id: themeId, // number
+            questions: questions.map(q => ({
+                description: q.description || "No description",
+                answers: q.answers.map(a => ({
+                    user_id: a.user_id.toString(),
+                    is_correct: !!a.is_correct
+                }))
+            }))
+        };
+
+        try {
+            const res = await fetch("http://145.24.237.168:8000/learningModules", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json"
+                },
+                body: JSON.stringify(quiz)
+            });
+
+            const data = await res.json();
+            setMessage("Opgeslagen!");
+            setTimeout(() => setMessage(""), 2000);
+        } catch (err) {
+            console.error(err);
+            setMessage("Fout bij opslaan");
+        }
     };
+
+    // get users from db
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        fetch("http://145.24.237.168:8000/users")
+            .then(res => res.json())
+            .then(data => {
+                const filtered = data.filter(user => user.id >= 1 && user.id <= 4);
+                setUsers(filtered);
+            })
+            .catch(err => console.error(err));
+    }, []);
+
+    const createAnswersFromUsers = (users) =>
+        users.map(user => ({
+            user_id: user.id,
+            is_correct: false
+        }));
+
+    useEffect(() => {
+        if (users.length > 0) {
+            const questionsWithAnswers = [0,1,2].map(() => ({
+                description: "",
+                answers: users.map(user => ({
+                    user_id: user.id,
+                    is_correct: false
+                }))
+            }));
+            setQuestions(questionsWithAnswers);
+        }
+    }, [users]);
+
+    // themes
+    useEffect(() => {
+        fetch("http://145.24.237.168:8000/themes", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                const themesArray = Array.isArray(data) ? data : data.themes || [];
+                setThemes(themesArray);
+                if (themesArray.length > 0) setThemeId(themesArray[0].id);
+            })
+            .catch(err => console.error(err));
+    }, []);
+
+    // hele questions maken
+    useEffect(() => {
+        if (!themeId || themes.length === 0) return;
+
+        const theme = themes.find(t => t.id === themeId);
+        if (!theme) return;
+
+        // hardcoded questions because db doesn't provide the whole question
+        const autoQuestions = [
+            {
+                description: `Wie zijn lievelings film = ${theme.movie}?`,
+                answers: users.map(u => ({ user_id: u.id, is_correct: u.id === 0 }))
+            },
+            {
+                description: `Wie zijn lievelings film genre = ${theme.movie_genre}?`,
+                answers: users.map(u => ({ user_id: u.id, is_correct: u.id === 0 }))
+            },
+            {
+                description: `Wie zijn lievelings artiest = ${theme.artist}?`,
+                answers: users.map(u => ({ user_id: u.id, is_correct: u.id === 0 }))
+            },
+            {
+                description: `Wie zijn lievelings eten = ${theme.food}?`,
+                answers: users.map(u => ({ user_id: u.id, is_correct: u.id === 0 }))
+            },
+            {
+                description: `Wie zijn lievelings plaats = ${theme.place}?`,
+                answers: users.map(u => ({ user_id: u.id, is_correct: u.id === 0 }))
+            },
+            {
+                description: `Wie zijn lievelings muziek = ${theme.music}?`,
+                answers: users.map(u => ({ user_id: u.id, is_correct: u.id === 0 }))
+            },
+            {
+                description: `Wie zijn lievelings muziekgenre = ${theme.music_genre}?`,
+                answers: users.map(u => ({ user_id: u.id, is_correct: u.id === 0 }))
+            },
+            {
+                description: `Wie zijn lievelings Vakantieland = ${theme.holiday_country}?`,
+                answers: users.map(u => ({ user_id: u.id, is_correct: u.id === 0 }))
+            },
+            {
+                description: `Wie zijn lievelings kledingsstyle = ${theme.clothing_style}`,
+                answers: users.map(u => ({ user_id: u.id, is_correct: u.id === 0 }))
+            },
+            {
+                description: `Wie zijn lievelings dier = ${theme.animal}?`,
+                answers: users.map(u => ({ user_id: u.id, is_correct: u.id === 0 }))
+            },
+            {
+                description: `Wie zijn lievelings Kleur is =${theme.color} ?`,
+                answers: users.map(u => ({ user_id: u.id, is_correct: u.id === 0 }))
+            }
+        ];
+        setQuestions(autoQuestions);
+    }, [themeId, themes, users]);
 
     return(
         <>
             <div id="createLeermoduleContainer">
                 <ButtonPurple alt={"Exit details page of [insert quiz name here]"} label={"Return"} onClick={() => navigate("/Leermodule")}></ButtonPurple>
-                <form action="" id={"createForm"}>
+                <form action="" id={"createForm"} onSubmit={handleSubmit}>
                     <div id={"titleDataCreate"}>
                         <h1>Create new leermodule</h1>
-                        <select id="Theme" name="Theme">
-                            <option value="1">Theme 1</option>
-                            <option value="2">Theme 2</option>
-                            <option value="3">Theme 3</option>
-                            <option value="3">Theme 4</option>
-                            <option value="3">Theme 5</option>
-                            <option value="3">Theme 6</option>
-                            <option value="3">Theme 7</option>
-                            <option value="3">Theme 8</option>
-                            <option value="3">Theme 9</option>
-                            <option value="3">Theme 10</option>
+                        <select id="Theme" name="Theme" value={themeId || ""} onChange={(e) => setThemeId(Number(e.target.value))}>
+                            {themes.length === 0 && <option value="">Loading themes...</option>}
+                            {themes.map((theme) => (
+                                <option key={theme.id} value={theme.id}>
+                                    {theme.name || `Theme ${theme.id}`}
+                                </option>
+                            ))}
                         </select>
                     </div>
 
                     <div id={"basicInfo"}>
                     <label htmlFor="qname">Name quiz</label>
-                    <input type="text" id="qname" name="quizname" placeholder="Name of your quiz"/>
+                    <input type="text" id="qname" name="quizname" placeholder="Name of your quiz" value={name} onChange={(e) => setName(e.target.value)}/>
 
                     <label htmlFor="desc">Description</label>
-                    <input type="text" id="desc" name="description" placeholder="Put your description here"/>
+                    <input type="text" id="desc" name="description" placeholder="Put your description here" value={description} onChange={(e) => setDescription(e.target.value)}/>
                     </div>
 
                     <hr/>
 
-                    <div className="increaseDecreaseBtnsCreate">
-                        <label htmlFor="questions">Questions</label>
-                        <div>
-                            <button id={"addQuestion"} className={"add_remove_btns"}>+</button>
-                            <button id={"removeQuestion"} className={"add_remove_btns"}>-</button>
-                        </div>
-                    </div>
+                    <h3>Hierin kan je vragen opschrijven en de juiste persoon als antwoord meegeven</h3>
                     <div id="questionsContainerCreate">
-                        <div>
-                            <p>1.</p>
-                            <input type="text" id="questionId" name="questions" placeholder="Question"/>
-                        </div>
-                        <div>
-                            <p>2.</p>
-                            <input type="text" id="questionId" name="questions" placeholder="Question"/>
-                        </div>
-                        <div>
-                            <p>3.</p>
-                            <input type="text" id="questionId" name="questions" placeholder="Question"/>
-                        </div>
+                        {questions.map((q, qIndex) => (
+                            <div key={qIndex}>
+                                <p>{qIndex + 1}.</p>
+                                {/* input disabled zodat user het niet kan wijzigen */}
+                                <input type="text" value={q.description} disabled />
+
+                                {/* Radio buttons voor antwoorden */}
+                                {q.answers.map((answer, aIndex) => {
+                                    const user = users.find(u => u.id === answer.user_id);
+                                    const username = user ? (user.name || user.username || user.full_name) : "Loading...";
+
+                                    return (
+                                        <div key={aIndex} className="answers_checks">
+                                            <label>
+                                                <input type="radio" name={`question-${qIndex}`} checked={answer.is_correct}
+                                                    onChange={() => {
+                                                        const updated = [...questions];
+                                                        updated[qIndex] = {
+                                                            ...updated[qIndex],
+                                                            answers: updated[qIndex].answers.map((ans, i) => ({
+                                                                ...ans,
+                                                                is_correct: i === aIndex
+                                                            }))
+                                                        };
+                                                        setQuestions(updated);
+                                                    }}
+                                                />
+                                                {username}
+                                            </label>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        ))}
                     </div>
 
                     <hr/>
-
-                    <div className="increaseDecreaseBtnsCreate">
-                        <label htmlFor="answers">Answers</label>
-                        <div>
-                            <button id={"addAnswer"} className={"add_remove_btns"}>+</button>
-                            <button id={"removeAnswer"} className={"add_remove_btns"}>-</button>
-                        </div>
-                    </div>
-                    <div id={"answersContainer"}>
-                        <div className={"answers_checks"}>
-                            <input type="text" name="quizname" placeholder="Answer"/>
-                            <input type="checkbox" id="check1" name="check1" value=""/>
-                        </div>
-                        <div className={"answers_checks"}>
-                            <input type="text" name="quizname" placeholder="Answer"/>
-                            <input type="checkbox" id="check2" name="check2" value=""/>
-                        </div>
-                        <div className={"answers_checks"}>
-                            <input type="text" name="quizname" placeholder="Answer"/>
-                            <input type="checkbox" id="check3" name="check3" value=""/>
-                        </div>
-                    </div>
                     <div className="getBy_container">
                         <div className="getBy_left">
                             <input type="checkbox" id="getDataCheckbox" name="getDataCheckbox" value="true"/>
@@ -123,7 +258,7 @@ function CreateLeermodule() {
                 {/* Uiterst belangrijk ik heb deze voor nu *BUITEN* de form gezet zodat de message duidelijk is voor de presentatie
                  dit moet later binnen de form geplaatst worden zodat de submit knop daadwerkelijk data verstuurd!!!!!*/}
                 <div className={"Leermodule-save-button"}>
-                    <ButtonMain text="Save" label="save" onClick={handleSave} />
+                    <ButtonMain text="Save" label="save" onClick={handleSubmit} />
                     {Message && (
                         <div className="save-message">
                             {Message}
