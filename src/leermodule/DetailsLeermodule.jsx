@@ -108,6 +108,7 @@ function DetailsLeermodule() {
                             </div>
                             {/* Antwoorden als radio buttons */}
                             <div className="answers_container">
+                                <p>Antwoord: </p>
                                 {q.answers.map((a, aIndex) => (
                                     <label key={aIndex} className="answer_label">
                                         <input type="radio" name={`question-${qIndex}`} checked={!!a.is_correct} onChange={() => {

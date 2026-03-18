@@ -194,14 +194,6 @@ function CreateLeermodule() {
                 <form action="" id={"createForm"} onSubmit={handleSubmit}>
                     <div id={"titleDataCreate"}>
                         <h1>Create new leermodule</h1>
-                        <select id="Theme" name="Theme" value={themeId || ""} onChange={(e) => setThemeId(Number(e.target.value))}>
-                            {themes.length === 0 && <option value="">Loading themes...</option>}
-                            {themes.map((theme) => (
-                                <option key={theme.id} value={theme.id}>
-                                    {theme.name || `Theme ${theme.id}`}
-                                </option>
-                            ))}
-                        </select>
                     </div>
 
                     <div id={"basicInfo"}>
@@ -212,8 +204,17 @@ function CreateLeermodule() {
                         <input type="text" id="desc" name="description" placeholder="Put your description here" value={description} onChange={(e) => setDescription(e.target.value)}/>
                     </div>
                     <hr/>
-
-                    <h3>Hierin kan je vragen opschrijven en de juiste persoon als antwoord meegeven</h3>
+                    <h3>Hierin kan je een thema lijst met vragen kiezen en de juiste persoon als antwoord meegeven</h3>
+                    <div className="theme_selection_container">
+                        <select id="Theme" name="Theme" value={themeId || ""} onChange={(e) => setThemeId(Number(e.target.value))}>
+                            {themes.length === 0 && <option value="">Loading themes...</option>}
+                            {themes.map((theme) => (
+                                <option key={theme.id} value={theme.id}>
+                                    {theme.name || `Theme ${theme.id}`}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
                     <div id="questionsContainerCreate">
                         {questions.map((q, qIndex) => (
                             <div key={qIndex}>
@@ -257,17 +258,17 @@ function CreateLeermodule() {
                     </div>
 
                     <hr/>
-                    <div className="getBy_container">
-                        <div className="getBy_left">
-                            <input type="checkbox" id="getDataCheckbox" name="getDataCheckbox" value="true"/>
-                            <label htmlFor="getDataCheckbox">Get by family data</label>
-                        </div>
+                    {/*<div className="getBy_container">*/}
+                    {/*    <div className="getBy_left">*/}
+                    {/*        <input type="checkbox" id="getDataCheckbox" name="getDataCheckbox" value="true" defaultChecked="true"/>*/}
+                    {/*        <label htmlFor="getDataCheckbox">Get by family data</label>*/}
+                    {/*    </div>*/}
 
-                        <select id="getBy" name="getBy">
-                            <option value="1">Highest scoring member</option>
-                            <option value="2">Lowest scoring member</option>
-                        </select>
-                    </div>
+                    {/*    <select id="getBy" name="getBy">*/}
+                    {/*        <option value="1">Highest scoring member</option>*/}
+                    {/*        <option value="2">Lowest scoring member</option>*/}
+                    {/*    </select>*/}
+                    {/*</div>*/}
                 </form>
                 {/* Uiterst belangrijk ik heb deze voor nu *BUITEN* de form gezet zodat de message duidelijk is voor de presentatie
                  dit moet later binnen de form geplaatst worden zodat de submit knop daadwerkelijk data verstuurd!!!!!*/}

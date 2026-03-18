@@ -139,7 +139,7 @@ function FamilyProfiles() {
                         </ul>
 
                         <h3>Data collection chart</h3>
-                        <p>in deze data chart kan je zien waar {username} van houdt!</p>
+                        <p>in deze data chart kan je zien waar {username} van houdt</p>
 
                         <div className="family-chart-container">
                             <canvas ref={chartRef}></canvas>

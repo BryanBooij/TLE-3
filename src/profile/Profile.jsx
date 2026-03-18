@@ -24,7 +24,7 @@ function Profile(){
                         <div id="color_blind">
                             <div className="title_with_info">
                                 <h3>Color blindness</h3>
-                                <InfoButton alt="InfoButton" label="InfoButton">Dit is info voor color blindness</InfoButton>
+                                <InfoButton alt="InfoButton" label="InfoButton">Kies jou eigen kleur pallet</InfoButton>
                             </div>
                             <div id="colorOptionCharts">
                                 <div className="piechartA"></div>
@@ -36,7 +36,7 @@ function Profile(){
                             <div id="dyslectic">
                                 <div className="title_with_info">
                                     <h4>Dyslectic</h4>
-                                    <InfoButton alt="InfoButton" label="InfoButton">Dit is info voor Dyslectics</InfoButton>
+                                    <InfoButton alt="InfoButton" label="InfoButton">Zorgt voor makkelijker te lezen tekst</InfoButton>
                                 </div>
                                 <label className="switch">
                                     <input type="checkbox"/>
@@ -46,7 +46,7 @@ function Profile(){
                             <div id="simplerText">
                                 <div className="title_with_info">
                                     <h4>Simpler text</h4>
-                                    <InfoButton alt="InfoButton" label="InfoButton">dit is info voor Simpler text</InfoButton>
+                                    <InfoButton alt="InfoButton" label="InfoButton">Dit zorgt voor Simpler text</InfoButton>
                                 </div>
                                 <label className="switch">
                                     <input type="checkbox"/>
@@ -59,16 +59,16 @@ function Profile(){
                             <div>
                                 <div className="title_with_info">
                                     <p>Data</p>
-                                    <InfoButton alt="InfoButton" label="InfoButton">Dit is onfo over data</InfoButton>
+                                    <InfoButton alt="InfoButton" label="InfoButton">Geef toestemming om uw data te gebruiken voor onze AI</InfoButton>
                                 </div>
                             </div>
                             <div id="shareDataAdmins">
                                 <div className="agreement_shareDataAdmins">
-                                    <input type="checkbox" id="youtube"/>
+                                    <input type="checkbox" id="youtube" defaultChecked="true"/>
                                     <label htmlFor="youtube"> Permission to use data from YouTube</label>
                                 </div>
                                 <div className="agreement_shareDataAdmins">
-                                    <input type="checkbox" id="huggingFace"/>
+                                    <input type="checkbox" id="huggingFace" defaultChecked="true"/>
                                     <label htmlFor="huggingFace"> Permission to share date with our partner Hugging Face</label>
                                 </div>
                             </div>
