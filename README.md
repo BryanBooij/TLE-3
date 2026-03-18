@@ -3,23 +3,22 @@ Wij zijn een team van 3 programmeurs 'in de making'. We zitten nu in jaar 2 binn
 
 # KnowYourAI - Ons TLE 3 (school) project over AI geletterdheid
 
-KnowYourAI is een applicatie voor families om te leren omgaan met de moderne online omgeving door op een speelse manier kennis te maken met AI en wat voor effect het heeft op hun privacy.
+KnowYourAI is een applicatie voor families om te leren omgaan met de moderne onlineomgeving door op een speelse manier kennis te maken met AI en wat voor effect het heeft op hun privacy.
 
 # Ons doel 🙌
 
-Ons doel is om families het gesprek aan te gaan over het effect van de groeiende AI systemen op de wereld en hoe het effect heeft op hun leven, wat er gedaan kan worden om hun digitale voetafdruk kan verbeteren en te leren over hoe AI nou daadwerkelijk werkt.
+Ons doel is om families het gesprek aan te gaan over het effect van de groeiende AI-systemen op de wereld en hoe het effect heeft op hun leven, wat er gedaan kan worden om hun digitale voetafdruk kan verbeteren en te leren over hoe AI nu daadwerkelijk werkt.
 
 # License 
 Voor dit project is er een MIT ⚖️ licence gebruikt
 
 # Features 📝
 - Een leermodule systeem waar quizzes in staan over de familie.
-- AI algoritme die recommendations maakt gebaseerd op opgehaalde informatie.
-- Een uitgebreid AI profiel met transparantie over waar de data vandaan komt.
+- AI-algoritme die recommendations maakt gebaseerd op opgehaalde informatie.
+- Een uitgebreid AI-profiel met transparantie over waar de data vandaan komt.
 
 # Back-end 👓
-Hier is de link naar de gebruikte back-end & database. Dit is gemaakt door de back-enders van ons team .
-[Link]
+[Hier](https://github.com/Frutiger-AER0/TLE-3-backend) is de [link](https://github.com/Frutiger-AER0/TLE-3-backend) naar de gebruikte back-end & database. Dit is gemaakt door de back-enders van ons team.
 
 # Gebruikte talen & libraries 📚
 Voor dit project hebben wij, voor front-end, gebruik gemaakt van het volgende:
