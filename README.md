@@ -1,19 +1,19 @@
-# React + Vite
+# FamilieAI - Een TLE 3 project over AI geletterdheid.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+FamilieAI is een applicatie voor families om te leren omgaan met de moderne online omgeving door op een speelse manier kennis te maken met AI en wat voor effect het heeft op hun privacy.
 
 
-test
+# Features.
+
+
+- Een leermodule systeem waar quizzes in staan over de familie.
+- AI algoritme die recommendations maakt gebaseerd op opgehaalde informatie.
+- Een uitgebreid AI profiel met transparantie over waar de data vandaan komt.
+
+# Ons doel.
+
+Ons doel is om families het gesprek aan te gaan over het effect van de groeiende AI systemen op de wereld en hoe het effect heeft op hun leven, wat er gedaan kan worden om hun digitale voetafdruk kan verbeteren en te leren over hoe AI nou daadwerkelijk werkt.
+
+# Disclaimer.
+
+Alle informatie die wordt opgehaald is publiekelijk beschikbaar. FamilieAI houdt zich aan de EU AI Act en privacy wetgeving.
