@@ -29,9 +29,9 @@ function Profile(){
                                 <InfoButton alt="InfoButton" label="InfoButton">Dit is info voor color blindness</InfoButton>
                             </div>
                             <div id="colorOptionCharts">
-                                <div className="piechart"></div>
-                                <div className="piechart"></div>
-                                <div className="piechart"></div>
+                                <div className="piechartA"></div>
+                                <div className="piechartB"></div>
+                                <div className="piechartC"></div>
                             </div>
                         </div>
                         <div id="textChanges">

@@ -18,6 +18,8 @@ import Profile from "./profile/Profile.jsx";
 import Family from "./family/Family.jsx";
 import FamilyProfiles from "./family/FamilyProfiles.jsx";
 import Register from "./inlog/Register.jsx";
+import UsersOverview from "./usersOverview_A/usersOverview.jsx";
+import DetailsUsers from "./usersOverview_A/DetailsUsers.jsx";
 
 
 const router = createBrowserRouter([
@@ -82,6 +84,10 @@ const router = createBrowserRouter([
                     {
                         path:"/userOverview",
                         element: <UserOverview/>
+                    },
+                    {
+                        path:"/userOverview/details/:id",
+                        element: <DetailsUsers/>
                     },
                     {
                         path:"/Profile",
