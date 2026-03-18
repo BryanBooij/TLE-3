@@ -71,6 +71,7 @@ function CreateLeermodule() {
 
             const data = await res.json();
             setMessage("Opgeslagen!");
+            navigate("/Leermodule");
             setTimeout(() => setMessage(""), 2000);
 
         } catch (err) {
