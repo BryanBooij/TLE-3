@@ -103,7 +103,7 @@ export default function Categories() {
 
     return (
         <div className="quiz-page">
-            <h2>Kies een quiz</h2>
+            <h2>kies welke quiz je wilt maken!</h2>
             <div style={{ width: '100%', marginTop: 12 }}>
                 {categories.map((c) => (
                     <button key={c.id || c.name} className="choice-btn" onClick={() => startQuiz(c.id || c.name, c)}>

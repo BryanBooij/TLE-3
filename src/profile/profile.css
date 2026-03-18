@@ -226,6 +226,10 @@ input:checked + .slider:before {
         background-color: var(--black-tint);
     }
 
+    button{
+        display: block;
+        margin: 3% auto;
+    }
 }
 
 #TermsAndData{

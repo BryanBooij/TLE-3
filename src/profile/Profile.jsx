@@ -16,7 +16,6 @@ function Profile(){
     return (
         <div className="profile-container"> {/*⭐: Please use Id's in these situations!!!!*/}
             <h1>Profile Settings</h1>
-            <div>
             <div className="checkbox-container">
                 <div id="settings">
                     <div>
@@ -74,6 +73,12 @@ function Profile(){
                             </div>
                         </div>
                     </div>
+                    <ButtonMain text="Save" label="save" onClick={handleSave}/>
+                    {Message && (
+                        <div className="save-message">
+                            {Message}
+                        </div>
+                    )}
                 </div>
 
                 <div id="TermsAndData">
@@ -110,15 +115,7 @@ function Profile(){
                         </div>
                     </div>
                 </div>
-
             </div>
-            </div>
-            <ButtonMain text="Save" label="save" onClick={handleSave}/>
-            {Message && (
-                <div className="save-message">
-                    {Message}
-                </div>
-            )}
         </div>
     );
 }
