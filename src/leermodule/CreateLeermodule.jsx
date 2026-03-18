@@ -29,17 +29,26 @@ function CreateLeermodule() {
     // state
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
-    const [themeId, setThemeId] = useState(1);
+    const [themes, setThemes] = useState([]);
+    const [themeId, setThemeId] = useState([null]);
+    const [questions, setQuestions] = useState([]);
+
 
     // handle save
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const quiz = {
-            name,
-            description,
-            theme_id: themeId,
-            questions
+            name: name,
+            description: description,
+            theme_id: themeId, // number
+            questions: questions.map(q => ({
+                description: q.description || "No description",
+                answers: q.answers.map(a => ({
+                    user_id: a.user_id.toString(),
+                    is_correct: !!a.is_correct
+                }))
+            }))
         };
 
         try {
@@ -53,11 +62,8 @@ function CreateLeermodule() {
             });
 
             const data = await res.json();
-            console.log(data);
-
             setMessage("Opgeslagen!");
             setTimeout(() => setMessage(""), 2000);
-
         } catch (err) {
             console.error(err);
             setMessage("Fout bij opslaan");
@@ -72,7 +78,6 @@ function CreateLeermodule() {
             .then(res => res.json())
             .then(data => {
                 const filtered = data.filter(user => user.id >= 1 && user.id <= 4);
-                console.log("Users data:", filtered);
                 setUsers(filtered);
             })
             .catch(err => console.error(err));
@@ -83,12 +88,6 @@ function CreateLeermodule() {
             user_id: user.id,
             is_correct: false
         }));
-
-    const [questions, setQuestions] = useState([
-        { description: "", answers: [] },
-        { description: "", answers: [] },
-        { description: "", answers: [] }
-    ]);
 
     useEffect(() => {
         if (users.length > 0) {
@@ -103,6 +102,81 @@ function CreateLeermodule() {
         }
     }, [users]);
 
+    // themes
+    useEffect(() => {
+        fetch("http://145.24.237.168:8000/themes", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                const themesArray = Array.isArray(data) ? data : data.themes || [];
+                setThemes(themesArray);
+                if (themesArray.length > 0) setThemeId(themesArray[0].id);
+            })
+            .catch(err => console.error(err));
+    }, []);
+
+    // hele questions maken
+    useEffect(() => {
+        if (!themeId || themes.length === 0) return;
+
+        const theme = themes.find(t => t.id === themeId);
+        if (!theme) return;
+
+        // hardcoded questions because db doesn't provide the whole question
+        const autoQuestions = [
+            {
+                description: `Wie zijn lievelings film = ${theme.movie}?`,
+                answers: users.map(u => ({ user_id: u.id, is_correct: u.id === 0 }))
+            },
+            {
+                description: `Wie zijn lievelings film genre = ${theme.movie_genre}?`,
+                answers: users.map(u => ({ user_id: u.id, is_correct: u.id === 0 }))
+            },
+            {
+                description: `Wie zijn lievelings artiest = ${theme.artist}?`,
+                answers: users.map(u => ({ user_id: u.id, is_correct: u.id === 0 }))
+            },
+            {
+                description: `Wie zijn lievelings eten = ${theme.food}?`,
+                answers: users.map(u => ({ user_id: u.id, is_correct: u.id === 0 }))
+            },
+            {
+                description: `Wie zijn lievelings plaats = ${theme.place}?`,
+                answers: users.map(u => ({ user_id: u.id, is_correct: u.id === 0 }))
+            },
+            {
+                description: `Wie zijn lievelings muziek = ${theme.music}?`,
+                answers: users.map(u => ({ user_id: u.id, is_correct: u.id === 0 }))
+            },
+            {
+                description: `Wie zijn lievelings muziekgenre = ${theme.music_genre}?`,
+                answers: users.map(u => ({ user_id: u.id, is_correct: u.id === 0 }))
+            },
+            {
+                description: `Wie zijn lievelings Vakantieland = ${theme.holiday_country}?`,
+                answers: users.map(u => ({ user_id: u.id, is_correct: u.id === 0 }))
+            },
+            {
+                description: `Wie zijn lievelings kledingsstyle = ${theme.clothing_style}`,
+                answers: users.map(u => ({ user_id: u.id, is_correct: u.id === 0 }))
+            },
+            {
+                description: `Wie zijn lievelings dier = ${theme.animal}?`,
+                answers: users.map(u => ({ user_id: u.id, is_correct: u.id === 0 }))
+            },
+            {
+                description: `Wie zijn lievelings Kleur is =${theme.color} ?`,
+                answers: users.map(u => ({ user_id: u.id, is_correct: u.id === 0 }))
+            }
+        ];
+        setQuestions(autoQuestions);
+    }, [themeId, themes, users]);
+
     return(
         <>
             <div id="createLeermoduleContainer">
@@ -110,10 +184,13 @@ function CreateLeermodule() {
                 <form action="" id={"createForm"} onSubmit={handleSubmit}>
                     <div id={"titleDataCreate"}>
                         <h1>Create new leermodule</h1>
-                        <select id="Theme" name="Theme">
-                            <option value="1">Theme 1</option>
-                            <option value="2">Theme 2</option>
-                            <option value="3">Theme 3</option>
+                        <select id="Theme" name="Theme" value={themeId || ""} onChange={(e) => setThemeId(Number(e.target.value))}>
+                            {themes.length === 0 && <option value="">Loading themes...</option>}
+                            {themes.map((theme) => (
+                                <option key={theme.id} value={theme.id}>
+                                    {theme.name || `Theme ${theme.id}`}
+                                </option>
+                            ))}
                         </select>
                     </div>
 
@@ -129,17 +206,13 @@ function CreateLeermodule() {
 
                     <h3>Hierin kan je vragen opschrijven en de juiste persoon als antwoord meegeven</h3>
                     <div id="questionsContainerCreate">
-                        {users.length > 0 && questions.map((q, qIndex) => (
+                        {questions.map((q, qIndex) => (
                             <div key={qIndex}>
                                 <p>{qIndex + 1}.</p>
+                                {/* input disabled zodat user het niet kan wijzigen */}
+                                <input type="text" value={q.description} disabled />
 
-                                <input type="text" placeholder="Question" value={q.description} onChange={(e) => {
-                                        const updated = [...questions];
-                                        updated[qIndex].description = e.target.value;
-                                        setQuestions(updated);
-                                    }}
-                                />
-
+                                {/* Radio buttons voor antwoorden */}
                                 {q.answers.map((answer, aIndex) => {
                                     const user = users.find(u => u.id === answer.user_id);
                                     const username = user ? (user.name || user.username || user.full_name) : "Loading...";
@@ -147,13 +220,9 @@ function CreateLeermodule() {
                                     return (
                                         <div key={aIndex} className="answers_checks">
                                             <label>
-                                                <input
-                                                    type="radio"
-                                                    name={`question-${qIndex}`} // groep per vraag
-                                                    checked={answer.is_correct}
+                                                <input type="radio" name={`question-${qIndex}`} checked={answer.is_correct}
                                                     onChange={() => {
                                                         const updated = [...questions];
-                                                        // alleen deze vraag aanpassen
                                                         updated[qIndex] = {
                                                             ...updated[qIndex],
                                                             answers: updated[qIndex].answers.map((ans, i) => ({
@@ -172,6 +241,7 @@ function CreateLeermodule() {
                             </div>
                         ))}
                     </div>
+
                     <hr/>
                     <div className="getBy_container">
                         <div className="getBy_left">

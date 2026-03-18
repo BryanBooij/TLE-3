@@ -13,7 +13,6 @@ export default function Talk() {
 
     useEffect(() => {
         const fromState = location.state;
-        console.log(fromState)
         if (fromState && (fromState.counts || fromState.answers)) {
             setData({ counts: fromState.counts || data.counts, answers: fromState.answers || [] });
         } else {
@@ -50,7 +49,6 @@ export default function Talk() {
                 <h2>Gespreksmoment</h2>
 
                 <div className="talk-content">
-                    <img src="/discussion.png" alt="Discussion" className="discussion-image"/>
                     <div className="talk-left">
                         <p>Nu je de test hebt gemaakt.... zullen we even praten?</p>
                         <p>misschien kun je de volgende keer beter scoren!</p>
@@ -86,7 +84,7 @@ export default function Talk() {
                                 )}
                             </ol>
                         </div>
-                        <BigButton label="Terug naar start" onClick={() => navigate("/Home")}/>
+                        <BigButton label="Terug naar start" onClick={() => navigate("/Home")}/><br/>
                     </div>
 
                 </div>
@@ -96,18 +94,6 @@ export default function Talk() {
                     <label htmlFor="hugginface">Sla quiz resultaten niet op.</label>
                 </div>
             </div>
-
-                {/*<h3>Notities/Actiepunten</h3>*/}
-                {/*<textarea*/}
-                {/*    value={notes}*/}
-                {/*    onChange={(e) => setNotes(e.target.value)}*/}
-                {/*    placeholder="Schrijf hier jullie notities of actiepunten..."*/}
-                {/*/>*/}
-                {/*<div className="talk-note-actions">*/}
-                {/*    <BigButton label="Opslaan" onClick={saveNotes} />*/}
-                {/*    <BigButton label="Leegmaken" onClick={() => { setNotes(''); try { sessionStorage.removeItem('quizTalkNotes'); } catch (e) {} }} />*/}
-                {/*</div>*/}
-                {/*{saved && <div className="talk-saved">Opgeslagen</div>}*/}
         </>
     );
 }

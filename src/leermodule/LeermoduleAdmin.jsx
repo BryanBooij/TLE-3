@@ -20,10 +20,8 @@ function LeermoduleAdmin() {
                     },
                 });
                 const data = await response.json();
-                console.log(data); //⭐: This is here for testing purposes, if works, delete
                 setLeermodule(data.items);
                 if (!data) { //⭐: if no data is returned
-                    console.log("Seems we couldn't find any data");
                 }
             } catch (error) { //⭐: if an error is returned
                 console.error("There was a problem: ", error)
