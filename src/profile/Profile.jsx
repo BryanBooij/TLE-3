@@ -66,24 +66,12 @@ function Profile(){
                             </div>
                             <div id="shareDataAdmins">
                                 <div className="agreement_shareDataAdmins">
-                                    <input type="checkbox" id="instagram"/>
-                                    <label htmlFor="twitter"> Geef toestemming om Instagram data te gebruiken</label>
-                                </div>
-                                <div className="agreement_shareDataAdmins">
-                                    <input type="checkbox" id="facebook"/>
-                                    <label htmlFor="twitter"> Geef toestemming om Facebook data te gebruiken</label>
-                                </div>
-                                <div className="agreement_shareDataAdmins">
-                                    <input type="checkbox" id="twitter"/>
-                                    <label htmlFor="twitter"> Geef toestemming om Twitter data te gebruiken</label>
-                                </div>
-                                <div className="agreement_shareDataAdmins">
-                                    <input type="checkbox" id="snapchat"/>
-                                    <label htmlFor="twitter"> Geef toestemming om Snapchat data te gebruiken</label>
+                                    <input type="checkbox" id="youtube"/>
+                                    <label htmlFor="youtube"> Permission to use data from YouTube</label>
                                 </div>
                                 <div className="agreement_shareDataAdmins">
                                     <input type="checkbox" id="huggingFace"/>
-                                    <label htmlFor="twitter"> Geef toestemming om met Hugging Face data te delen</label>
+                                    <label htmlFor="huggingFace"> Permission to share date with our partner Hugging Face</label>
                                 </div>
                             </div>
                         </div>
@@ -107,19 +95,19 @@ function Profile(){
                         <div className="legend">
                             <div className="legend-item">
                                 <div className="legend-color instagram"></div>
-                                Instagram - 60%
+                                Search history - 60%
                             </div>
                             <div className="legend-item">
                                 <div className="legend-color facebook"></div>
-                                Facebook - 20%
+                                Watch history - 20%
                             </div>
                             <div className="legend-item">
                                 <div className="legend-color twitter"></div>
-                                Twitter - 10%
+                                Data gathered from quizzes - 10%
                             </div>
                             <div className="legend-item">
                                 <div className="legend-color snapchat"></div>
-                                Snapchat - 10%
+                                Own input - 10%
                             </div>
                         </div>
                     </div>
