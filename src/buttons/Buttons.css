@@ -221,5 +221,26 @@ button.big-button:active::before {
     outline-offset: 2px;
 }
 
+.info-button-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.info-popup {
+    position: absolute;
+    bottom: 120%; /* boven de knop */
+    left: 50%;
+    transform: translateX(-50%);
+
+    background-color: #333;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    white-space: nowrap;
+
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
 
 

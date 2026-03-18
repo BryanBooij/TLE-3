@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate, } from "react-router";
 import "./quiz.css";
 import BigButton from "../buttons/BigButton.jsx";
-import infoButton from "../buttons/InfoButton.jsx";
 import InfoButton from "../buttons/InfoButton.jsx";
 
 export default function Talk() {
@@ -93,7 +92,7 @@ export default function Talk() {
                 </div>
                 <div className="talk-notes">
                     <input type="checkbox" id="info"/>
-                    <InfoButton alt="InfoButton" label="InfoButton" onClick={() => (window.location.href = "https://huggingface.co/terms-of-service")}/>
+                    <InfoButton alt="InfoButton" label="InfoButton">Door dit te accepteren word uw gegenereerde data naar de backend gestuurd</InfoButton>
                     <label htmlFor="hugginface">Sla quiz resultaten niet op.</label>
                 </div>
             </div>

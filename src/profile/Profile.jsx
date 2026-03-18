@@ -26,7 +26,7 @@ function Profile(){
                         <div id="color_blind">
                             <div className="title_with_info">
                                 <h3>Color blindness</h3>
-                                <InfoButton alt="InfoButton" label="InfoButton"></InfoButton>
+                                <InfoButton alt="InfoButton" label="InfoButton">Dit is info voor color blindness</InfoButton>
                             </div>
                             <div id="colorOptionCharts">
                                 <div className="piechart"></div>
@@ -38,7 +38,7 @@ function Profile(){
                             <div id="dyslectic">
                                 <div className="title_with_info">
                                     <h4>Dyslectic</h4>
-                                    <InfoButton alt="InfoButton" label="InfoButton"></InfoButton>
+                                    <InfoButton alt="InfoButton" label="InfoButton">Dit is info voor Dyslectics</InfoButton>
                                 </div>
                                 <label className="switch">
                                     <input type="checkbox"/>
@@ -48,7 +48,7 @@ function Profile(){
                             <div id="simplerText">
                                 <div className="title_with_info">
                                     <h4>Simpler text</h4>
-                                    <InfoButton alt="InfoButton" label="InfoButton"></InfoButton>
+                                    <InfoButton alt="InfoButton" label="InfoButton">dit is info voor Simpler text</InfoButton>
                                 </div>
                                 <label className="switch">
                                     <input type="checkbox"/>
@@ -61,7 +61,7 @@ function Profile(){
                             <div>
                                 <div className="title_with_info">
                                     <p>Data</p>
-                                    <InfoButton alt="InfoButton" label="InfoButton"></InfoButton>
+                                    <InfoButton alt="InfoButton" label="InfoButton">Dit is onfo over data</InfoButton>
                                 </div>
                             </div>
                             <div id="shareDataAdmins">
