@@ -20,28 +20,36 @@ import ButtonMain from "../buttons/ButtonMain.jsx";
 * */
 
 function CreateLeermodule() {
-    let info = useParams(); // Access the route parameter;
-    const result = Object.values(info); //make it into something usable for the html DOM
+    let info = useParams();
+    const result = Object.values(info);
     const navigate = useNavigate();
-
-    // Message state for confirmation of saving changes, will disappear after 2 seconds
     const [Message, setMessage] = useState("");
-    // state
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [themes, setThemes] = useState([]);
     const [themeId, setThemeId] = useState([null]);
     const [questions, setQuestions] = useState([]);
-
+    const [radioErrors, setRadioErrors] = useState([]);
 
     // handle save
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        const errors = questions.map(q =>
+            !q.answers.some(a => a.is_correct)
+        );
+
+        setRadioErrors(errors);
+
+        const hasErrors = errors.some(e => e === true);
+        if (hasErrors) {
+            return;
+        }
+
         const quiz = {
             name: name,
             description: description,
-            theme_id: themeId, // number
+            theme_id: themeId,
             questions: questions.map(q => ({
                 description: q.description || "No description",
                 answers: q.answers.map(a => ({
@@ -64,6 +72,7 @@ function CreateLeermodule() {
             const data = await res.json();
             setMessage("Opgeslagen!");
             setTimeout(() => setMessage(""), 2000);
+
         } catch (err) {
             console.error(err);
             setMessage("Fout bij opslaan");
@@ -195,13 +204,12 @@ function CreateLeermodule() {
                     </div>
 
                     <div id={"basicInfo"}>
-                    <label htmlFor="qname">Name quiz</label>
-                    <input type="text" id="qname" name="quizname" placeholder="Name of your quiz" value={name} onChange={(e) => setName(e.target.value)}/>
+                        <label htmlFor="qname">Name quiz</label>
+                        <input type="text" id="qname" name="quizname" placeholder="Name of your quiz" value={name} onChange={(e) => setName(e.target.value)}/>
 
-                    <label htmlFor="desc">Description</label>
-                    <input type="text" id="desc" name="description" placeholder="Put your description here" value={description} onChange={(e) => setDescription(e.target.value)}/>
+                        <label htmlFor="desc">Description</label>
+                        <input type="text" id="desc" name="description" placeholder="Put your description here" value={description} onChange={(e) => setDescription(e.target.value)}/>
                     </div>
-
                     <hr/>
 
                     <h3>Hierin kan je vragen opschrijven en de juiste persoon als antwoord meegeven</h3>
@@ -220,7 +228,7 @@ function CreateLeermodule() {
                                     return (
                                         <div key={aIndex} className="answers_checks">
                                             <label>
-                                                <input type="radio" name={`question-${qIndex}`} checked={answer.is_correct}
+                                                <input type="radio" name={`question-${qIndex}`} checked={answer.is_correct} required
                                                     onChange={() => {
                                                         const updated = [...questions];
                                                         updated[qIndex] = {
@@ -238,6 +246,11 @@ function CreateLeermodule() {
                                         </div>
                                     );
                                 })}
+                                {radioErrors[qIndex] && (
+                                    <p style={{ color: "red", marginTop: "0.25rem" }}>
+                                        Je moet een antwoord selecteren voor deze vraag!
+                                    </p>
+                                )}
                             </div>
                         ))}
                     </div>

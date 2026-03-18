@@ -293,3 +293,11 @@ main{
     width: 100%;
     box-sizing: border-box;
 }
+
+.questions_container input {
+    background-color: var(--black-tint);
+    color: white;
+    border: 2px solid var(--light-grey);
+    padding: 0.8rem;
+    width: 350px;
+}
