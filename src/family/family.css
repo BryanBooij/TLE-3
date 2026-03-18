@@ -102,7 +102,7 @@ canvas {
     height: 100% !important;
 }
 
-.chart-container {
+.family-chart-container {
     position: relative;
     width: 400px;
     height: 400px;

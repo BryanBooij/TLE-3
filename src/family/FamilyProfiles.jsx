@@ -115,7 +115,7 @@ function FamilyProfiles() {
 
                 <h3>Data collection chart</h3>
                 <p>in deze data chart kan je zien waar {username} de van houd!</p>
-                <div className="chart-container">
+                <div className="family-chart-container">
                     <canvas ref={chartRef}></canvas>
                 </div>
                 <BigButton alt="Back" label="Back" onClick={() => navigate("/Family")} />

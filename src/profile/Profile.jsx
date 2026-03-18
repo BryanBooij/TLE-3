@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
 import ButtonMain from "../buttons/ButtonMain.jsx";
 import InfoButton from "../buttons/InfoButton.jsx";
 
@@ -7,7 +6,6 @@ import "./profile.css";
 import ButtonPurple from "../buttons/ButtonPurple.jsx";
 
 function Profile(){
-    const navigate = useNavigate();
     const [Message, setMessage] = useState("");
 
     const handleSave = () => {
@@ -82,8 +80,8 @@ function Profile(){
                     <div id="termsOfService">
                         <h2>Terms of service</h2>
                         <div className="buttons">
-                            <ButtonPurple alt={""} label={"Reread Terms of Service"}></ButtonPurple>
-                            <ButtonPurple alt={""} label={"Reread Privacy Policy"}></ButtonPurple>
+                            <ButtonPurple alt={""} label={"Reread Terms of Service"} onClick={() => window.location.href = "https://huggingface.co/terms-of-service"}></ButtonPurple>
+                            <ButtonPurple alt={""} label={"Reread Privacy Policy"} onClick={() => window.location.href = "https://huggingface.co/privacy"}></ButtonPurple>
                         </div>
                     </div>
                     <div id="dataChart">
