@@ -4,7 +4,7 @@ import './userOverview.css'
 import {useNavigate} from "react-router";
 import {useParams} from "react-router-dom";
 import ButtonPurple from "../buttons/ButtonPurple.jsx";
-import ButtonGreen from "../buttons/ButtonGreen.jsx";
+import ButtonBlack from "../buttons/ButtonBlack.jsx";
 
 function DetailsUsers() {
 
@@ -21,7 +21,7 @@ function DetailsUsers() {
                     <h1 id="nameUser">Name user: {result}</h1>
                 </div>
                 <div id="detailsUser">
-                    <p>Family: ....</p>
+                    <p>Family: Json</p>
                     <p>Age: [Redacted]</p>
                 </div>
                 <hr/>
@@ -60,6 +60,7 @@ function DetailsUsers() {
                             </tr>
                             </tbody>
                         </table>
+                        <h3>Overal internet score: 89</h3>
                     </div>
                     <div id="dataChartUserDetails">
                         <h2>Data collection chart:</h2>
@@ -70,23 +71,24 @@ function DetailsUsers() {
                         <div className="legend">
                             <div className="legend-item">
                                 <div className="legend-color instagram"></div>
-                                Instagram - 60%
+                                Search history - 60%
                             </div>
                             <div className="legend-item">
                                 <div className="legend-color facebook"></div>
-                                Facebook - 20%
+                                Watch history - 20%
                             </div>
                             <div className="legend-item">
                                 <div className="legend-color twitter"></div>
-                                Twitter - 10%
+                                Data gathered from quizzes - 10%
                             </div>
                             <div className="legend-item">
                                 <div className="legend-color snapchat"></div>
-                                Snapchat - 10%
+                                Own input - 10%
                             </div>
                         </div>
                     </div>
                 </div>
+                <ButtonBlack id={"deleteUserDetails"} label={"Delete user"}></ButtonBlack>
             </div>
         </>
     )
