@@ -5,10 +5,8 @@ import {useNavigate} from "react-router";
 import {useParams} from "react-router-dom";
 import {useState, useEffect} from "react";
 import './styleLeermoduleAdmin.css';
-// import './addRemoveElement.js';
 import ButtonPurple from "../buttons/ButtonPurple.jsx";
 import ButtonMain from "../buttons/ButtonMain.jsx";
-
 
 /*
 * name
@@ -67,7 +65,6 @@ function CreateLeermodule() {
     };
 
     // get users from db
-
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -106,8 +103,6 @@ function CreateLeermodule() {
         }
     }, [users]);
 
-
-
     return(
         <>
             <div id="createLeermoduleContainer">
@@ -132,24 +127,13 @@ function CreateLeermodule() {
 
                     <hr/>
 
-                    {/*<div className="increaseDecreaseBtnsCreate">*/}
-                    {/*    <label htmlFor="questions">Questions</label>*/}
-                    {/*    <div>*/}
-                    {/*        <button id={"addQuestion"} className={"add_remove_btns"}>+</button>*/}
-                    {/*        <button id={"removeQuestion"} className={"add_remove_btns"}>-</button>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
                     <h3>Hierin kan je vragen opschrijven en de juiste persoon als antwoord meegeven</h3>
                     <div id="questionsContainerCreate">
                         {users.length > 0 && questions.map((q, qIndex) => (
                             <div key={qIndex}>
                                 <p>{qIndex + 1}.</p>
 
-                                <input
-                                    type="text"
-                                    placeholder="Question"
-                                    value={q.description}
-                                    onChange={(e) => {
+                                <input type="text" placeholder="Question" value={q.description} onChange={(e) => {
                                         const updated = [...questions];
                                         updated[qIndex].description = e.target.value;
                                         setQuestions(updated);
