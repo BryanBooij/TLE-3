@@ -96,6 +96,14 @@ function FamilyProfiles() {
         setChartInstance(newChart);
     }, [themesData]);
 
+    const safeParse = (data) => {
+        try {
+            return JSON.parse(data);
+        } catch (e) {
+            return [data];
+        }
+    };
+
     return (
         <>
             <div className="family-profiles-container">
@@ -104,22 +112,43 @@ function FamilyProfiles() {
                 <p>Hierin kan je alle data zien wat onze AI heeft verzameld</p>
             </div>
 
-            <div className="family-data">
-                {user.map((profile) => (
-                    <div key={profile.id}>
-                        <h3>Veel bezochte video titels: {profile.liked_video_titles}</h3>
-                        <h3>Veel bezochte video beschrijvingen: {profile.liked_video_descriptions}</h3>
-                        <h3>Meest gebruikte tags: {profile.liked_video_tags}</h3>
-                    </div>
-                ))}
+            {user.map((profile) => {
+                const titles = safeParse(profile.liked_video_titles || "[]");
+                const descriptions = safeParse(profile.liked_video_descriptions || "[]");
+                const tags = safeParse(profile.liked_video_tags || "[]");
 
-                <h3>Data collection chart</h3>
-                <p>in deze data chart kan je zien waar {username} de van houd!</p>
-                <div className="family-chart-container">
-                    <canvas ref={chartRef}></canvas>
-                </div>
-                <BigButton alt="Back" label="Back" onClick={() => navigate("/Family")} />
-            </div>
+                return (
+                    <div key={profile.id} className="family-data">
+                        <h3>Veel bezochte video titels:</h3>
+                        <ul>
+                            {titles.map((title, i) => <li key={i}>{title}</li>)}
+                        </ul>
+
+                        <h3>Veel bezochte video beschrijvingen:</h3>
+                        <ul>
+                            {descriptions.map((desc, i) => (
+                                <li key={i}>
+                                    {desc.length > 100 ? desc.substring(0, 100) + "..." : desc}
+                                </li>
+                            ))}
+                        </ul>
+
+                        <h3>Meest gebruikte tags:</h3>
+                        <ul>
+                            {tags.map((tag, i) => <li key={i}>{tag}</li>)}
+                        </ul>
+
+                        <h3>Data collection chart</h3>
+                        <p>in deze data chart kan je zien waar {username} van houdt!</p>
+
+                        <div className="family-chart-container">
+                            <canvas ref={chartRef}></canvas>
+                        </div>
+
+                        <BigButton alt="Back" label="Back" onClick={() => navigate("/Family")} />
+                    </div>
+                );
+            })}
         </>
     );
 }
