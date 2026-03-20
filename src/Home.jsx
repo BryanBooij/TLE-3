@@ -9,7 +9,7 @@ function Home(){
     return (
         <>
             <div className="home-container">
-                <h1>Family AI</h1>
+                <h1>Know your AI</h1>
                 <p>Maak de toets en achterhaal jullie digitale voetafdrukken!</p>
                 <div className="home-images">
                     <div className="cloud-container">

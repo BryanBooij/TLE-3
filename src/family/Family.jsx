@@ -54,7 +54,7 @@ function Family() {
     return (
         <>
             <div className="family-container">
-                <h1>Family AI</h1>
+                <h1>Know your AI</h1>
                 <p>Dit is jouw familie!</p>
                 <img src="/family-ai-drawing.png" alt="Family AI" className="home-image"/>
                 <h3>Hier kan je de informatie bekijken per familielid</h3>
